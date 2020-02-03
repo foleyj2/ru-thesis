@@ -16,59 +16,15 @@
 \newcommand{\fileauthor@ruthesisen}{Joseph Timothy Foley, foley at RU.IS}
 \ProvidesClass{ruthesisen}[\filedate@ruthesisen by \fileauthor@ruthesisen]
 \NeedsTeXFormat{LaTeX2e}
-\typeout{English Thesis Class for Reykjavik University \fileversion@ruthesisen <\filedate@ruthesisen>, by \fileauthor@ruthesisen}
+\typeout{Thesis Class (English) for Reykjavik University \fileversion@ruthesisen <\filedate@ruthesisen>, by \fileauthor@ruthesisen}
 
 %% ---------------- Execution of Options -----------------------------
 \ProcessOptions\relax% this stops searching for a * in \ProcessOtions*
-
-%% Alternative way to subclass.  Disable the other option processing
-%% if you enable it.  This will dump all options onto the parent class
-%\ProcessOptions\LoadClassWithOptions{article}
-%% Read page 20 of http://latex-project.org/guides/clsguide.pdf
-%% carefully before modifying any of the execution and previous section.
-%% ---------------- Package Loading -----------------------------
-\LoadClass{rubook}% our parent class.
+\LoadClassWithOptions{rubook}% our parent class.
 
 
 %%%%%%%%%%%%%%%%%%%% Addional Font Adjustments%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% rubook sets up some reasonable fonts, but we may need further adjustments
-%% Font guide at
-%% http://latex-project.org/guides/fntguide.pdf
-
-% set the font defaults (if they need to be further adjusted)
-%\renewcommand{\encodingdefault}{t1}
-
-%\renewcommand{\rmdefault}{ptm}  % adobe times
-%\renewcommand{\sfdefault}{phv}  % adobe helvetica?
-%\renewcommand{\ttdefault}{pcr}  % adobe courier
-%% cmr  : computer modern roman
-%% cmss : computer modern sans oblique
-%% cmm  : computer modern math
-%% ptm  : (postscript) Adobe Times
-%% phv  : (postscript) Adobe Helvetica
-%% pcr  : (postscript) Adobe Courier
-
-%\renewcommand{\familydefault}{\sfdefault} % switch to \sfdefault if you want to force sanserif
-%% \familydefault should be one of the short letter codes such as "lm" or "ptm"
-%\renewcommand{\familydefault}{\rmdefault}
-
-%\renewcommand{\seriesdefault}{m}
-%% m  : medium
-%% b  : bold
-%% bx : bold extended
-%% sb : semi bold
-%% c  : condensed
-
-%\renewcommand{\shapedefault}{n}
-%% n  : upshape (normal)
-%% it : italics
-%% sl : slanted
-%% sc : small caps
-
-%%\fontsize{12pt}{14pt}  % args: fontsize, baselineskip (font+space)
-%% normal sequence of increasing sizes:  5,7,8,9,10,12,14.4,17.28,20.74,24.88
-
-%%  Specific fonts
 %%  Note that you can leave off elements and it will use the last value set (or default??)
 % \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
 %  \fontsize{SIZE}{BASELINESKIP}
@@ -86,28 +42,9 @@
 
 %% Some may need a different front logo
 \newcommand{\frontlogo@ruthesisen}{ru-logo}
-\newcommand{\setFrontLogo}[1]{\renewcommand{\frontlogo@ruthesisen}{#1}}
 
-\newcommand{\setTitle}[2]{%
-  \setMainTitle{#1}
-  \setTitleCover{#2}
-  \setTitleInternal{#1}
-}
-\newcommand{\setMainTitle}[1]{\renewcommand{\title@ruthesisen}{#1}}
-\newcommand{\setTitleCover}[1]{\renewcommand{\titleCover@ruthesisen}{#1}}
-\newcommand{\setTitleInternal}[1]{\renewcommand{\titleInternal@ruthesisen}{#1}}
 
 \newcommand{\setAbstract}[1]{\renewcommand{\abstract@ruthesisen}{#1}}
-
-
-\def\author#1{\def\and{, }
-  \gdef\author@ruthesisen{#1}
-  \gdef\authorSignature@ruthesisen{#1}
-  \gdef\authorHeader@ruthesisen{#1}
-}
-\def\setAuthorSignature#1{\gdef\authorSignature@ruthesisen{#1}}
-\def\setAuthorHeader#1{\gdef\authorHeader@ruthesisen{#1}}
-\def\author@ruthesisen{??\@warning{***No author name.***}}
 
 
 \newlength{\savedparindent}
@@ -136,7 +73,7 @@
 
 %% Disable clearforchapter on formats that do not need blank pages
 \ifbool{online}{\renewcommand{\clearforchapter}{\newpage}}{}
-\ifdraft{\renewcommand{\clearforchapter}{\newpage}}
+\ifbool{draftbool}{\renewcommand{\clearforchapter}{\newpage}}
   % waste less blank pages in draft mode
   % see p123 http://ctan.uib.no/macros/latex/contrib/memoir/memman.pdf
 
@@ -206,16 +143,6 @@
   pagecenterx:\printlength{\pagecenterx}\\
   pagecentery:\printlength{\pagecentery}\\
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%% DRAFT AND PROOF MARKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\draftmark}{}
-\newcommand{\draftbigmark}{}
-
-\ifdraft{
-  \renewcommand{\draftmark}{{\color{red}\textsc{Draft}}}{}
-  \renewcommand{\draftbigmark}{{\color{red}\warningfont{}*** \draftmark{} *** \\PLEASE DO NOT DISTRIBUTE\\}}{}%
-  }{}
-  
 
 
 %% ----- PRINTED FRONT COVER ----------------------------------------------------------
@@ -271,7 +198,22 @@
 
 %% ----- INTERNAL TITLE PAGE WITH COMMITTEE ---------------------------------------------------
 %% TODO: make counter for supervisors in the very rare case that there
-%%    is only one supervisor
+%% is only one supervisor
+\newcommand{\DocumentType@ruthesisen}{Dissertation}
+\newcommand{\Degree@ruthesisen}{Ph.D.}
+\newcommand{\DegreeLong@ruthesisen}{Doctorate}
+\newcommand{\DocumentInfo}[3]{
+  \renewcommand{\DocumentType@ruthesisen}{#1}
+  \renewcommand{\Degree@ruthesisen}{#2}
+  \renewcommand{\DegreeLong@ruthesisen}{#3}
+}
+
+%ECTS Only applicable on BSc. and MSc.
+\newcommand{\ects}[1]{\newcommand{\ects@ruthesisen}{#1}}
+\newcommand{\School@ruthesisen}{School of Technology}
+\newcommand{\School}[1]{\newcommand{\School@ruthesis}{#1}}
+
+
 \newcommand{\supervisors@ruthesisen}{\item No Advisor}
 \newcommand{\supervisors}[1]{\renewcommand{\supervisors@ruthesisen}[1]{#1}}
 \newcommand{\supervisorheading@ruthesisen}{Supervisor}
@@ -284,23 +226,59 @@
 \newcommand{\setExaminerHeading}[1]{\renewcommand{\examinerheading@ruthesisen}{#1}}
 
 \newcommand{\personinfo}[5]{
-  \item[]  #1, #2\\#3, #4, #5 %Stub to be customized later
+\item[]  #1, #2\\#3, #4, #5 %Stub to be customized later
 }
-% base definition, we redefine it when format changes
+%% Memoir titlepage definition p.64
+% \newcommand{\maketitle}{%
+% \vspace*{\droptitle}
+% \maketitlehooka
+% {\pretitle \title \posttitle}
+% \maketitlehookb
+% {\preauthor \author \postauthor}
+% \maketitlehookc
+% {\predate \date \postdate}
+% \maketitlehookd
+% \thispagestyle{title}
 
-\newcommand{\internaltitlewithcommittee}{
+% \pretitle{\begin{center}\LARGE}
+% \posttitle{\par\end{center}\vskip 0.5em}
+% \preauthor{\begin{center}
+% \large \lineskip 0.5em%
+% \begin{tabular}[t]{c}}
+% \postauthor{\end{tabular}\par\end{center}}
+% \predate{\begin{center}\large}
+% \postdate{\par\end{center}}
+
+\renewcommand{\maketitlehooka}{\begin{centering}\includegraphics[width=4cm]{\frontlogo@ruthesisen}\\\end{centering}}%
+\renewcommand{\pretitle}{\begin{center}\titletitlefont}%
+\renewcommand{\posttitle}{\par\end{center}\vskip 0.5em}
+\renewcommand{\maketitlehookb}{\begin{center}\titletextfont by\par\end{center}}
+\renewcommand{\preauthor}{\titletextfont\begin{center}\large\par}
+    \renewcommand{\postauthor}{\par\end{center}}
+\renewcommand{\maketitlehookc}{\begin{center}\Degree@ruthesisen{} \DocumentType@ruthesisen{} %
+        \ifdef\ects@ruthesisen{of \ects@ruthesisen{} ECTS credits}%
+        submitted to the \School@ruthesisen\ \\%
+        at \Institution@ruthesisen{} in partial fulfillment\\% 
+        of the requirements for the degree of \\%
+        \textbf{\DegreeLong@ruthesisen}}\par\end{center}
+\renewcommand{\predate}{\begin{center}\large}
+\renewcommand{\postdate}{\par\end{center}}
+%\renewcommand{\maketitlehookd}{}
+
+
+\newcommand{\maketitlepage}{
   \begin{cover}
     \quad\vfill% we center vertically so it looks nice
     \SingleSpacing%
     \begin{centering}
       \includegraphics[width=4cm]{\frontlogo@ruthesisen}\\
       \vspace{2\baselineskip}
-      {\titletitlefont\titleInternal@ruthesisen\\}%
+      {\thetitle\\}%
       \vspace{\baselineskip}
       {\titletextfont% 
         by\\
         \vspace{\baselineskip}
-        \author@ruthesisen{}\\
+        \theauthor\\
         \vspace{2\baselineskip}        
         \documenttype@ruthesisen{} %
         of \ects@ruthesisen{} ECTS credits%
@@ -310,36 +288,36 @@
         \textbf{\degreelong@ruthesisen}}\\
       
       \vspace{\baselineskip}
-      \whensigned@ruthesisen{}\\      
+      \thedate{}\\      
     \end{centering}
-    {\titletextfont%
-      \vspace{2\baselineskip}
-      % change \personinfo to make the entries needed
-      % Because this is inside a command, we escape the #1 as ##1      
-      \renewcommand{\personinfo}[5]{\item[]  ##1, ##2\\##3, ##4, ##5}
-      \setlength{\pltopsep}{0.5\baselineskip}  % first/top space
-      \setlength{\plparsep}{0.5\baselineskip} % space between entries
-      \setlength{\plitemsep}{0.5\baselineskip} % space between lines
-      \MLThesisCommittee{}:
-      \begin{compactitem}[\hspace{10mm}]
-        \supervisors@ruthesisen{}
-        \examiners@ruthesisen{}
-      \end{compactitem}
-      \vspace{\baselineskip}
-      \examinerheading@ruthesisen:
-      \begin{compactitem}[\hspace{10mm}]
-        \supervisors@ruthesisen{}
-        \examiners@ruthesisen{}
-      \end{compactitem}
-    }%end \titletextfont
-    \vfill
+    % {\titletextfont%
+    %   \vspace{2\baselineskip}
+    %   % change \personinfo to make the entries needed
+    %   % Because this is inside a command, we escape the #1 as ##1      
+    %   \renewcommand{\personinfo}[5]{\item[]  ##1, ##2\\##3, ##4, ##5}
+    %   \setlength{\pltopsep}{0.5\baselineskip}  % first/top space
+    %   \setlength{\plparsep}{0.5\baselineskip} % space between entries
+    %   \setlength{\plitemsep}{0.5\baselineskip} % space between lines
+    %   \MLThesisCommittee{}:
+    %   \begin{compactitem}[\hspace{10mm}]
+    %     \supervisors@ruthesisen{}
+    %     \examiners@ruthesisen{}
+    %   \end{compactitem}
+    %   \vspace{\baselineskip}
+    %   \examinerheading@ruthesisen:
+    %   \begin{compactitem}[\hspace{10mm}]
+    %     \supervisors@ruthesisen{}
+    %     \examiners@ruthesisen{}
+    %   \end{compactitem}
+    % }%end \titletextfont
+    % \vfill
   \end{cover}
 }
   
   
 
 \newcommand{\frontrequiredpages}{
-  \internaltitlewithcommittee{}%RUM: "Front page (standard format)"    
+  \titlepage{}%RUM: "Front page (standard format)"    
   \copyrightpage{}%%RUM: Not mentioned
   \signaturepage{}%%RUM: "Signature page (standard format)    
   \archivesigpage{}%%RUM: Not mentioned, optional, but should be required
