@@ -42,11 +42,6 @@
 
 \newcommand{\setAbstract}[1]{\renewcommand{\abstract@ruthesisen}{#1}}
 
-
-\newlength{\savedparindent}
-\newcommand{\disableindents}{\setlength{\parindent}{0pt}}
-\newcommand{\enableindents}{\setlength{\parindent}{\savedparindent}}
-
 %% Clean up some formatting for the text
 \renewcommand{\thepage}{\roman{page}}
 
@@ -55,47 +50,6 @@
 %\renewcommand{\thefootnote}{\scriptsize\arabic{footnote}} %to fix large footnote text errors in some documents
 
 \renewcommand{\bibname}{Bibliography} %Renaming the bibliography section (if omitted it will be named "references")
-
-%% ---------------------------------------------------------------------------------------------
-%%  Setup the formatting at the beginning of the document (Front material)
-%% TODO: use the memoir \frontmatter \mainmatter \backmatter
-%%  See documentation, page 73
-
-\AtBeginDocument{
-  \frontmatter
-  \setlength{\savedparindent}{\parindent}  % save the current parindent
-  \SingleSpacing%
-}
-
-%% Disable clearforchapter on formats that do not need blank pages
-\ifbool{online}{\renewcommand{\clearforchapter}{\newpage}}{}
-\ifbool{draftbool}{\renewcommand{\clearforchapter}{\newpage}}
-  % waste less blank pages in draft mode
-  % see p123 http://ctan.uib.no/macros/latex/contrib/memoir/memman.pdf
-
-
-\newenvironment{cover}% commonalities for the cover material
-{\thispagestyle{cover}%
-  \pagestyle{cover}%
-  \clearforchapter% clear to chapter setting if note online
-  \disableindents%
-  \titletextfont\SingleSpacing}%
-{\setlength{\TPMargin}{0mm} %% margins inside the textblock
-  \enableindents{}\newpage}%
-
-\newenvironment{coverleft}%This is material that is OK being on the
-                          %backside
-{\thispagestyle{cover}%
-  \pagestyle{cover}%
-  \ifbool{online}{}{\cleartoverso}%
-  %\clearforchapter% clear to chapter setting  
-  \disableindents%
-  \titletextfont\SingleSpacing}%
-{\setlength{\TPMargin}{0mm} %% margins inside the textblock
-  \enableindents{}\newpage}%
-
-
-
 
 \newcommand{\frontcover}{
   \printedcover{}
@@ -259,22 +213,6 @@
     % \end{cover}
     % }
   
-
-
-
-%% ----- COPYRIGHT PAGE -----------------------------------------------------------------------
-\newcommand{\copyrightpage}{
-  % actually in books, this is often on the left side
-  \begin{coverleft}
-    \begin{vplace}[1.0] % ratio of space above and below
-      \centering
-      \OnehalfSpacing%
-      Copyright\\
-      \author@ruthesisen\\
-      \whensigned@ruthesisen\\
-    \end{vplace}
-  \end{coverleft}
-}
 %% ----- SIGNATURE PAGE, ONLY THESIS -----------------------------------------------------
 
 \newlength{\signaturey}
@@ -426,20 +364,6 @@
 
 %% ----- END OF BACK MATERIALS ---------------------------------------------------------------
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  HEADERS AND FOOTERS
-%%  TODO: ensure that the chapter and section headings are in lowercase.
-%%     package fancyhdr is not needed
-%\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}} 
-%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
-
-\makepagestyle{cover}% The cover pages don't have numbers by default
-\makeoddfoot{cover}{}{}{}
-\makeevenfoot{cover}{}{}{}
-
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
-\AtBeginDocument{\addtocontents{lof}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
-\AtBeginDocument{\addtocontents{lot}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
 
 %%% from the old cs template, if so desired
 %\makepagestyle{oldstyle}

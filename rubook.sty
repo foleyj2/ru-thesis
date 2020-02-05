@@ -204,17 +204,17 @@
 %% These macros allow you to arbitrarily position things on the page
 %% This is needed for any cover pages/graphics
 
-\RequirePackage{printlen}% display lengths in arbitrary units
-\ifbool{debug}{\PassOptionsToPackage{showboxes}{textpos}}
-\RequirePackage[absolute, verbose]{textpos}%
+%\RequirePackage{printlen}% display lengths in arbitrary units
+%\ifbool{debug}{\PassOptionsToPackage{showboxes}{textpos}}
+%\RequirePackage[absolute, verbose]{textpos}%
 
 %% These commands set the units in \begin{textblock} when not 
 %%  directly specified
 %% We set them to the page sizes so we can align from them
-\setlength{\TPHorizModule}{\paperwidth}
-\setlength{\TPVertModule}{\paperheight}
-%\setlength{\TPMargin}{2mm} %% margins inside the textblock*
-\textblockorigin{0mm}{0mm} % start everything near the top-left corner
+%\setlength{\TPHorizModule}{\paperwidth}
+%\setlength{\TPVertModule}{\paperheight}
+%%\setlength{\TPMargin}{2mm} %% margins inside the textblock*
+%\textblockorigin{0mm}{0mm} % start everything near the top-left corner
 
 %%%%%%%%%%%%%%%%% Colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 %% Setting colors in text
@@ -267,6 +267,67 @@
 \renewcommand{\predate}{\begin{center}\large}
 \renewcommand{\postdate}{\par\end{center}\newpage}
 
+%% ----- COPYRIGHT PAGE -----------------------------------------------------------------------
+\newcommand{\copyrightpage}{
+  % actually in books, this is often on the left side
+  \begin{coverleft}
+    \begin{vplace}[1.0] % ratio of space above and below
+      \centering
+      \OnehalfSpacing%
+      Copyright\\
+      \theauthor\\
+      \thedate\\
+    \end{vplace}
+  \end{coverleft}
+}
+
+%% ---------- Page Styles --------------------------------------------------------------
+%% ---------------------------------------------------------------------------------------------
+%%  Setup the formatting at the beginning of the document (Front material)
+%% TODO: use the memoir \frontmatter \mainmatter \backmatter
+%%  See documentation, page 73
+
+%%%%%%%%% PARAGRAPH ADJUSTMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\savedparindent}
+\newcommand{\disableindents}{\setlength{\parindent}{0pt}}
+\newcommand{\enableindents}{\setlength{\parindent}{\savedparindent}}
+
+\AtBeginDocument{
+  \frontmatter
+  \setlength{\savedparindent}{\parindent}  % save the current parindent
+  \SingleSpacing%
+}
+
+%% Disable clearforchapter on formats that do not need blank pages
+\ifbool{online}{\renewcommand{\clearforchapter}{\newpage}}{}
+\ifbool{draftbool}{\renewcommand{\clearforchapter}{\newpage}}
+  % waste less blank pages in draft mode
+  % see p123 http://ctan.uib.no/macros/latex/contrib/memoir/memman.pdf
+
+
+\newenvironment{cover}% commonalities for the cover material
+{\thispagestyle{cover}%
+  \pagestyle{cover}%
+  \clearforchapter% clear to chapter setting if note online
+  \disableindents%
+  \titletextfont\SingleSpacing}%
+{%\setlength{\TPMargin}{0mm} %% margins inside the textblock
+  \enableindents{}\newpage}%
+
+\newenvironment{coverleft}%This is material that is OK being on the
+                          %backside
+{\thispagestyle{cover}%
+  \pagestyle{cover}%
+  \ifbool{online}{}{\cleartoverso}%
+  %\clearforchapter% clear to chapter setting  
+  \disableindents%
+  \titletextfont\SingleSpacing}%
+{%\setlength{\TPMargin}{0mm} %% margins inside the textblock
+  %% I don't remember why we need to mess with \TPmargin --foley
+  \enableindents{}\newpage}%
+
+
+
 
 %%%%%%%%%%%% DRAFT AND PROOF MARKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\draftmark}{}
@@ -287,6 +348,15 @@
   \makeoddfoot{empty}{}{}{\draftmark}
   \makeevenfoot{empty}{\draftmark}{}{}
 }{}
+
+\makepagestyle{cover}% The cover pages don't have numbers by default
+\makeoddfoot{cover}{}{}{}
+\makeevenfoot{cover}{}{}{}
+
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
+\AtBeginDocument{\addtocontents{lof}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
+\AtBeginDocument{\addtocontents{lot}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
+
 
 \newcommand{\coverchapter}[1]{\clearforchapter\pagestyle{cover}\chapter{#1}\thispagestyle{cover}}
 
@@ -331,5 +401,5 @@
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "DEGREE-NAME-YEAR"
+%%% TeX-master: "PHD-NAME-YEAR"
 %%% End:
