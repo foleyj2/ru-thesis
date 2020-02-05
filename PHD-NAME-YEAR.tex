@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper]{memoir}
+\usepackage{ruthesis}
+\title{Ph.D. Dissertation Template for \theInstitution{}}
+\author{Joseph T. Foley}%Use \and as an author separator
+\date{\today}% Change this to the date that it is signed
+\titledetails{
+  Dissertation submitted to the School of Technology
+  at \theInstitution{} in partial fulfillment
+  of the requirements for the degree of
+  \textbf{Doctor of Philosophy}
+}
+\titlepeopleinfo{
+  \begin{rolelist}
+  \item Supervisors:
+    \begin{peoplelist}
+    \item Superior A. Teacher, Supervisor\\Professor, \theInstitution, Iceland
+    \end{peoplelist}
+    
+  \item Examiner:
+    \begin{peoplelist}
+    \item Tough E. Questions, Examiner\\Associate Professor, Massachusetts Institute of Technology, USA
+    \end{peoplelist}
+    
+  \end{rolelist}
+}
+
+\usepackage{lipsum}%provides us with text for testing
+%% usage: \lipsum[STARTNUM-ENDNUM]
+
+
+\begin{document}
+\maketitle
+\newpage
+
+\lipsum[0-20]
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "PHD-NAME-YEAR"
+%%% End:

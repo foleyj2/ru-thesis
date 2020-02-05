@@ -1,12 +1,12 @@
 %% ---------------------------------------------------------------------------------------------
-%% LaTeX Base Class Reykjavík University Theses/Dissertations/Books,
+%% LaTeX Package for Reykjavík University Books,
 %% ---------------------------------------------------------------------------------------------
 %% Original Author: Bjórn Þór Jónsson (bjorn AT ru.is)
 %% Modified by: Eyjólfur Ingi Ásgeirsson <eyjo AT ru.is>
 %% Modified and Maintained by: Joseph Timothy Foley <foley AT ru.is>
 %% Refactored/Simplified on 2020-02-03: Joseph Timothy Foley <foley AT ru.is>
 %% Questions, comments, complaints: latex-help@LIST.RU.IS
-%% Created on 2015-02-27
+%% Created on 2020-02-05
 %% This code is distributed under the MIT license
 %% Details at LICENSE.md
 
@@ -17,7 +17,7 @@
 \newcommand{\fileversion@rubook}{2.0}
 \newcommand{\filedate@rubook}{2020/02/03}% must be YYYY/MM/DD!
 \newcommand{\fileauthor@rubook}{Joseph Timothy Foley, foley at RU.IS}
-\ProvidesClass{rubook}[\filedate@rubook by \fileauthor@rubook]
+\ProvidesPackage{rubook}[\filedate@rubook by \fileauthor@rubook]
 \NeedsTeXFormat{LaTeX2e}
 \typeout{Book Class for Reykjavik University \fileversion@rubook <\filedate@rubook>, by \fileauthor@rubook}
 
@@ -78,13 +78,11 @@
    \setbool{forcegraphics}{true}\typeout{rubook option: forcegraphics}%
  }%
 
-
-%% Memoir class sets up most of what we need
-\PassOptionsToClass{12pt,a4paper}{memoir}%Set the default font and paper size
-
+%%% Memoir test: Memoir Manual 21.2 p.367
+%% Only works with the memoir class!!!!!!!!!!!!!!!
+ 
 %% ---------------- Execution of Options -----------------------------
 \ProcessOptions\relax% this stops searching for a * in \ProcessOptions*
-\LoadClassWithOptions{memoir}%Parent class, options passed to it
 %% Read page 20 of http://latex-project.org/guides/clsguide.pdf
 %% carefully before modifying any of the execution and previous section.
 %% ---------------- Package Loading -----------------------------
@@ -235,6 +233,7 @@
 %%  For checking if commands are redefined
 %%       \CheckCommand{cmd}[num][default]{definition}
 
+
 %% Spacing modes from the memoir class
 %\SingleSpacing{} % single spacing
 %\OnehalfSpacing{} % one and a half
@@ -252,6 +251,23 @@
 %\makeoddhead{chapter}{}{}{} %to change only one side
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Some may need a different front logo
+\newcommand{\frontlogo@rubook}{ru-logo}
+\newcommand{\frontlogo}[1]{\renewcommand{\frontlogo@rubook}{#1}}
+
+\renewcommand{\maketitlehooka}{\begin{centering}\includegraphics[width=4cm]{\frontlogo@rubook}\par\end{centering}}%
+\renewcommand{\pretitle}{\begin{center}\titletitlefont}%
+\renewcommand{\posttitle}{\par\end{center}}
+\renewcommand{\maketitlehookb}{\begin{center}\titletextfont{}by\par\end{center}}
+\renewcommand{\preauthor}{\titletextfont\begin{center}\large\par}
+\renewcommand{\postauthor}{\par\end{center}}
+\newcommand{\titledetails}[1]{\renewcommand{\maketitlehookc}{#1}}
+\renewcommand{\predate}{\begin{center}\large}
+\renewcommand{\postdate}{\par\end{center}\newpage}
+
+
 %%%%%%%%%%%% DRAFT AND PROOF MARKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\draftmark}{}
 \newcommand{\draftbigmark}{}

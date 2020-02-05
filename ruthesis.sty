@@ -14,14 +14,14 @@
 \newcommand{\fileversion@ruthesisen}{$Revision: 361 $}
 \newcommand{\filedate@ruthesisen}{2020/02/03}% must be YYYY/MM/DD!
 \newcommand{\fileauthor@ruthesisen}{Joseph Timothy Foley, foley at RU.IS}
-\ProvidesClass{ruthesisen}[\filedate@ruthesisen by \fileauthor@ruthesisen]
+\ProvidesPackage{ruthesis}[\filedate@ruthesisen by \fileauthor@ruthesisen]
 \NeedsTeXFormat{LaTeX2e}
 \typeout{Thesis Class (English) for Reykjavik University \fileversion@ruthesisen <\filedate@ruthesisen>, by \fileauthor@ruthesisen}
 
 %% ---------------- Execution of Options -----------------------------
-\ProcessOptions\relax% this stops searching for a * in \ProcessOtions*
-\LoadClassWithOptions{rubook}% our parent class.
-
+%\ProcessOptions\relax% this stops searching for a * in \ProcessOtions*
+%\LoadClassWithOptions{rubook}% our parent class.
+\RequirePackage{rubook}%
 
 %%%%%%%%%%%%%%%%%%%% Addional Font Adjustments%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% rubook sets up some reasonable fonts, but we may need further adjustments
@@ -35,14 +35,10 @@
 \RequirePackage{dashrule}
 
 %% Default is at RU
-\newcommand{\Institution@ruthesisen}{Reykjav\'{\i}k University}%
-\newcommand{\InstitutionAddress@ruthesisen}{Menntavegur 1\\101 Reykjavík, Iceland}
-\newcommand{\InstitutionPhone}{+354 599 6200}
-\newcommand{\InstitutionURL}{www.ru.is}%
-
-%% Some may need a different front logo
-\newcommand{\frontlogo@ruthesisen}{ru-logo}
-
+\newcommand{\theInstitution}{Reykjav\'{\i}k University}%
+\newcommand{\theInstitutionAddress}{Menntavegur 1\\101 Reykjavík, Iceland}
+\newcommand{\theInstitutionPhone}{+354 599 6200}
+\newcommand{\theInstitutionURL}{www.ru.is}%
 
 \newcommand{\setAbstract}[1]{\renewcommand{\abstract@ruthesisen}{#1}}
 
@@ -108,28 +104,18 @@
 %%%%%%%%%%%%%%%% MARGINS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% WARNING: memoir class has its own margin macros
-%%    Do not use the geometry package unless you know what you are doing
-
-% \newlength{\pagecenterx}%
-% \setlength{\pagecenterx}{\stockwidth/2}
-% \newlength{\pagecentery}
-% \setlength{\pagecentery}{\stockheight/2}
-% \newlength{\covernowinmarginl}
-% \setlength{\covernowinmarginl}{30mm}
+%%    Do not use the geometry package!!!!
 
 % \setlength{\TPMargin}{0mm} %% margins inside the textblock*
 
-% \newcommand{\defaultmargins}{
-%   % \semiisopage
+\semiisopage
 %   % The MS word template uses even 25.4mm margins, this is not as good if is bound
-%   \setlrmarginsandblock{30mm}{25.4mm}{*}
+\setlrmarginsandblock{30mm}{25.4mm}{*}
 %   % {left}{right}{ratio}, * for calculate
-  
-%   \setulmarginsandblock{25.4mm}{25.4mm}{*} 
+%%% if you need it to be even (for online), use this
+\ifbool{online}{\setulmarginsandblock{25.4mm}{25.4mm}{*}}
 %   % {upper}{lower}{ratio} * for calculate
-%   \checkandfixthelayout% implement the margins
-% }
-% \defaultmargins{}  % this macro is in case something messes with the margins
+\checkandfixthelayout% implement the margins
 
 %% Some debugging code to check length calculation.
 \newcommand{\showlengths@ruthesisen}{
@@ -228,68 +214,27 @@
 \newcommand{\personinfo}[5]{
 \item[]  #1, #2\\#3, #4, #5 %Stub to be customized later
 }
-%% Memoir titlepage definition p.64
-% \newcommand{\maketitle}{%
-% \vspace*{\droptitle}
-% \maketitlehooka
-% {\pretitle \title \posttitle}
-% \maketitlehookb
-% {\preauthor \author \postauthor}
-% \maketitlehookc
-% {\predate \date \postdate}
-% \maketitlehookd
-% \thispagestyle{title}
 
-% \pretitle{\begin{center}\LARGE}
-% \posttitle{\par\end{center}\vskip 0.5em}
-% \preauthor{\begin{center}
-% \large \lineskip 0.5em%
-% \begin{tabular}[t]{c}}
-% \postauthor{\end{tabular}\par\end{center}}
-% \predate{\begin{center}\large}
-% \postdate{\par\end{center}}
+\newenvironment{peoplelist}
+{\begin{compactitem}[\hspace{10mm}]}
+{\end{compactitem}}
 
-\renewcommand{\maketitlehooka}{\begin{centering}\includegraphics[width=4cm]{\frontlogo@ruthesisen}\\\end{centering}}%
-\renewcommand{\pretitle}{\begin{center}\titletitlefont}%
-\renewcommand{\posttitle}{\par\end{center}\vskip 0.5em}
-\renewcommand{\maketitlehookb}{\begin{center}\titletextfont by\par\end{center}}
-\renewcommand{\preauthor}{\titletextfont\begin{center}\large\par}
-    \renewcommand{\postauthor}{\par\end{center}}
-\renewcommand{\maketitlehookc}{\begin{center}\Degree@ruthesisen{} \DocumentType@ruthesisen{} %
-        \ifdef\ects@ruthesisen{of \ects@ruthesisen{} ECTS credits}%
-        submitted to the \School@ruthesisen\ \\%
-        at \Institution@ruthesisen{} in partial fulfillment\\% 
-        of the requirements for the degree of \\%
-        \textbf{\DegreeLong@ruthesisen}}\par\end{center}
-\renewcommand{\predate}{\begin{center}\large}
-\renewcommand{\postdate}{\par\end{center}}
-%\renewcommand{\maketitlehookd}{}
+\newenvironment{rolelist}
+{\begin{compactitem}[\hspace{10mm}]}
+{\end{compactitem}}
 
 
-\newcommand{\maketitlepage}{
-  \begin{cover}
-    \quad\vfill% we center vertically so it looks nice
-    \SingleSpacing%
-    \begin{centering}
-      \includegraphics[width=4cm]{\frontlogo@ruthesisen}\\
-      \vspace{2\baselineskip}
-      {\thetitle\\}%
-      \vspace{\baselineskip}
-      {\titletextfont% 
-        by\\
-        \vspace{\baselineskip}
-        \theauthor\\
-        \vspace{2\baselineskip}        
-        \documenttype@ruthesisen{} %
-        of \ects@ruthesisen{} ECTS credits%
-        submitted to the \School@ruthesisen\ \\%
-        at \Institution{} in partial fulfillment\\% 
-        of the requirements for the degree of \\%
-        \textbf{\degreelong@ruthesisen}}\\
-      
-      \vspace{\baselineskip}
-      \thedate{}\\      
-    \end{centering}
+%% Memoir titlepage definition and info at p.64
+% \renewcommand{\maketitlehookc}{\begin{center}\Degree@ruthesisen{} \DocumentType@ruthesisen{} %
+%         \ifdef\ects@ruthesisen{of \ects@ruthesisen{} ECTS credits}%
+%         submitted to the \School@ruthesisen\ \\%
+%         at \Institution@ruthesisen{} in partial fulfillment\\% 
+%         of the requirements for the degree of \\%
+%         \textbf{\DegreeLong@ruthesisen}\par\end{center}}
+
+\newcommand{\titlepeopleinfo}[1]{\renewcommand{\maketitlehookd}{#1}}
+    
+
     % {\titletextfont%
     %   \vspace{2\baselineskip}
     %   % change \personinfo to make the entries needed
@@ -311,18 +256,9 @@
     %   \end{compactitem}
     % }%end \titletextfont
     % \vfill
-  \end{cover}
-}
+    % \end{cover}
+    % }
   
-  
-
-\newcommand{\frontrequiredpages}{
-  \titlepage{}%RUM: "Front page (standard format)"    
-  \copyrightpage{}%%RUM: Not mentioned
-  \signaturepage{}%%RUM: "Signature page (standard format)    
-  \archivesigpage{}%%RUM: Not mentioned, optional, but should be required
-  \abstractpage{}%%RUM: "Abstract (in English and Icelandic)
-}
 
 
 
@@ -492,8 +428,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  HEADERS AND FOOTERS
-%% with this we ensure that the chapter and section 
-%% headings are in lowercase. 
+%%  TODO: ensure that the chapter and section headings are in lowercase.
+%%     package fancyhdr is not needed
 %\renewcommand{\chaptermark}[1]{\markboth{\thechapter\ #1}{}} 
 %\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}} 
 
@@ -505,14 +441,8 @@
 \AtBeginDocument{\addtocontents{lof}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
 \AtBeginDocument{\addtocontents{lot}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
 
-
-
-
-
-
-
-%% from the old cs template, if so desired
-\makepagestyle{oldstyle}
-\makeoddhead{oldstyle}{\footnotesize{\authorHeader@ruthesisen}}{}{\footnotesize{\thepage}}
-\makeevenhead{oldstyle}{\footnotesize{\thepage}}{}{\footnotesize{\title@ruthesisen}}
+%%% from the old cs template, if so desired
+%\makepagestyle{oldstyle}
+%\makeoddhead{oldstyle}{\footnotesize{\authorHeader@ruthesisen}}{}{\footnotesize{\thepage}}
+%\makeevenhead{oldstyle}{\footnotesize{\thepage}}{}{\footnotesize{\title@ruthesisen}}
 
