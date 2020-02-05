@@ -3,25 +3,21 @@
 \title{Ph.D. Dissertation Template for \theInstitution{}}
 \author{Joseph T. Foley}%Use \and as an author separator
 \date{\today}% Change this to the date that it is signed
-\titledetails{
-  Dissertation submitted to the School of Technology
-  at \theInstitution{} in partial fulfillment
-  of the requirements for the degree of
-  \textbf{Doctor of Philosophy}
+
+%\DocumentInfo{TYPE}{ABBREVIATION}{DEGREE}{PROGRAM}
+%\DocumentInfo{Dissertation}{Ph.D.}{Doctor of Philosophy}{Computer Science}
+\DocumentInfo{Dissertation}{Ph.D.}{Doctor of Philosophy}{Computer Science}
+\School{School of Technology}
+
+\SupervisorHeading{Thesis Committee}
+\Supervisors{
+  \personinfo{Superior A. Teacher}{Supervisor}{Professor}{Reykjavik University}{Iceland}
+  \personinfo{Helpful A. Teacher}{Co-advisor}{Assistant Professor}{LUniversity of Iceland}{Iceland}
 }
-\titlepeopleinfo{
-  \begin{rolelist}
-  \item Supervisors:
-    \begin{peoplelist}
-    \item Superior A. Teacher, Supervisor\\Professor, \theInstitution, Iceland
-    \end{peoplelist}
-    
-  \item Examiner:
-    \begin{peoplelist}
-    \item Tough E. Questions, Examiner\\Associate Professor, Massachusetts Institute of Technology, USA
-    \end{peoplelist}
-    
-  \end{rolelist}
+\ExaminerHeading{Examiner}
+\Examiners{
+  \personinfo{Tough E. Questions}{Examiner}{Associate Professor}{Massachusetts Institute of Technology}{USA}
+
 }
 
 \usepackage{lipsum}%provides us with text for testing
@@ -31,8 +27,11 @@
 \begin{document}
 \maketitle
 \copyrightpage{}
+\signaturepage{}
 \newpage
 
+\mainmatter{}
+\chapter{Introduction}
 \lipsum[0-20]
 \end{document}
 %%% Local Variables:

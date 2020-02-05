@@ -11,12 +11,12 @@
 %%% WARNING:  This does not work without ruthesis.cls!!!
 
 %% --------------- Identification ----------------------------
-\newcommand{\fileversion@ruthesisen}{$Revision: 361 $}
-\newcommand{\filedate@ruthesisen}{2020/02/03}% must be YYYY/MM/DD!
-\newcommand{\fileauthor@ruthesisen}{Joseph Timothy Foley, foley at RU.IS}
-\ProvidesPackage{ruthesis}[\filedate@ruthesisen by \fileauthor@ruthesisen]
+\newcommand{\fileversion@ruthesis}{$Revision: 361 $}
+\newcommand{\filedate@ruthesis}{2020/02/03}% must be YYYY/MM/DD!
+\newcommand{\fileauthor@ruthesis}{Joseph Timothy Foley, foley at RU.IS}
+\ProvidesPackage{ruthesis}[\filedate@ruthesis by \fileauthor@ruthesis]
 \NeedsTeXFormat{LaTeX2e}
-\typeout{Thesis Class (English) for Reykjavik University \fileversion@ruthesisen <\filedate@ruthesisen>, by \fileauthor@ruthesisen}
+\typeout{Thesis Class (English) for Reykjavik University \fileversion@ruthesis <\filedate@ruthesis>, by \fileauthor@ruthesis}
 
 %% ---------------- Execution of Options -----------------------------
 %\ProcessOptions\relax% this stops searching for a * in \ProcessOtions*
@@ -40,7 +40,7 @@
 \newcommand{\theInstitutionPhone}{+354 599 6200}
 \newcommand{\theInstitutionURL}{www.ru.is}%
 
-\newcommand{\setAbstract}[1]{\renewcommand{\abstract@ruthesisen}{#1}}
+\newcommand{\setAbstract}[1]{\renewcommand{\abstract@ruthesis}{#1}}
 
 %% Clean up some formatting for the text
 \renewcommand{\thepage}{\roman{page}}
@@ -72,7 +72,7 @@
 \checkandfixthelayout% implement the margins
 
 %% Some debugging code to check length calculation.
-\newcommand{\showlengths@ruthesisen}{
+\newcommand{\showlengths@ruthesis}{
   \uselengthunit{mm} % showlen package
   Lengths: (with round off error from floats)\\
   covermarginl:\printlength{\covermarginl}\\
@@ -92,11 +92,11 @@
     \setlength{\TPMargin}{0mm} %% margins inside the textblock*
     \sffamily    
     \begin{textblock*}{\textwidth}[0.5,0.5](\pagecenterx,68mm)%
-      {\centering\includegraphics[width=55mm]{\frontlogo@ruthesisen}\\}%
+      {\centering\includegraphics[width=55mm]{\frontlogo@ruthesis}\\}%
     %
     \setSingleSpace{1.8}\SingleSpacing%
     \begin{textblock*}{\textwidth}[0,0](\covernowinmarginl,120mm)%
-      \textcolor{rugray}{\frontcovertitlefont\titleCover@ruthesisen}\par%
+      \textcolor{rugray}{\frontcovertitlefont\titleCover@ruthesis}\par%
       %% Originally title was forced uppercase, but no-one seems to have
       %%   noticed, so I'm removing it.
     \end{textblock*}%
@@ -106,16 +106,16 @@
       \begin{minipage}{\textwidth}
         \textcolor{rugray}{ 
           \frontcovertitletext{}
-          \textbf{\author@ruthesisen}\\% 
-          \degreelong@ruthesisen\\% 
-          \whensigned@ruthesisen\\%
-          \School@ruthesisen\\%
-          \Institution%        
+          \textbf{\theauthor}\\% 
+          \DegreeLong@ruthesis\\% 
+          \whensigned@ruthesis\\%
+          \School@ruthesis\\%
+          \theInstitution%        
         }\par
         \vspace*{5mm}
         \textcolor{rured}{
           \frontcovertitlefont{}
-          \ifbool{projectreport}{}{\degreeabbrv@ruthesisen{}} \documenttype@ruthesisen
+          \documenttype@ruthesis
         }\par
         \vspace*{3mm}
         {\scriptsize\color{rugray}\Bookidnumber}%                 
@@ -127,43 +127,43 @@
   \newpage  % without this, page numbers show up.  Weird.
 }
   
-\newcommand{\DegreeAndDepartment@ruthesisen}{\textbf{\degreelong@ruthesisen{} (\degreeabbrv@ruthesisen)  in \program@ruthesisen{} 
-    \adddegree@ruthesisen}}
+\newcommand{\DegreeAndDepartment@ruthesis}{\DegreeLong@ruthesis{} (\DegreeAbbrv@ruthesis)  in \Program@ruthesis{}}
 
-\newcommand{\placelogo@ruthesisen}[2]{%
+\newcommand{\placelogo@ruthesis}[2]{%
   \begin{textblock*}{\textwidth}[0.5,0.5](\windowcenterx,#1)%
-    {\centering\includegraphics[width=#2]{\frontlogo@ruthesisen}\\}%
+    {\centering\includegraphics[width=#2]{\frontlogo@ruthesis}\\}%
   \end{textblock*}
 }
 
 %% ----- INTERNAL TITLE PAGE WITH COMMITTEE ---------------------------------------------------
 %% TODO: make counter for supervisors in the very rare case that there
 %% is only one supervisor
-\newcommand{\DocumentType@ruthesisen}{Dissertation}
-\newcommand{\Degree@ruthesisen}{Ph.D.}
-\newcommand{\DegreeLong@ruthesisen}{Doctorate}
-\newcommand{\DocumentInfo}[3]{
-  \renewcommand{\DocumentType@ruthesisen}{#1}
-  \renewcommand{\Degree@ruthesisen}{#2}
-  \renewcommand{\DegreeLong@ruthesisen}{#3}
+\newcommand{\DocumentType@ruthesis}{Dissertation}
+\newcommand{\DegreeAbbrv@ruthesis}{Ph.D.}
+\newcommand{\DegreeLong@ruthesis}{Doctorate}
+\newcommand{\Program@ruthesis}{\LaTeX{} Magic}
+\newcommand{\DocumentInfo}[4]{
+  \renewcommand{\DocumentType@ruthesis}{#1}
+  \renewcommand{\DegreeAbbrv@ruthesis}{#2}
+  \renewcommand{\DegreeLong@ruthesis}{#3}
+  \renewcommand{\Program@ruthesis}{#4}
 }
 
 %ECTS Only applicable on BSc. and MSc.
-\newcommand{\ects}[1]{\newcommand{\ects@ruthesisen}{#1}}
-\newcommand{\School@ruthesisen}{School of Technology}
-\newcommand{\School}[1]{\newcommand{\School@ruthesis}{#1}}
+\newcommand{\ects}[1]{\newcommand{\ects@ruthesis}{#1}}
+\newcommand{\School@ruthesis}{School of Awesomeness}
+\newcommand{\School}[1]{\renewcommand{\School@ruthesis}{#1}}
 
 
-\newcommand{\supervisors@ruthesisen}{\item No Advisor}
-\newcommand{\supervisors}[1]{\renewcommand{\supervisors@ruthesisen}[1]{#1}}
-\newcommand{\supervisorheading@ruthesisen}{Supervisor}
-\newcommand{\setSupervisorHeading}[1]{\renewcommand{\supervisorheading@ruthesisen}{#1}}
+\newcommand{\supervisors@ruthesis}{\item No Advisor}
+\newcommand{\Supervisors}[1]{\renewcommand{\supervisors@ruthesis}[1]{#1}}
+\newcommand{\supervisorheading@ruthesis}{Supervisor}
+\newcommand{\SupervisorHeading}[1]{\renewcommand{\supervisorheading@ruthesis}{#1}}
 
-\newcommand{\examiners@ruthesisen}{\item No Examiner}
-\newcommand{\examiners}[1]{\renewcommand{\examiners@ruthesisen}[1]{#1}}
-\newcommand{\examinerheading@ruthesisen}{%
-  \ifbool{deptscs}{Examining Committee}{\MLExaminer}}
-\newcommand{\setExaminerHeading}[1]{\renewcommand{\examinerheading@ruthesisen}{#1}}
+\newcommand{\examiners@ruthesis}{\item No Examiner}
+\newcommand{\Examiners}[1]{\renewcommand{\examiners@ruthesis}[1]{#1}}
+\newcommand{\examinerheading@ruthesis}{Examiner}
+\newcommand{\ExaminerHeading}[1]{\renewcommand{\examinerheading@ruthesis}{#1}}
 
 \newcommand{\personinfo}[5]{
 \item[]  #1, #2\\#3, #4, #5 %Stub to be customized later
@@ -179,40 +179,37 @@
 
 
 %% Memoir titlepage definition and info at p.64
-% \renewcommand{\maketitlehookc}{\begin{center}\Degree@ruthesisen{} \DocumentType@ruthesisen{} %
-%         \ifdef\ects@ruthesisen{of \ects@ruthesisen{} ECTS credits}%
-%         submitted to the \School@ruthesisen\ \\%
-%         at \Institution@ruthesisen{} in partial fulfillment\\% 
-%         of the requirements for the degree of \\%
-%         \textbf{\DegreeLong@ruthesisen}\par\end{center}}
+%% maketitlehookc is between the author and the date
+\renewcommand{\maketitlehookc}{\begin{center}\DegreeAbbrv@ruthesis{} \DocumentType@ruthesis{} %
+         \ifdef\ects@ruthesis{of \ects@ruthesis{} ECTS credits}%
+         submitted to the \School@ruthesis\ \\%
+         at \theInstitution in partial fulfillment\\% 
+         of the requirements for the degree of \\%
+         \textbf{\DegreeLong@ruthesis}\par\end{center}}
 
-\newcommand{\titlepeopleinfo}[1]{\renewcommand{\maketitlehookd}{#1}}
-    
+%% maketitlehookd is after the date
+\renewcommand{\maketitlehookd}{{\titletextfont%
+  \vspace{2\baselineskip}
+  % change \personinfo to make the entries needed
+  % Because this is inside a command, we escape the #1 as ##1      
+  \renewcommand{\personinfo}[5]{\item[]  ##1, ##2\\##3, ##4, ##5}
+  \setlength{\pltopsep}{0.5\baselineskip}  % first/top space
+  \setlength{\plparsep}{0.5\baselineskip} % space between entries
+  \setlength{\plitemsep}{0.5\baselineskip} % space between lines
+  \begin{rolelist}
+    \item \supervisorheading@ruthesis{}
+      \begin{peoplelist}
+        \supervisors@ruthesis{}
+      \end{peoplelist}
+    \item \examinerheading@ruthesis{}:
+      \begin{peoplelist}
+        \examiners@ruthesis{}
+    \end{peoplelist}
+  \end{rolelist}
+}%end \titletextfont
+\vfill
+}
 
-    % {\titletextfont%
-    %   \vspace{2\baselineskip}
-    %   % change \personinfo to make the entries needed
-    %   % Because this is inside a command, we escape the #1 as ##1      
-    %   \renewcommand{\personinfo}[5]{\item[]  ##1, ##2\\##3, ##4, ##5}
-    %   \setlength{\pltopsep}{0.5\baselineskip}  % first/top space
-    %   \setlength{\plparsep}{0.5\baselineskip} % space between entries
-    %   \setlength{\plitemsep}{0.5\baselineskip} % space between lines
-    %   \MLThesisCommittee{}:
-    %   \begin{compactitem}[\hspace{10mm}]
-    %     \supervisors@ruthesisen{}
-    %     \examiners@ruthesisen{}
-    %   \end{compactitem}
-    %   \vspace{\baselineskip}
-    %   \examinerheading@ruthesisen:
-    %   \begin{compactitem}[\hspace{10mm}]
-    %     \supervisors@ruthesisen{}
-    %     \examiners@ruthesisen{}
-    %   \end{compactitem}
-    % }%end \titletextfont
-    % \vfill
-    % \end{cover}
-    % }
-  
 %% ----- SIGNATURE PAGE, ONLY THESIS -----------------------------------------------------
 
 \newlength{\signaturey}
@@ -223,40 +220,35 @@
 \newcommand{\signaturepage}{
   \begin{cover}
     The undersigned hereby certify that they recommend to the
-    \School@ruthesisen at \Institution{} for acceptance this
-    \documenttype@ruthesisen{} entitled \textbf{\title@ruthesisen}
-    submitted by \textbf{\authorSignature@ruthesisen{}} in partial fulfillment
-    of the requirements for the degree of \DegreeAndDepartment@ruthesisen%
-    % \vspace*{25mm}
+    \School@ruthesis{} at \theInstitution{} for acceptance this
+    \DocumentType@ruthesis{} entitled \textbf{\thetitle}
+    submitted by \textbf{\theauthor} in partial fulfillment
+    of the requirements for the degree of \textbf{\DegreeAndDepartment@ruthesis}%
+    \vspace*{2\baselineskip}
+    
     \newcommand{\signline}[2]{\item \hdashrule{##2}{1pt}{1pt}\\##1}
     \renewcommand{\personinfo}[5]{\item\hdashrule{\signaturex}{1pt}{1pt}\\##1, ##2\\##3, ##4, ##5\\\vspace{\signaturey}\\}
     \setlength{\pltopsep}{2\baselineskip}  % first/top space
     \setlength{\plparsep}{2\baselineskip} % space between entries
     \setlength{\plitemsep}{0.5\baselineskip} % space between lines
-    \begin{compactitem}[]
-      \signline{\date}{50mm}
-      \supervisors@ruthesisen{}
-      \examiners@ruthesisen{}
-    \end{compactitem}
-    % \end{minipage} \\ \par% need \par for ending the paragraph
-    % Space for the signatures
+    %\begin{compactitem}[]
+    %   \signline{\date}{50mm}
+    %   \supervisors@ruthesis{}
+    %   \examiners@ruthesis{}
+    % \end{compactitem}
+    % % \end{minipage} \\ \par% need \par for ending the paragraph
+    % % Space for the signatures
     {\sigtextfont% 
       % change \personinfo to make the entries needed
       % Because this is inside a command, we escape the #1 as ##1
       \renewcommand{\personinfo}[5]{&\hdashrule{\signaturex}{1pt}{1pt}\\&##1\\\vspace{\signaturey}\\}
       \begin{tabular}{lll}
-        \MLStudent:\\
-        \personinfo{\author@ruthesisen}{}{}{}{}\\
-        \ifbool{deptscs}{
-        \examinerheading@ruthesisen:\\
-        \supervisors@ruthesisen{}
-        \examiners@ruthesisen{}
-        }{
-        \supervisorheading@ruthesisen:\\
-        \supervisors@ruthesisen{}\\
-        \MLExaminer:\\
-        \examiners@ruthesisen{}
-        }
+        Student:\\
+        \personinfo{\theauthor}{}{}{}{}\\
+        \supervisorheading@ruthesis:\\
+        \supervisors@ruthesis{}\\
+        \examinerheading@ruthesis:\\
+        \examiners@ruthesis{}
       \end{tabular}
     }% end sigtextfont      
   \end{cover}
@@ -269,15 +261,15 @@
   \begin{cover}
     The undersigned hereby grants permission to
     the \Institution{} Library to reproduce single
-    copies of this \documenttype@ruthesisen{} entitled \textbf{\title@ruthesisen{}}
+    copies of this \DocumentType@ruthesis{} entitled \textbf{\thetitle}
     and to lend or sell such copies for private, scholarly or
     scientific research purposes only.
     
     The author reserves all other publication and
     other rights in association with the copyright in the
-    \documenttype@ruthesisen{}, and
+    \DocumentType@ruthesis{}, and
     except as herein before provided, neither the
-    \documenttype@ruthesisen{} nor
+    \DocumentType@ruthesis{} nor
     any substantial portion thereof may be printed or otherwise
     reproduced in any material form whatsoever without the
     author's prior written permission.
@@ -288,8 +280,8 @@
     \setlength{\plparsep}{2\baselineskip} % space between entries
     \setlength{\plitemsep}{0.5\baselineskip} % space between lines
     \begin{compactitem}[]
-      \signline{\MLdate}{50mm}
-      \signline{\author@ruthesisen \\ \degreelong@ruthesisen}{0.75\textwidth}
+      \signline{\thedate}{50mm}
+      \signline{\theauthor \\ \DegreeLong@ruthesis}{0.75\textwidth}
     \end{compactitem}        
   \end{cover}
 }
@@ -300,25 +292,25 @@
 %% Depending upon the selected language, one of the abstracts appears first
 \newcommand{\abstractpage}{%
   \begin{cover}
-    \abstractpagetext@ruthesisen
+    \abstractpagetext@ruthesis
   \end{cover}
 }%
 
 %% create an abstract template to minimize typing and increase
 %% consistency
-\newcommand{\abstractpagetext@ruthesisen}[1]{
+\newcommand{\abstractpagetext@ruthesis}[1]{
   %\quad\vspace*{20mm}%
   {\centering%
-    {\titletitlefont\title@ruthesisen\\}%%
+    {\titletitlefont\thetitle\\}%%
     \vspace{\baselineskip}
-    \author@ruthesisen\\%
+    \theauthor\\%
     \vspace{\baselineskip}
-    \whensigned@ruthesisen\\%
+    \whensigned@ruthesis\\%
   }%
   \setlength{\parskip}{\baselineskip}%
   \par\vspace*{2\baselineskip}%
   \textbf{Abstract}\par\vspace{1ex}%
-  \abstract@ruthesisen\par%
+  \abstract@ruthesis\par%
   \newpage
 }
 
@@ -342,7 +334,7 @@
   \vplace[0.8]{
     {\centering 
       \belowbaseline[-\normaltextsize]{
-        \includegraphics[width=4cm]{\frontlogo@ruthesisen} 
+        \includegraphics[width=4cm]{\frontlogo@ruthesis} 
       }
       \quad
       \begin{minipage}[t]{10cm}%
@@ -367,6 +359,6 @@
 
 %%% from the old cs template, if so desired
 %\makepagestyle{oldstyle}
-%\makeoddhead{oldstyle}{\footnotesize{\authorHeader@ruthesisen}}{}{\footnotesize{\thepage}}
-%\makeevenhead{oldstyle}{\footnotesize{\thepage}}{}{\footnotesize{\title@ruthesisen}}
+%\makeoddhead{oldstyle}{\footnotesize{\authorHeader@ruthesis}}{}{\footnotesize{\thepage}}
+%\makeevenhead{oldstyle}{\footnotesize{\thepage}}{}{\footnotesize{\thetitle}}
 
