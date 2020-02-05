@@ -1,8 +1,10 @@
-\documentclass[12pt,a4paper]{memoir}
+\documentclass[12pt,a4paper,titlepage]{memoir}
 \usepackage{ruthesis}
 \title{Ph.D. Dissertation Template for \theInstitution{}}
+\titleIS{Ph.D. Dissertation Template for \theInstitution{} in Icelandic}
 \author{Joseph T. Foley}%Use \and as an author separator
 \date{\today}% Change this to the date that it is signed
+\dateIS{**Date in Icelandic**}
 
 %\DocumentInfo{TYPE}{ABBREVIATION}{DEGREE}{PROGRAM}
 %\DocumentInfo{Dissertation}{Ph.D.}{Doctor of Philosophy}{Computer Science}
@@ -28,10 +30,24 @@
 \maketitle
 \copyrightpage{}
 \signaturepage{}
-\newpage
+\archivesigpage{}
+
+\begin{abstract}{Abstract}{\thetitle}{\thedate}
+  The abstract goes here.
+  It should be a fairly short summary of the entire document.
+\end{abstract}
+
+\begin{abstract}{Útdráttur}{\thetitleIS}{Dagsetning}
+  The abstract goes here translated into Icelandic.
+  It should be a fairly short summary of the entire document.
+\end{abstract}
+
+
+\tableofcontents{}%TODO: remove toc from toc
 
 \mainmatter{}
-\chapter{Introduction}
+\chapter{The First Chapter}
+\section{Introduction}
 \lipsum[0-20]
 \end{document}
 %%% Local Variables:

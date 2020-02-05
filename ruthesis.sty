@@ -180,6 +180,11 @@
 
 %% Memoir titlepage definition and info at p.64
 %% maketitlehookc is between the author and the date
+\newcommand{\thetitleIS}{**Title in Icelandic**}
+\newcommand{\titleIS}[1]{\renewcommand{\thetitleIS}{#1}}
+\newcommand{\thedateIS}{**Date in Icelandic**}
+\newcommand{\dateIS}[1]{\renewcommand{\thedateIS}{#1}}
+
 \renewcommand{\maketitlehookc}{\begin{center}\DegreeAbbrv@ruthesis{} \DocumentType@ruthesis{} %
          \ifdef\ects@ruthesis{of \ects@ruthesis{} ECTS credits}%
          submitted to the \School@ruthesis\ \\%
@@ -231,17 +236,13 @@
     \setlength{\pltopsep}{2\baselineskip}  % first/top space
     \setlength{\plparsep}{2\baselineskip} % space between entries
     \setlength{\plitemsep}{0.5\baselineskip} % space between lines
-    %\begin{compactitem}[]
-    %   \signline{\date}{50mm}
-    %   \supervisors@ruthesis{}
-    %   \examiners@ruthesis{}
-    % \end{compactitem}
-    % % \end{minipage} \\ \par% need \par for ending the paragraph
-    % % Space for the signatures
     {\sigtextfont% 
       % change \personinfo to make the entries needed
       % Because this is inside a command, we escape the #1 as ##1
       \renewcommand{\personinfo}[5]{&\hdashrule{\signaturex}{1pt}{1pt}\\&##1\\\vspace{\signaturey}\\}
+      % \begin{compactitem}[]
+      %   \signline{date}{50mm}
+      % \end{compactitem}
       \begin{tabular}{lll}
         Student:\\
         \personinfo{\theauthor}{}{}{}{}\\
@@ -259,8 +260,9 @@
 %% TODO:  Icelandic translation?
 \newcommand{\archivesigpage}{
   \begin{cover}
+    \enableindents{}
     The undersigned hereby grants permission to
-    the \Institution{} Library to reproduce single
+    the \theInstitution{} Library to reproduce single
     copies of this \DocumentType@ruthesis{} entitled \textbf{\thetitle}
     and to lend or sell such copies for private, scholarly or
     scientific research purposes only.
@@ -274,45 +276,31 @@
     reproduced in any material form whatsoever without the
     author's prior written permission.
     
-    \vspace*{25mm}
+    \vspace*{2\baselineskip}
     \newcommand{\signline}[2]{\item \hdashrule{##2}{1pt}{1pt}\\##1}
     \setlength{\pltopsep}{2\baselineskip}  % first/top space
     \setlength{\plparsep}{2\baselineskip} % space between entries
     \setlength{\plitemsep}{0.5\baselineskip} % space between lines
     \begin{compactitem}[]
-      \signline{\thedate}{50mm}
-      \signline{\theauthor \\ \DegreeLong@ruthesis}{0.75\textwidth}
+      \signline{Date}{50mm}
+      \signline{\theauthor\\\DegreeLong@ruthesis}{0.75\textwidth}
     \end{compactitem}        
   \end{cover}
 }
 
 
-
-%% ----- TITLE AND ABSTRACT ----------------------------------------------
-%% Depending upon the selected language, one of the abstracts appears first
-\newcommand{\abstractpage}{%
-  \begin{cover}
-    \abstractpagetext@ruthesis
-  \end{cover}
-}%
-
-%% create an abstract template to minimize typing and increase
-%% consistency
-\newcommand{\abstractpagetext@ruthesis}[1]{
-  %\quad\vspace*{20mm}%
-  {\centering%
-    {\titletitlefont\thetitle\\}%%
+\renewenvironment{abstract}[3]
+{\begin{coverleft}{\centering%
+    {\titletitlefont#2\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
-    \whensigned@ruthesis\\%
+    #3\\%
   }%
   \setlength{\parskip}{\baselineskip}%
   \par\vspace*{2\baselineskip}%
-  \textbf{Abstract}\par\vspace{1ex}%
-  \abstract@ruthesis\par%
-  \newpage
-}
+  \textbf{#1}\par\vspace{1ex}}
+{\par\end{coverleft}\newpage}
 
 %% ----- DEDICATIONS ---------- ---------------------------------------------------------------
 \newenvironment{dedications}{\begin{cover}\begin{vplace}[0.33]% ratio of space above and below
