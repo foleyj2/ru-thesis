@@ -64,8 +64,6 @@
 
 \DeclareOption{online}{
   \setbool{online}{true}
-   %\setbool{covernopagenum}{true}%if there is no left and right, don't put page numbers
-  \setbool{coverallpagenum}{true}%or put them on all
    \typeout{rubook option: online}
  }
  
@@ -139,6 +137,22 @@
 %% 
 %% If you put a // at the end of the path, it will recursively search for graphics
 %% files on unix-based (OSX, Linux, etc.) platforms.
+
+
+%% ---------------- URLs and Paths -----------------------------
+\PassOptionsToPackage{obeyspaces,spaces,hyphens,allowmove}{url}
+\RequirePackage{url}
+%% The url package typesets url's and unix file paths nicely when they
+%% become long.  \url{}
+%% Also defines \path{}  which works with filepaths including windows paths.
+%% Watch out that you leave a space after a last \ e.g. \path{C:\ }
+%% You need another verbatim environment to make those typeset properly.
+%% Also defines the \path{} command for paths
+%% Option: obeyspace to deal with spaces in a path/url
+%% Option: spaces to do linebreaks at the spaces.
+%% Option: hyphens to do linebreaks at hyphens.
+%% Option: allowmove makes URLs not-fragile, so they can go in things that move
+%%         WARNING: If this breaks you will get very very weird errors
 
 
 %% ---------------- Fonts -----------------------------
@@ -265,8 +279,8 @@
 \renewcommand{\postauthor}{\par\end{center}}
 \newcommand{\titledetails}[1]{\renewcommand{\maketitlehookc}{#1}}
 \renewcommand{\predate}{\begin{center}\large}
-\renewcommand{\postdate}{\par\end{center}\newpage}
-
+\renewcommand{\postdate}{\par\end{center}}
+\aliaspagestyle{title}{empty}
 %% ----- COPYRIGHT PAGE -----------------------------------------------------------------------
 \newcommand{\copyrightpage}{
   % actually in books, this is often on the left side
@@ -314,17 +328,25 @@
 {%\setlength{\TPMargin}{0mm} %% margins inside the textblock
   \enableindents{}\newpage}%
 
+
 \newenvironment{coverleft}%This is material that is OK being on the
                           %backside
 {\thispagestyle{cover}%
   \pagestyle{cover}%
-  \ifbool{online}{}{\cleartoverso}%
+  \cleartoverso%
   %\clearforchapter% clear to chapter setting  
   \disableindents%
   \titletextfont\SingleSpacing}%
 {%\setlength{\TPMargin}{0mm} %% margins inside the textblock
   %% I don't remember why we need to mess with \TPmargin --foley
   \enableindents{}\newpage}%
+
+
+
+%% ----- DEDICATIONS ---------- ---------------------------------------------------------------
+\newenvironment{dedications}{\begin{cover}\begin{vplace}[0.33]% ratio of space above and below
+      \begin{center}\em}
+      {\end{center}\normalfont\end{vplace}\end{cover}}
 
 
 
@@ -337,28 +359,43 @@
   \renewcommand{\draftbigmark}{{\color{blue}\warningfont{}*** \draftmark{} *** \\PLEASE DO NOT DISTRIBUTE\\}}}{}
 \ifbool{draftbool}{\renewcommand{\draftmark}{{\color{red}\textsc{Draft}}}%
   \renewcommand{\draftbigmark}{{\color{red}\warningfont{}*** \draftmark{} *** \\PLEASE DO NOT DISTRIBUTE\\}}}{}%
+%%% Page styles Memoir Manual ch7.2 p109 
+\aliaspagestyle{book}{simple}
+\aliaspagestyle{chapter}{plain}%At the beginning we want page numbers on chapters
+\aliaspagestyle{cleared}{simple}
+\aliaspagestyle{part}{simple}
+\aliaspagestyle{title}{simple}
+\aliaspagestyle{titlinpage}{empty}  
 
-\ifboolexpr{bool {draftbool} or bool {proof}}{
-  \makeoddfoot{cover}{}{\thepage}{\draftmark}
-  \makeevenfoot{cover}{\draftmark}{\thepage}{}
-  \makeoddfoot{plain}{}{\thepage}{\draftmark}
-  \makeevenfoot{plain}{\draftmark}{\thepage}{}
-  \makeoddfoot{simple}{}{}{\draftmark}
-  \makeevenfoot{simple}{\draftmark}{}{}
-  \makeoddfoot{empty}{}{}{\draftmark}
-  \makeevenfoot{empty}{\draftmark}{}{}
-}{}
+% \ifboolexpr{bool {draftbool} or bool {proof}}{
+%   \makeoddfoot{cover}{}{\thepage}{\draftmark}
+%   \makeevenfoot{cover}{\draftmark}{\thepage}{}
+%   %\makeoddfoot{plain}{}{\thepage}{\draftmark}
+%   %\makeevenfoot{plain}{\draftmark}{\thepage}{}
+%   \makeoddfoot{simple}{}{}{\draftmark}
+%   \makeevenfoot{simple}{\draftmark}{}{}
+% }{}
 
-\makepagestyle{cover}% The cover pages don't have numbers by default
+\makepagestyle{plain}% Just page numbers in corners
+\makeevenhead{plain}{\thepage}{}{}
+\makeoddhead{plain}{}{}{\thepage}
+
+\makepagestyle{cover}% The cover pages have no page numbers
 \makeoddfoot{cover}{}{}{}
 \makeevenfoot{cover}{}{}{}
 
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
-\AtBeginDocument{\addtocontents{lof}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
-\AtBeginDocument{\addtocontents{lot}{\protect\thispagestyle{cover}}}%The TOC should use the cover format
+\makepagestyle{covernum}  % but maybe we need to have numbers anyway on some pages
+\makeevenhead{covernum}{\thepage}{}{}
+\makeoddhead{covernum}{}{}{\thepage}
 
+
+
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{chapter}}}%The TOC should use the cover format
+\AtBeginDocument{\addtocontents{lof}{\protect\thispagestyle{chapter}}}%The TOC should use the cover format
+\AtBeginDocument{\addtocontents{lot}{\protect\thispagestyle{chapter}}}%The TOC should use the cover format
 
 \newcommand{\coverchapter}[1]{\clearforchapter\pagestyle{cover}\chapter{#1}\thispagestyle{cover}}
+
 
 %%% Section numbering and the Table of Contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
