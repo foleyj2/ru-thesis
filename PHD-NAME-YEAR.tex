@@ -34,6 +34,9 @@
 %%% Macros for SI Units in text
 %% e.g. \SI{9.8}{\meter\per\second}
 
+\usepackage[final]{listings}
+%%% Formatting code inclusion and snippets
+%% "final" option to force it to display code
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -96,12 +99,12 @@ Student et al.\cite{student2015awesome} of which I am an author.
 }
 
 
-%\coverchapter{Publications}
-%% Some Dissertations present the related papers first
+%\chapter*{Publications}
+%% Some Dissertations present the related papers first, but this is sometimes in Preface
 \clearpage{}
-\tableofcontents{}\clearpage%TODO: remove toc from toc
-\listoffigures{}\clearpage%%RUM: "List of figures"
-\listoftables{}\clearpage%%RUM: "List of tables"
+\tableofcontents{}\clearpage
+\listoffigures{}\clearpage
+\listoftables{}\clearpage
 
 %% The list of abbreviations is an example of a special list
 %% Other lists may be added, such as lists of algorithms, symbols, theorems, etc.
@@ -123,15 +126,33 @@ $c$ &Speed of Light &\SI{2.99E8}{\meter\per\second\square}\\
 
 \mainmatter{}
 \aliaspagestyle{chapter}{empty}
-%% If you would like to separate chapters into different files, use
-%% \include{chapterfile.tex}
-\chapter{The First Chapter}
-\section{Introduction}
-\lipsum[0-20]
+% Don't put page numbers on the chapter changes
 
+%% If you would like to separate chapters into different files, use
+%% \include{chapterfile}
+%% WARNING: Make sure that all of these files (and any new ones)
+%% are UTF-8 otherwise you will get weird encoding errors.
+\part{The First Part} % Parts optional but useful in longer documents
+\chapter{The First Chapter}
+\include{introduction}%Chapter in introduction.tex
+\section{Another Section}
+\part{The Second Part} % Parts optional but useful in longer documents
 
 \bibliographystyle{ieeetran}
 \bibliography{references}
+
+%% If appendices are needed, uncomment the following line
+%% and include the appendices in separate files
+\appendix{}%%RUM: "Appendicies (as appropriate)
+\input{code} % as an example, perhaps some of your code
+
+%\backmatter{} % Sections after this don't get numbers
+%% We prefer that all elements be numbered
+
+%%%%%%%%%%%%% SHOW INDEX %%%%%%%%%%%%%%%%%%
+%% Index, optional.  A good idea on longer documents
+\clearforchapter{}
+\printindex{}%%RUM: Not mentioned
 
 \end{document}
 %%% Local Variables:

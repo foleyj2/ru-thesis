@@ -348,9 +348,6 @@
       \begin{center}\em}
       {\end{center}\normalfont\end{vplace}\end{cover}}
 
-
-
-
 %%%%%%%%%%%% DRAFT AND PROOF MARKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\draftmark}{}
 \newcommand{\draftbigmark}{}
@@ -363,7 +360,7 @@
 \aliaspagestyle{book}{simple}
 \aliaspagestyle{chapter}{plain}%At the beginning we want page numbers on chapters
 \aliaspagestyle{cleared}{simple}
-\aliaspagestyle{part}{simple}
+\aliaspagestyle{part}{empty}
 \aliaspagestyle{title}{simple}
 \aliaspagestyle{titlinpage}{empty}  
 
@@ -383,16 +380,6 @@
 \makepagestyle{cover}% The cover pages have no page numbers
 \makeoddfoot{cover}{}{}{}
 \makeevenfoot{cover}{}{}{}
-
-\makepagestyle{covernum}  % but maybe we need to have numbers anyway on some pages
-\makeevenhead{covernum}{\thepage}{}{}
-\makeoddhead{covernum}{}{}{\thepage}
-
-
-
-\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{chapter}}}%The TOC should use the cover format
-\AtBeginDocument{\addtocontents{lof}{\protect\thispagestyle{chapter}}}%The TOC should use the cover format
-\AtBeginDocument{\addtocontents{lot}{\protect\thispagestyle{chapter}}}%The TOC should use the cover format
 
 \newcommand{\coverchapter}[1]{\clearforchapter\pagestyle{cover}\chapter{#1}\thispagestyle{cover}}
 
