@@ -696,17 +696,30 @@
 }
 
 
-\renewenvironment{abstract}[3]
+\renewenvironment{abstract}
 {\begin{coverleft}{\centering%
-    {\titletitlefont#2\\}%%
+    {\titletitlefont\thetitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
-    #3\\%
+    \thedate\\%
   }%
   \setlength{\parskip}{\baselineskip}%
   \par\vspace*{2\baselineskip}%
-  \textbf{#1}\par\vspace{1ex}}
+  \textbf{Abstract}\par\vspace{1ex}}
+{\par\end{coverleft}\newpage}
+
+\newenvironment{abstractIS}
+{\begin{coverleft}{\centering%
+    {\titletitlefont\thetitleIS\\}%%
+    \vspace{\baselineskip}
+    \theauthor\\%
+    \vspace{\baselineskip}
+    \thedateIS\\%
+  }%
+  \setlength{\parskip}{\baselineskip}%
+  \par\vspace*{2\baselineskip}%
+  \textbf{Útdráttur}\par\vspace{1ex}}
 {\par\end{coverleft}\newpage}
 
 
