@@ -1,9 +1,15 @@
-\documentclass{memoir}
+%\documentclass{memoir}
+\documentclass{article}
+\usepackage[online,IS]{ruthesis}
 %\usepackage{graphicx}
-\title{Minimal Document for PhD Testing}
+\title{Minimal Document for Testing}
 \author{Joseph T. Foley \and Someone Else}
 % \author:  Use \and as a separator and \thanks{details} for additional info
 \date{\today}
+% \usepackage[icelandic,english]{babel}
+% \usepackage[english,icelandic]{babel}
+%\usepackage[icelandic]{babel}
+
 \begin{document}
 % \frontrequiredpages{}
 %\ects{30}
@@ -12,6 +18,20 @@
 %% Titlepage the Memoir way
 \maketitle
 
+% \babelensure{icelandic}
+\selectlanguage{icelandic}
+\begin{abstract}
+  This is a test abstract in Icelandic.
+\end{abstract}
+
+\selectlanguage{english}
+\begin{abstract}
+  This is a test abstract in English.
+\end{abstract}
+
+\newpage
+\chapter{Test Chapter}
+blah blah blah
 %\copyrightpage{}%%RUM: Not mentioned
 %\signaturepage{}%%RUM: "Signature page (standard format)    
 %\archivesigpage{}%%RUM: Not mentioned, optional, but should be required

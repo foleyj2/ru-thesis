@@ -42,7 +42,9 @@
 \newbool{debug}
 \newbool{draftbool}
 \newbool{online}
+\newbool{IS}
 \newbool{proof}
+
 
 %% ---------------- Declaration of Class Options--------------------
 %% Remember that we have \AtEndOfClass{},\AtEndOfPackage{}
@@ -55,26 +57,28 @@
 %%     \PackageError{class-name}{error-text}{help-text}
 
 % Generalized settings
- \DeclareOption{debug}{%
-   \booltrue{debug}
-   \typeout{rubook option: debug}%
-   \typeout{DEBUG MODE ENABLED!  PREPARE FOR VERBOSITY!}}
+\DeclareOption{debug}{%
+  \booltrue{debug}
+  \typeout{rubook option: debug}%
+  \typeout{DEBUG MODE ENABLED!  PREPARE FOR VERBOSITY!}}
 
- \DeclareOption{draft}{\booltrue{draftbool}}
+\DeclareOption{draft}{\booltrue{draftbool}}
+
+\DeclareOption{IS}{\booltrue{IS}}
 
 \DeclareOption{online}{
   \setbool{online}{true}
-   \typeout{rubook option: online}
- }
- 
- \DeclareOption{forcegraphics}{%
-   \PassOptionsToPackage{final}{graphicx}
-   \PassOptionsToPackage{final}{pdfpages}
-   \PassOptionsToPackage{final}{hyperref}
-   %% add any other elements that should be included in draft
-   \finalifforcegraphics{graphicx}%We have to catch graphicx early
-   \setbool{forcegraphics}{true}\typeout{rubook option: forcegraphics}%
- }%
+  \typeout{rubook option: online}
+}
+
+\DeclareOption{forcegraphics}{%
+  \PassOptionsToPackage{final}{graphicx}
+  \PassOptionsToPackage{final}{pdfpages}
+  \PassOptionsToPackage{final}{hyperref}
+  %% add any other elements that should be included in draft
+  \finalifforcegraphics{graphicx}%We have to catch graphicx early
+  \setbool{forcegraphics}{true}\typeout{rubook option: forcegraphics}%
+}%
 
 %%% Memoir test: Memoir Manual 21.2 p.367
 %% Only works with the memoir class!!!!!!!!!!!!!!!
@@ -104,6 +108,11 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 % allows UTF encoding, needed for Icelandic and other accented characters
+
+\ifbool{IS}
+{\RequirePackage[english,icelandic]{babel}}%%Icelandic main language
+{\RequirePackage[icelandic,english]{babel}}%%English main language
+
 
 % \RequirePackage[autostyle,strict]{csquotes}
 %% http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/csquotes/csquotes.pdf
@@ -153,10 +162,6 @@
 %%         WARNING: If this breaks you will get very very weird errors
 
 %% ---------------- Miscellaneous Packages ----------------------
-\RequirePackage{lipsum}
-% generates some test text for seeing how pages lay out
-%% usage: \lipsum[STARTNUM-ENDNUM]
-
 \RequirePackage{booktabs}
 %% Format tables properly as in a book
 %% \toprule,\midrule,\bottomrule
