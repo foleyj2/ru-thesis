@@ -85,8 +85,6 @@
 %% carefully before modifying any of the execution and previous section.
 %% ---------------- Package Loading -----------------------------
 
-
-
 \ifbool{online}
 {\ExecuteOptions{openany}}%% Online format does not have right-vs-left
 {\ExecuteOptions{openright}}%% All of our printed formats are going to be opening to the right
@@ -154,6 +152,14 @@
 %% Option: allowmove makes URLs not-fragile, so they can go in things that move
 %%         WARNING: If this breaks you will get very very weird errors
 
+%% ---------------- Miscellaneous Packages ----------------------
+\RequirePackage{lipsum}
+% generates some test text for seeing how pages lay out
+%% usage: \lipsum[STARTNUM-ENDNUM]
+
+\RequirePackage{booktabs}
+%% Format tables properly as in a book
+%% \toprule,\midrule,\bottomrule
 
 %% ---------------- Fonts -----------------------------
 %%%  For help, read http://latex-project.org/guides/fntguide.pdf
@@ -161,9 +167,6 @@
 %  save the current font size
 \newlength{\normaltextsize}
 \setlength{\normaltextsize}{\f@size pt}
-
-\RequirePackage{lipsum}% generates some test text
-%% usage: \lipsum[STARTNUM-ENDNUM]
 
 %% Font guide at
 %% http://latex-project.org/guides/fntguide.pdf
@@ -206,29 +209,11 @@
 % \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
 %  \fontsize{SIZE}{BASELINESKIP}
 
-\def\frontcovertitlefont{\fontfamily{phv}\fontseries{b}\fontshape{n}\fontsize{20.74}{24}\selectfont}
-\def\frontcovertitletext{\fontfamily{phv}\fontseries{m}\fontshape{n}\fontsize{14.4}{16}\selectfont}
 \def\titletitlefont{\fontseries{b}\fontsize{17pt}{20pt}\selectfont}
 \def\titletextfont{\fontsize{14pt}{16pt}\selectfont}
 \def\titleinfofont{\fontsize{12}{14}\selectfont}
 \def\sigtextfont{\fontsize{12pt}{14pt}\selectfont}
 \def\warningfont{\fontseries{b}\fontsize{24pt}{28pt}\selectfont}
-
-%%%%%%%%%%%%%%%%%% TextPos Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% These macros allow you to arbitrarily position things on the page
-%% This is needed for any cover pages/graphics
-
-%\RequirePackage{printlen}% display lengths in arbitrary units
-%\ifbool{debug}{\PassOptionsToPackage{showboxes}{textpos}}
-%\RequirePackage[absolute, verbose]{textpos}%
-
-%% These commands set the units in \begin{textblock} when not 
-%%  directly specified
-%% We set them to the page sizes so we can align from them
-%\setlength{\TPHorizModule}{\paperwidth}
-%\setlength{\TPVertModule}{\paperheight}
-%%\setlength{\TPMargin}{2mm} %% margins inside the textblock*
-%\textblockorigin{0mm}{0mm} % start everything near the top-left corner
 
 %%%%%%%%%%%%%%%%% Colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 %% Setting colors in text
@@ -271,10 +256,13 @@
 \newcommand{\frontlogo@rubook}{ru-logo}
 \newcommand{\frontlogo}[1]{\renewcommand{\frontlogo@rubook}{#1}}
 
-\renewcommand{\maketitlehooka}{\begin{centering}\includegraphics[width=4cm]{\frontlogo@rubook}\par\end{centering}}%
+\renewcommand{\maketitlehooka}{\begin{centering}\includegraphics[width=4cm]{\frontlogo@rubook}\par\end{centering}\vspace{2mm}}%
 \renewcommand{\pretitle}{\begin{center}\titletitlefont}%
 \renewcommand{\posttitle}{\par\end{center}}
-\renewcommand{\maketitlehookb}{\begin{center}\titletextfont{}by\par\end{center}}
+
+% \renewcommand{\maketitlehookb}{\begin{center}\titletextfont{}by\end{center}\vspace{1mm}}
+% 1mm adjustment to center the "by".   I've disabled it because I think the "by" looks unprofessional.
+
 \renewcommand{\preauthor}{\titletextfont\begin{center}\large\par}
 \renewcommand{\postauthor}{\par\end{center}}
 \newcommand{\titledetails}[1]{\renewcommand{\maketitlehookc}{#1}}

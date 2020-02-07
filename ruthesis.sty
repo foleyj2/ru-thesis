@@ -16,21 +16,47 @@
 \newcommand{\fileauthor@ruthesis}{Joseph Timothy Foley, foley at RU.IS}
 \ProvidesPackage{ruthesis}[\filedate@ruthesis by \fileauthor@ruthesis]
 \NeedsTeXFormat{LaTeX2e}
-\typeout{Thesis Class (English) for Reykjavik University \fileversion@ruthesis <\filedate@ruthesis>, by \fileauthor@ruthesis}
+\typeout{Thesis Class for Reykjavik University \fileversion@ruthesis <\filedate@ruthesis>, by \fileauthor@ruthesis}
 
 %% ---------------- Execution of Options -----------------------------
 %\ProcessOptions\relax% this stops searching for a * in \ProcessOtions*
 %\LoadClassWithOptions{rubook}% our parent class.
 \RequirePackage{rubook}%
 
+%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%% TextPos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% These macros allow you to arbitrarily position things on the page
+%% This is needed for any cover pages/graphics
+
+%\RequirePackage{printlen}% display lengths in arbitrary units
+%\ifbool{debug}{\PassOptionsToPackage{showboxes}{textpos}}
+%\RequirePackage[absolute, verbose]{textpos}%
+
+%% These commands set the units in \begin{textblock} when not 
+%%  directly specified
+%% We set them to the page sizes so we can align from them
+%\setlength{\TPHorizModule}{\paperwidth}
+%\setlength{\TPVertModule}{\paperheight}
+%%\setlength{\TPMargin}{2mm} %% margins inside the textblock*
+%\textblockorigin{0mm}{0mm} % start everything near the top-left corner
+
+
 %%%%%%%%%%%%%%%%%%%% Addional Font Adjustments%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% rubook sets up some reasonable fonts, but we may need further adjustments
 %%  Note that you can leave off elements and it will use the last value set (or default??)
 % \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
-%  \fontsize{SIZE}{BASELINESKIP}
+% \fontsize{SIZE}{BASELINESKIP}
 
+%% Default font is halfway between Times and Latin Modern
+\RequirePackage{newtxtext}
+\RequirePackage{newtxmath}
 
-%% We need the paralist and dashrule package in order to format the BSc cover
+%% This is the special font used on the PhD cover
+\def\phdcovertitlefont{\fontfamily{phv}\fontseries{b}\fontshape{n}\fontsize{20.74}{24}\selectfont}
+\def\phdcovertitletext{\fontfamily{phv}\fontseries{m}\fontshape{n}\fontsize{14.4}{16}\selectfont}
+
+%% We need the paralist and dashrule package in order to format the signature pages
 \RequirePackage{paralist}
 \RequirePackage{dashrule}
 
@@ -185,7 +211,7 @@
 \renewcommand{\maketitlehookc}{\begin{center}\DegreeAbbrv@ruthesis{} \DocumentType@ruthesis{} %
          \ifdef\ects@ruthesis{of \ects@ruthesis{} ECTS credits}%
          submitted to the \School@ruthesis\ \\%
-         at \theInstitution in partial fulfillment\\% 
+         at \theInstitution{} in partial fulfillment\\% 
          of the requirements for the degree of \\%
          \textbf{\DegreeLong@ruthesis}\par\end{center}}
 
@@ -199,7 +225,7 @@
   \setlength{\plparsep}{0.5\baselineskip} % space between entries
   \setlength{\plitemsep}{0.5\baselineskip} % space between lines
   \begin{rolelist}
-  \item \supervisorheading@ruthesis{}
+  \item \supervisorheading@ruthesis{}:
     \begin{peoplelist}
       \supervisors@ruthesis{}
 %    \end{peoplelist}
