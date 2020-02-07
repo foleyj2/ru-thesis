@@ -1,11 +1,13 @@
-%\documentclass{memoir}
-\documentclass{article}
+\documentclass{memoir}
 \usepackage[online,IS]{ruthesis}
+\usepackage[useregional]{datetime2}
 %\usepackage{graphicx}
 \title{Minimal Document for Testing}
 \author{Joseph T. Foley \and Someone Else}
 % \author:  Use \and as a separator and \thanks{details} for additional info
-\date{\today}
+\date{\DTMdisplaydate{2020}{2}{2}{-1}}
+%% TODO:  use datetime2 to be smarter about dates
+
 % \usepackage[icelandic,english]{babel}
 % \usepackage[english,icelandic]{babel}
 %\usepackage[icelandic]{babel}
@@ -22,11 +24,14 @@
 \selectlanguage{icelandic}
 \begin{abstract}
   This is a test abstract in Icelandic.
+  % \icelandicmonthiiname to manually create names
+  \today
 \end{abstract}
 
 \selectlanguage{english}
 \begin{abstract}
   This is a test abstract in English.
+  \today
 \end{abstract}
 
 \newpage

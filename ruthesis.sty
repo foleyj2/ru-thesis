@@ -104,6 +104,9 @@
 {\RequirePackage[english,icelandic]{babel}}%%Icelandic main language
 {\RequirePackage[icelandic,english]{babel}}%%English main language
 
+\usepackage[useregional]{datetime2}
+%% Smart manipulation of dates
+\renewcommand{\date}[3]{\newcommand{\thedate}{\DTMdisplaydate{#1}{#2}{#3}{-1}}}
 
 % \RequirePackage[autostyle,strict]{csquotes}
 %% http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/csquotes/csquotes.pdf
@@ -302,7 +305,6 @@
   % waste less blank pages in draft mode
   % see p123 http://ctan.uib.no/macros/latex/contrib/memoir/memman.pdf
 
-
 \newenvironment{cover}% commonalities for the cover material
 {\thispagestyle{cover}%
   \pagestyle{cover}%
@@ -495,11 +497,9 @@
 
 %% Memoir titlepage definition and info at p.64
 %% maketitlehookc is between the author and the date
+\newcommand{\thetitle}{**Title in English**}
 \newcommand{\thetitleIS}{**Title in Icelandic**}
-\newcommand{\titleIS}[1]{\renewcommand{\thetitleIS}{#1}}
-\newcommand{\thedateIS}{**Date in Icelandic**}
-\newcommand{\dateIS}[1]{\renewcommand{\thedateIS}{#1}}
-
+\renewcommand{\title}[2]{\renewcommand{\thetitle}{#1}\renewcommand{\thetitleIS}{#2}}
 
 %% Clean up some formatting for the text
 \renewcommand{\thepage}{\roman{page}}
@@ -697,7 +697,7 @@
 
 
 \renewenvironment{abstract}
-{\begin{coverleft}{\centering%
+{\selectlanguage{english}\begin{coverleft}{\centering%
     {\titletitlefont\thetitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
@@ -710,12 +710,12 @@
 {\par\end{coverleft}\newpage}
 
 \newenvironment{abstractIS}
-{\begin{coverleft}{\centering%
+{\selectlanguage{icelandic}\begin{coverleft}{\centering%
     {\titletitlefont\thetitleIS\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
-    \thedateIS\\%
+    \thedate\\%
   }%
   \setlength{\parskip}{\baselineskip}%
   \par\vspace*{2\baselineskip}%
