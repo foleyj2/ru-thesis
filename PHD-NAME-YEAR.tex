@@ -25,8 +25,16 @@
 
 %}
 
-%%%%%% Useful Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%INDEX SETUP %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The Memoir package (which we use) automatically generates the index
+%% See section 17.2 on page 302 of the guide
+%% http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf
+%% This means you have to run "makeindex DEGREE-NAME-YEAR"
+\makeindex{}
+\indexintoc{}
 
+
+%%%%%% Useful Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{lipsum}%provides us with text for testing
 %% usage: \lipsum[STARTNUM-ENDNUM]
 
