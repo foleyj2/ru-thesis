@@ -5,7 +5,7 @@
 \titleIS{Ph.D. Dissertation Template for \theInstitution{} in Icelandic}
 \author{Joseph T. Foley}%Use \and as an author separator
 \date{\today}% Change this to the date that it is signed
-\dateIS{**Date in Icelandic**}
+\dateIS{**Dagsetning í íslensk**}
 
 %\DocumentInfo{TYPE}{ABBREVIATION}{DEGREE}{PROGRAM}
 %\DocumentInfo{Dissertation}{Ph.D.}{Doctor of Philosophy}{Computer Science}
@@ -45,6 +45,10 @@
 \usepackage[final]{listings}
 %%% Formatting code inclusion and snippets
 %% "final" option to force it to display code
+
+\usepackage[english]{babel}
+%%% Biber will change internal macros to follow the language you choose
+%%% options: english, icelandic
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -55,12 +59,14 @@
 %\archivesigpage{}
 
 \begin{abstract}{Abstract}{\thetitle}{\thedate}
-  The abstract goes here.
+  The abstract goes here in English.
+  If the thesis is in English, it should come first.
   It should be a fairly short summary of the entire document.
 \end{abstract}
 
-\begin{abstract}{Útdráttur}{\thetitleIS}{Dagsetning}
+\begin{abstract}{Útdráttur}{\thetitleIS}{\thedateIS}
   The abstract goes here translated into Icelandic.
+  If the thesis is in Icelandic, it should come first.
   It should be a fairly short summary of the entire document.
 \end{abstract}
 
