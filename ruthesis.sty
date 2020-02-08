@@ -250,6 +250,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Memoir titlepage definition and info at p.64
+
 
 %% Some may need a different front logo
 \newcommand{\frontlogo@ruthesis}{ru-logo}
@@ -495,11 +497,8 @@
 {\end{compactitem}}
 
 
-%% Memoir titlepage definition and info at p.64
-%% maketitlehookc is between the author and the date
-\newcommand{\thetitle}{**Title in English**}
 \newcommand{\thetitleIS}{**Title in Icelandic**}
-\renewcommand{\title}[2]{\renewcommand{\thetitle}{#1}\renewcommand{\thetitleIS}{#2}}
+\newcommand{\titleIS}[1]{\renewcommand{\thetitleIS}{#1}}
 
 %% Clean up some formatting for the text
 \renewcommand{\thepage}{\roman{page}}
@@ -697,7 +696,7 @@
 
 
 \renewenvironment{abstract}
-{\selectlanguage{english}\begin{coverleft}{\centering%
+{\begin{otherlanguage}{english}\begin{coverleft}{\centering%
     {\titletitlefont\thetitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
@@ -707,10 +706,10 @@
   \setlength{\parskip}{\baselineskip}%
   \par\vspace*{2\baselineskip}%
   \textbf{Abstract}\par\vspace{1ex}}
-{\par\end{coverleft}\newpage}
+{\par\end{coverleft}\end{otherlanguage}\newpage}
 
 \newenvironment{abstractIS}
-{\selectlanguage{icelandic}\begin{coverleft}{\centering%
+{\begin{otherlanguage}{icelandic}\begin{coverleft}{\centering%
     {\titletitlefont\thetitleIS\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
@@ -720,7 +719,7 @@
   \setlength{\parskip}{\baselineskip}%
   \par\vspace*{2\baselineskip}%
   \textbf{Útdráttur}\par\vspace{1ex}}
-{\par\end{coverleft}\newpage}
+{\par\end{coverleft}\end{otherlanguage}\newpage}
 
 
 
