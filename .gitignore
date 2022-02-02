@@ -16,8 +16,10 @@ auto/*
 *.lot
 *.lox
 *.out
-*.pdf
 *.run.xml
 *.synctex.gz
 *.toc
 *.xdv
+main.pdf
+BSC_MSC-NAME-YEAR.pdf
+PHD-NAME-YEAR.pdf
