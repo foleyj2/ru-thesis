@@ -1,15 +1,18 @@
+%%%% WARNING:  This is the general template for most users
+%%%% if you are writing a PhD or SciD dissertation
+%%%% please use the dissertation.tex file instead
 \documentclass[12pt,a4paper,titlepage]{memoir}
 \usepackage[]{ruthesis}
 %% Options in []:
 %% IS Icelandic is main language
-\title{B.Sc.\ and M.Sc.\ Thesis Template for \theInstitution{}}
-\titleIS{B.Sc.\ and M.Sc.\ Thesis Template for \theInstitution{} in Icelandic}
+\title{Thesis and Project Report Template for \theInstitution{}.}
+\titleIS{Thesis and Project Report Template for \theInstitution{} in Icelandic}
 \author{Joseph T. Foley}%Use \and as an author separator
-\date{2020}{2}{2}%{Year}{Month}{Day}%use numbers
+\date{2022}{2}{2}%{Year}{Month}{Day}%use numbers
 
 %\DocumentInfo{TYPE}{ABBREVIATION}{DEGREE}{PROGRAM}
-%\DocumentInfo{Dissertation}{Ph.D.}{Doctor of Philosophy}{Computer Science}
-\DocumentInfo{Dissertation}{Ph.D.}{Doctor of Philosophy}{Computer Science}
+\DocumentInfo{Thesis}{M.Sc.}{Master of Science}{Mechatronics}
+% TODO:  department?
 \School{School of Technology}
 
 %% PhD only have Thesis Committee with roles.  Examiner is part of committee.
@@ -102,6 +105,9 @@ $c$ &Speed of Light &\SI{2.99E8}{\meter\per\second\square}\\
 %% WARNING: Make sure that all of these files (and any new ones)
 %% are UTF-8 otherwise you will get weird encoding errors.
 \part{The First Part} % Parts optional but useful in longer documents
+\chapter*{Is this the right template}
+If you are not a Reykjavik University student, this is probably not for you.
+If you are writing a Ph.D. or Sci.D. dissertation, then you want the file \path{dissertation.tex}.
 \chapter{The First Chapter}
 \include{introduction}%Chapter in introduction.tex
 \section{Another Section}
