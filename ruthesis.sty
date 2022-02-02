@@ -46,7 +46,7 @@
 % Generalized settings
 \DeclareOption{debug}{%
   \booltrue{debug}
-  \typeout{rubook option: debug}%
+  \typeout{ruthesis option: debug}%
   \typeout{DEBUG MODE ENABLED!  PREPARE FOR VERBOSITY!}}
 
 \DeclareOption{draft}{\booltrue{draftbool}}
@@ -55,7 +55,7 @@
 
 \DeclareOption{online}{
   \setbool{online}{true}
-  \typeout{rubook option: online}
+  \typeout{ruthesis option: online}
 }
 
 \DeclareOption{forcegraphics}{%
@@ -64,7 +64,7 @@
   \PassOptionsToPackage{final}{hyperref}
   %% add any other elements that should be included in draft
   \finalifforcegraphics{graphicx}%We have to catch graphicx early
-  \setbool{forcegraphics}{true}\typeout{rubook option: forcegraphics}%
+  \setbool{forcegraphics}{true}\typeout{ruthesis option: forcegraphics}%
 }%
 
 %%% Memoir test: Memoir Manual 21.2 p.367
@@ -88,10 +88,10 @@
 %% Any boolean testing must be after the \LoadClass otherwise the Option execution
 %% has not completed.
 \ifbool{debug}{%
-  \ifbool{online}{\typeout{rubook bool: online}}{}
-  \ifbool{forcegraphics}{\typeout{rubook bool: forcegraphics}}{}
-  \ifbool{proof}{\typeout{rubook bool: proof}}{}
-  \ifbool{debug}{\typeout{rubook bool: debug}}{}
+  \ifbool{online}{\typeout{ruthesis bool: online}}{}
+  \ifbool{forcegraphics}{\typeout{ruthesis bool: forcegraphics}}{}
+  \ifbool{proof}{\typeout{ruthesis bool: proof}}{}
+  \ifbool{debug}{\typeout{ruthesis bool: debug}}{}
 }{}
 
 %% ---------------- Internationalization -----------------------------
@@ -432,7 +432,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%% Addional Font Adjustments%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% rubook sets up some reasonable fonts, but we may need further adjustments
+%% ruthesis sets up some reasonable fonts, but we may need further adjustments
 %%  Note that you can leave off elements and it will use the last value set (or default??)
 % \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
 % \fontsize{SIZE}{BASELINESKIP}
