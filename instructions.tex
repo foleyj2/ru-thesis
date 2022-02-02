@@ -1,0 +1,603 @@
+\documentclass[12pt,a4paper,titlepage,draft]{memoir}
+\usepackage[]{ruthesis}
+
+\newcommand{\formatemail}[1]{$<$\texttt{#1}$>$}
+
+%% declare the paths(s) where you graphics files can be found
+\graphicspath{{graphics/}{Graphics/}{./}}
+
+\author{Joseph~T.~Foley\formatemail{foley}}  % My name, for the titlepage
+\title{Project Report and Thesis Preparation Instructions}  % The title, for the titlepage
+\titleIS{Project Report and Thesis Preparation Instructions in Icelandic}
+\renewcommand{\maketitlehookc}{}% Skip the degree details
+\renewcommand{\maketitlehookd}{}% Skip the supervisor details
+
+
+\usepackage[flushleft]{threeparttable}  % allows us to make tables with footnotes
+\usepackage{siunitx}
+
+% FIXME system for making notes to each other for what needs to 
+% be completed in a group document.
+\usepackage[layout=inline]{fixme}
+% internal layouts: inline, margin, footnote, index, marginclue
+% % Warning! The pdf external layouts do not play well with hyperref
+% % and must be loaded by doing \fxuselayouts{}
+
+\usepackage[hidelinks]{hyperref} % must be last package loaded!
+% it makes hyper-references (citations, URLs, etc) clickable
+
+
+%% Macros for filling in commonly changed items
+\newcommand{\TIheadofgrad}{Benedikt Helgason~\formatemail{benhel AT ru.is} or TVD Person}
+\newcommand{\TItvdadmin}{Hjördís Lára Hreinsdóttir~\formatemail{hjordislh AT ru.is}}
+
+\begin{document} % this tells the compiler that it is time to make
+                 % text to print instead of just getting ready.
+\maketitle{}  % make a title page from the Title, Date, and Author
+\newpage
+%% TODO:  Figure out why newpage needed
+\listoffixmes{}
+\tableofcontents{}
+%\section*{Errata} %%section* avoids putting a number 
+\enableindents{}% turn on/off paragraph indents
+
+\mainmatter{}
+\section{Introduction} % sections break up the document into pieces
+These instructions detail how to prepare a final project report, master's thesis, or PhD dissertation for Reykjavík University.
+These instructions (unless otherwise stated) assume you are in the School of Science and Engineering or the School of Computer Science.
+If you are in another department, you should make sure that the template meets your specific requirements.
+
+\begin{itemize}
+\item Current maintainer: Joseph Timothy Foley.
+  Questions, comments, complaints:  \formatemail{foley AT ru.is}
+% or cs-grad AT ru.is  %% not sure why we had this address
+
+%\item To receive updates regarding the templates, subscribe at
+%  \url{https://list.ru.is/mailman/listinfo/latex-announcements}
+\end{itemize}
+
+\subsection{Department of Engineering Links}
+\begin{description}
+\item[Information for Students] \url{https://www.ru.is/tvd/upplysingar-fyrir-nemendur/}
+\item[General MSc Rules] \url{https://www.ru.is/media/tvd/skjol/Rules-for-MSc-programmes-at-RU-SSE-2017_as_accepted_15_08_2017--003-.pdf}
+\item[MSc Thesis Rules] \url{https://www.ru.is/media/tvd/skjol/Vidbotarreglur_um_meistaraverkefni_2017_as_accepted_15_08_2017.pdf}
+\end{description}
+
+\section{Where to get the files}
+Latest version
+\url{https://github.com/foleyj2/ru-thesis}
+
+Old Template
+\url{https://repository.cs.ru.is/svn/thesis-template/branches/stable/RUThesisTemplate.zip}
+
+Old version on Overleaf
+\url{https://www.overleaf.com/latex/templates/reykjavik-university-project-report-and-thesis-template/fwdnpmdvwqcj}
+
+
+Help page:
+\url{https://help.ru.is/index.php?/Knowledgebase/Article/View/156/0/final-projectthesisdissertation-template}
+% Published at:
+% \begin{itemize}
+% \item \url{http://www.ru.is/tvd/reglur/ritgerdir}
+% \item \url{http://en.ru.is/sse/rules/template}
+% \item \url{http://en.ru.is/departments/school-of-computer-science/ph.d-studies/theses/thesis-template/}
+% \item \url{http://en.ru.is/scs/graduate/why/thesis-template/}
+% \item \url{http://en.ru.is/departments/computer-science/student-information/thesis/thesis-template/}
+% \item \url{http://en.ru.is/scs/graduate/phd/#tab5}
+% \end{itemize}
+
+
+\section{Files and Directories/Folders}
+\begin{itemize}
+%\item \path{cls/}: contains the \path{rureport.cls} template used to format these instructions.
+\item \path{graphics/:} contains the graphics to generate this document.
+%\item \path{msword/}: contains the MS word signatures pages and an example template for the various degrees.
+%  These templates are automatically generated from the \LaTeX{} templates on occasion and are only for reference.
+%\item \path{latex/}: containes LaTeX templates
+%\item \path{deadlines.xlsx}: A deadline calculator that uses the semester's
+%graduation date
+%\item \path{RU-TVD-MSC-rules-2017.pdf}: RU Master's Thesis rules and information
+\end{itemize}
+
+\section{Signatures}
+\fxerror{Signature instructions need updating}
+Please make note of the signature pages at the beginning of the document.
+These need the examiner's and advisors' signatures to be complete.
+There is also a page for copyright release that needs to be signed so the library can keep a copy.
+You must include the signed pages when you upload your document electronically to Skemma.
+
+\section{Printing}
+If you decide to print, make sure you are doing it on archival A4 acid-free paper.
+Otherwise, your document will yellow and fall apart in the library over time.
+Traditionally, the student prints out and binds a copy for each advisor and examiner.
+This may also be required if the research was funded or in certain circumstances.
+
+\section{Submission}
+When your document is finished and approved by your advisor, it needs to be uploaded to Skemman~\url{https://skemman.is}.
+An important thing to remember is that the uploaded document will follow you for the rest of your career:
+employers are likely to find it and skim it.
+Make sure the document is not something you would be embarressed by.
+
+The general submission sequence is:
+\begin{enumerate}
+\item Defense complete, minor corrections complete after 3 days of work.
+\item Get signature pages signed by supervisor(s) and examiner.
+\item Sign the library release page.
+\item Scan the pages in, put them into the document in the appropriate places.
+\item Upload the finished PDF to Skemman.
+\item An autogenerated email is sent from Skemman.
+  This email should be forwarded to your admin such at \TItvdadmin{}.
+\item Grade for the thesis is published.
+\item Graduation!
+\item Sometime after graduation, the published thesis is released by RU on Skemman for others to read and enjoy.
+\end{enumerate}
+
+\section{LaTeX Template Instructions}
+Many notes are at the top of the \path{DEGREE-NAME-YEAR.tex} file, this file
+is for a general overview and common problems.
+%More information on working with LaTeX at
+%\url{http://afs.rnd.ru.is/project/htgaru/trunk/how-to-get-around-projects.pdf}
+
+\subsection{Getting started:}
+\begin{enumerate}
+\item Find a safe place to work on your thesis document.
+  The author recommends Git on Overleaf, but anywhere data is backed up is a appropriate.
+  If you wish to have a repository to be setup for your thesis on openproject.cs.ru.is, email csit AT ru.is.  
+  If you are working with sensitive information, you should avoid bitbucket, google drive, dropbox, and any other free cloud service.
+  If you think this is unnecessary, just consider how much time you will lose if your computer crashes.
+   Due to Murphy's law, this is likely to happen just before your thesis is due\footnote{This has happened many times.}.
+
+ \item Get a LaTeX installation.  We recommend TeXlive \url{https://www.tug.org/texlive/}
+   For this template on windows, MiKTeX will also work, but will run very slowly the first time you render the template.
+   You will need to enable the ``miktex'' option in the template to substitute packages.
+   It is very very important that you run the ``MikTeX Update Wizard'' before you start.
+   Otherwise you may get errors when you try to build the document.
+
+   Under linux this is the ``texlive'' package.
+   Under Mac/OSX this is the ``MacTeX'' distribution.
+
+   Alternatively, if nothing you are doing is particularly private or proprietary, you can do development online using Overleaf.
+   In this case, you won't need to setup the rest of the tools mentioned below except perhaps the Reference Manager mentioned in step~\ref{list:refmanager}.
+   A version of the template can be found at \url{https://www.overleaf.com/latex/templates/reykjavik-university-thesis-template/fwdnpmdvwqcj#.V_TjteiLRph}
+   
+
+   \begin{enumerate}
+   \item RedHat: sudo yum -y install
+     texlive-collection-fontsrecommended
+     texlive-biblatex-{apa,apa-doc,ieee,ieee-doc}
+     texlive-{xargs,lipsum,lastpage,pseudocode,url,examplep,listings,xspace,pgf,tikz,amsfonts,amsmath,amssymb,siunitx,svn-multi,subfig,fixme,textpos,biblatex,makeglos,nomencl,xwatermark,ltxkeys,framed,boondox,printlen}
+     Getting biber installed on older RedHat systems is a bit tricky
+     for unclear reasons.  The metapackage you need is at
+     https://copr.fedoraproject.org/coprs/cbm/Biber/ 
+   \item Debian/Ubuntu:
+     sudo apt-get -y install texlive-full pgf latex-xcolor
+     If you don't want to install everything, this list of packages is known
+     to work: sudo apt-get -y install texlive texlive-latex-extra
+     texlive-science texlive-generic-extra texlive-lang-european
+     texlive-lang-german latex-xcolor texlive-pictures pgf
+     texlive-bibtex-extra texlive-publishers chktex evince
+     fonts-lmodern lmodern biber
+   \end{enumerate}
+ \item Get a LaTeX Integrated Development Environment (recommended, but not required)
+   \url{http://texstudio.sourceforge.net/} or
+   \url{http://www.xm1math.net/texmaker/}
+   Some editors may include LaTeX support.
+   If you want to learn a very powerful (but old-fashioned) editor \url{http://www.gnu.org/software/emacs/}
+      Install the auctex package by: M-x list-packages, click on AUCTeX
+
+    \item Get a references manager (recommended, but not required)\label{list:refmanager}
+   \url{http://jabref.sourceforge.net/}  (You may have to install a Java JRE first.)
+   The reference library is in \path{references.bib} by default.
+   It is just a text file that can be edited, but be careful with the formatting.
+   A common mistake is to forget ``,'' at the end of each piece of an entry/line.
+
+   If you are going to make glossaries or acronym lists, you will need
+   a perl interpreter.  Only windows usually needs this installed:
+   \url{http://www.activestate.com/activeperl}
+
+ \item Get supporting programs for some tools.
+   For glossaries under windows, you will need to install Perl
+   \url{http://strawberryperl.com/}
+   (it is already installed on the other platforms.)
+   
+ \item Try building the \path{instructions.tex} file.  If you get errors, there
+   is something wrong with your LaTeX installation.  Fix those first.
+
+   
+ \item Rename the \path{main.tex} file with your information.
+   DEGREE-NAME-YEAR is the recommended scheme 
+   e.g. \path{msc-foley-2015.tex}.
+   This is referred to as the "Main" file.
+
+ \item Open and read the options at the top of the previous file and set
+   it up for your document.  You will need to fill in the title and
+   author at least.
+
+ \item Start editing all of the \path{.tex} files with your content.
+
+ \item Compile the document by running pdflatex on the Main file, run the bibliography tool, then view the result.
+
+ \item When you print, make sure that the scale is 100\%.
+   If you allow it to resize when printing, the margins won't be right.
+   If the  margins aren't right, then the RU logo will not look right on the
+   cover.
+
+\end{enumerate}
+
+\subsection{Important Details}
+
+\begin{itemize}
+\item Make absolutely sure that your \path{references.bib} is in UTF8.  If it is another format (CP1251,etc) you may get weird problems with any accented characters.
+  {\em Students have run into encoding issues in the past and it has taken a surprisingly long time to debug.}
+
+\item Make sure the rest of the files, particularly the \path{.tex} file are in UTF8 or are at least in the same encoding.
+  If the files are in different encoding, you will discover errors with accented characters when you try to include them together.
+  Watch out for line endings. Linux, Windows, and OSX all use different line endings in text files.
+
+\item Use biber/biblatex instead of bibtex.
+(The template already does this.)
+Otherwise Icelandic characters will not work properly in your \path{references.bib} file.
+TexMaker and TeXStudio require a configuration change to do this.
+Refer to the ``...Projects'' guide above.
+
+\item Be consistent about UPPER and lower case in naming files.
+  Windows doesn't care (but some programs in Windows do).
+  OSX sometimes cares.
+  Linux always cares.
+\item When using this template with SVN, you will want to tell it to ignore the extensions listed in Appendix~\ref{appendix:latex-gen}
+\end{itemize}
+
+\section{SE Master's Thesis Special Instructions}
+These rules are adapted from \url{https://www.ru.is/media/tvd/skjol/Vidbotarreglur_um_meistaraverkefni_2017_as_accepted_15_08_2017.pdf}
+\subsection{Rules: Adopted by the School Council August 15th 2017}
+The following rules are an addition to \textsc{Rules for MSc Progrmmes at Reykjavík University's School of Science and Engineering}
+as adopted by the council of the School of Science and Engineering August 15th 2017.
+
+The Council of the School of Science and Engineering first adopted these rules on 19th March 2010 and they have since undergone minor revisions.
+
+In order to graduate with an MSc degree from the School of Science and Engineering (SSE) all students must complete a project that results in a formal thesis and a public defence of the thesis.
+The thesis can be submitted either in English or Icelandic and should sufficiently present a body of work commensurate with the number of credits of the particular MSc project.
+\subsection{Thesis Layout and Form}
+The layout and form of the thesis shall in general be according to good practice for a thesis of this type. The student shall consult his/her supervisor on an appropriate structure for the thesis, appendices to the thesis and the reference system, taking into account established practice within the specific field of research. Each department within the School of Science and Engineering may set rules that further specify the form and layout of the thesis, including a recommended template.
+
+In general, the thesis is expected to contain the following:
+\begin{itemize}
+\item Front cover (standard)
+\item Front page (standard format)
+\item Title page (standard format)
+\item Abstract (in English and Icelandic)
+\item Signature page (standard format)
+\item Acknowledgements (optional)
+\item Preface (optional)
+\item Table of contents
+\item List of tables
+\item List of figures
+\item List of drawings and enclosed material, e.g. CD (as appropriate)
+\item Introduction
+\item Methods
+\item Results
+\item Discussion
+\item Conclusion
+\item References
+\item Appendices (as appropriate)
+\item Back cover (standard)
+\end{itemize}
+
+The front cover, front page, title page and back cover have a specific form as shown in the attached examples and shall contain all information requested.
+No variation from this form is permitted.
+If the thesis is written in English, the title on the title page shall be in English; however, an Icelandic translation of the title must be presented with an Icelandic abstract, and vice versa if the thesis is written in Icelandic.
+
+An abstract is mandatory, both in English and Icelandic.
+The maximum length of abstract is 300 words.
+At the end of the abstract there should be a list of up to five keywords reflecting the content of the thesis.
+
+The printed version of the thesis shall be on white paper of size A4 and weight \SI{80}{\gram\per\square\meter}. The cover pages will be provided by the School. In general, the font should be Times or Times New Roman of size 12 points.
+Guidelines for page numbering and layout:
+
+\begin{itemize}
+\item Page numbering is normally i, ii, iii, iv, ... for material preceding the first chapter of the thesis (i.e. for abstract, signature page, acknowledgements, preface, table of contents etc.) and then
+1, 2, 3, starting from the 1st chapter (Introduction) and continuing throughout the thesis, including the appendices.
+\item Page numbers should in general be centered at the bottom of each page.
+\end{itemize}
+Only in exceptional cases may the thesis have a different form.
+While the thesis itself has to comply with the layout instructions in regards to the cover pages, abstract and the signature page, it can consist mainly of publishable research paper manuscripts.
+In this case, the manuscript(s) shall be preceded by a detailed section of introduction to the research topic with a corresponding in-depth literature review and detailed description of the methods used in the MSc project.
+The minimum length of this section shall be 20 pages excluding a reference list.
+This format of the MSc thesis should only be used if the supervisor of the thesis assesses the outcome of the MSc project to be publishable in indexed peer reviewed journals in the relevant field of research.
+If this format of the MSc thesis is used, the student's supervisor has to request a formal acceptance of both the student's Department Head and the Director of Graduate Studies, with a letter summarizing the findings of the project, the novelty beyond the state of the art and the contribution of all authors of the manuscript.
+This request has to be sent to the Department Head and the Director of Graduate Studies prior to $t-50$ (where “$t$” is the graduation date).
+The Department Head and Director of Graduate Studies can forward the request to the Graduate Study Council for further evaluation if they find it necessary.
+
+\subsection{Limited Access}
+In general, access to the MSc thesis shall be open.
+If restricting access to a thesis is sought, e.g.\ for the purpose of protecting intellectual property or protecting commercial interests of an industrial partner participating in the MSc project, permission needs to be acquired, see {\em Reglur um skil á lokaritgerðum og lokaverkefnum við Háskólann í Reykjavík\/} (\url{http://www.ru.is/bokasafn/skemman}).
+If restriction of access to a thesis is granted it should be clearly stated in the thesis right after the keywords following the abstract with specification of the date at which the restriction of access should be lifted.
+
+\subsection{Submission and Deadlines}
+The official completion of the MSc thesis is signified by the student submitting the final electronic (PDF) version of the thesis, signed by himself/herself, the supervisor(s) and the examiner to the SSE office and uploaded to Skemman, (see \url{https://www.skemman.is}).
+See also RU´s rules for submission of theses and final projects ({\em Reglur um skil á lokaritgerðum og lokaverkefnum við Háskólann í Reykjavík\/}, \url{http://www.ru.is/bokasafn/skemman}).
+
+If a student plans to graduate in a particular graduation ceremony, the following deadlines must be respected.
+Should any of the deadlines below not be respected the student will have to wait for the following graduation ceremony before he/she can graduate.
+Students are responsible for adhering to these deadlines and are advised to deliver their work in good time.
+The deadline schedule for the purpose of graduation is as follows (where $t$ is the graduation date and the
+numbers refer to the number of days prior to graduation):
+\begin{table}[h]
+  \centering
+  \begin{threeparttable}
+\begin{tabular}{ll}
+ Final draft of thesis delivered to supervisor\tnote{a} &$t-50$\tnote{b}\\
+ Supervisors comments delivered to student &$t-40$\tnote{c,d}\\
+ Thesis delivered to supervisor(s), examiner and department head\tnote{a} &$t-20$\tnote{c}\\
+ Examiner confirms that thesis may be put up for defense &$t-17$\tnote{c}\\
+ Defense &$t-14$\tnote{c}\\
+ Grade posted to the Registrar by SSE office &$t-11$\tnote{c}\\
+ Graduation &$t$\tnote{c}\\
+\end{tabular}
+\begin{tablenotes}
+\item[a] Paper and/or electronic form, as requested by the supervisor(s) and/or examiner.
+\item[b] Date can be modified by mutual agreement of the supervisor, student and examiner.
+\item[c] Firm deadlines.
+\item[d] Or within 10 days after the supervisor has received the final draft, whichever comes first.
+\item[e] Or within 5 days after the defence, whichever comes first.
+\end{tablenotes}
+\caption{Schedule for thesis according to expected graduation date.}
+\end{threeparttable}
+\end{table}
+
+\subsection{Thesis Defense (Oral Examination Procedure)}
+The examiner is selected by the Department Head in consultation with the supervisor(s).  
+The choice of examiner needs to be approved by the Director of Graduate Studies.  
+The examiner shall have the qualifications necessary to supervise the thesis, but must not have collaborated in the project on which the thesis is based and must fulfil the rules of Reykjavík University on impartiality of examiners.
+The oral examination shall be open to the public and shall be announced through appropriate channels with at least 3 days notice.  
+The examination should take the form of an approximately 30 minute presentation by the student, followed by questions from the examiner, School representative (most often the Department Head), supervisor(s) and the audience.  
+The audience then leaves the room and the examiner(s), supervisor and School representative have the opportunity to put further questions to the candidate and, as appropriate, request modifications to the thesis.  
+Subsequently, the candidate leaves the room and the examiner, School representative and supervisor(s) deliberate and decide upon the grade.  
+Normally, the student will be informed of the grade the next day.  
+If the thesis is subject to confidentiality, or for other valid reasons approved by the Director of Graduate Studies, the oral examination may be closed to the public.
+\subsection{Grading}
+The appointed examiner shall evaluate the thesis and the oral defense of the thesis, together with the
+supervisor(s) and the department´s representative.  
+One grade shall be awarded for the thesis and defence.  
+The minimum passing grade is 6.0, see Guidelines for grading MSc theses in the appendix.  
+The following factors shall be taken into account:
+
+\begin{itemize}
+\item Significance and originality of work
+\item Scientific and technological challenge and results
+\item Methodological quality
+\item Presentation
+\end{itemize}
+
+The number of ECTS credits awarded for the Master’s project shall be taken into account.  
+Thus, significantly more demands in terms of originality, quantity and scientific quality of the work should be placed on the student for a 60 ECTS thesis than a 30 ECTS thesis.
+
+\subsection{Guidelines for grading MSc thesis (English)}
+The guidelines below describe typical projects in different grading brackets.  
+This is meant for
+examiners and instructors in grading master‘s theses.  
+The projects need not fulfil every aspect of
+these desciptions in order to be awarded the corresponding grade.
+\begin{description}
+\item [Superior (9,0-10,0)]
+  The project is excellent.  
+The handling of the material shows considerable originality and independant thought.
+  Considerable skill in the definition and organized solving of the problem.
+  Very good understanding of concepts.
+  Academic approach and handling of material.
+  Exemplary methods in collection and processing of data.
+  Use of references is very precise and supports the projects well.
+  The thesis may well lead to a publishable article.
+  Exceptionally well polished thesis with very good grammar, spelling and language use.
+  The thesis is in English.
+  The student‘s performance in the defense is excellent.
+\item[First grade (7,5-8,5)]
+  The project is very good and handling of material is good and somewhat original.
+  Clear understanding of the material and the definition of the problem is good and the solving well organized.
+  Data gathering and processing without major weaknesses and intelligent use of references.
+  The thesis is well arranged and grammar, spelling and language is good.
+  The student‘s performance in the defense is either good or very good.
+\item[Second grade (6,0-7,0)]
+  The project is acceptable.
+  Handling of material is fair and some independant thinking.
+  Definition and analysis of project reflects some understanding.
+  Data collection and processing is without major flaws.
+  Deficiencies in the literature review.
+  Flaws have not been addressed despite the instructor‘s suggestions.
+  Language, grammar and spelling is fair.
+  The student‘s performance in the defense is fair.
+\item[Fail (1,0-5,5)]
+  The project is unacceptable.
+  The project has major flaws that have not been addressed despite the instructor‘s suggestions.
+  Limited understanding of the material.
+  Definitions and analysis do not show understanding of what is relevant in solving the problem at hand.  
+Major errors or misunderstanding.
+  Data collection and analysis has deficiencies and literature review is weak.
+  The subject is not adhered to or major inconsistencies.
+  Language, grammar and spelling is fair or poor.
+  The student‘s performance in the defense is fair or poor.
+\end{description}
+
+\subsection{Viðmið fyrir einkunnagjöf}
+Eftirfarandi er lýsing á dæmigerðum verkefnum í mismunandi einkunnabilum sem er ætluð til stuðnings fyrir frófdómara og leiðbeinendur við mat á MSc verkefnum.
+Lýsinging þarf ekki að eiga við verkefnið í öllum atriðum til að verkefnið geti hlotið vipkomandi einkunn.
+
+\begin{description}
+\item[Ágætiseinkunn (9,0 -- 10,0)] Verkefni er afburðagott.
+  Efnistök engdurspegla umtalsverðan frumleika og sjálfstæði í hugsun.
+  Umtalsverð færni í skilgeiningu og skipulegri úrlausn viðfangsefnisins.
+  Mjög góður skilningur á hugtökum.
+  Visindaleg n´lgun of efnistök.
+  Fyrirmyndar vinnugrögð við öflun og úrvinnslu gagna.
+  Heimildanotkun mjög nákvæm og styður vel við verkefnið.
+  Ætla má að ritgerðin geti leitt til birtingarhæfrar greinar.
+  Frágangaur sérlega góður og stafsetning og málfar mjög gott.
+  Ritgerðin er skrifuð á ensku.
+  Frammistaða nemanda í vörninni afburðagóð.
+\item[1. einkunn (7,5 -- 8, 5)] Verkefnier mjög gott og efnistök góð og nukkuð fruleg.
+  Skýr skilningur á viðfangsefninu og góð færni í skilgreininngu þess og skipulegri úrlausn.
+  Vinnubrögð við öflun og úrvinnslu gagna án verulegra veikleika og heimildanotkun skynsamleg.
+  Frá gagnur góður og stafsetning og málfar gott.
+  Frammistaða nemanda í vörninni góð eða mjög góð.
+\item[2. einkunn (6,0 -- 7,0)]  Verkefnið er þokkalegt.
+  Allgóð efnistök og sjálfstæð hugsun á köflum.
+  Skilgreining og úrvinnsla viðfangsefnis endurspegla nokkurn skilning á viðvangsefninu.
+  Öflun og úrvinnsla gagna án verulegra galla.
+  Heimildanotkun nokkuð áfátt.
+  Finna má galla sem ekki hafa verið lagfærðir þrátt fyrir ábendingar leiðbeinanda.
+  Málfar og stafsetning þoggaleg.
+  Frammistaða nemanda í vörninni þokkaleg.
+\item[Falleinkunn 0,0 -- 5,5]  Verkefni fullnægir ekki lágmarkskröfum.
+  Verkefnið hefur áberandi galla sem ekki hafa verið lagfærðir þrátt fyrir ábendingar leiðbeinanda.
+  Takmarkaður skilningur á viðfangsefninu.
+  Skilgreining og úrlausn viðfangsefnis sýnir ekki nægilega góða tilfinningu fyrir því hvað skitip máli við lausn þess.
+  Verulegar villur eða misskilningur.
+  Öflun og úrvinnsla gagna er töluvert áfátt sem og heimildanotkun.
+  Farið út fyrir efnið eða umtalsverð ósamkvæmni.
+  Málfar og stafsetning sæmileg eða slök.
+  Frammistaða nemanda í vörninni sæmileg eða slök.
+\end{description}
+
+\section{PhD Special Instructions}
+Final Preparation for PhD Dissertations:\footnote{Always refer to the website in case details have changed}
+\begin{enumerate}
+\item Send PDF to Administrative person \TItvdadmin{}
+\item Get signature pages signed, and scan them into PDF
+\item Talk to one of the printing companies in Iceland and ask if they can do a B4 booklet with a printed cover.
+  \fxwarning{Someone needs to tell me which ones are good and what are the magic words}
+\item Make clear which elements are the outside cover and which are the inside contents.
+  \textbf{You want to make sure they don't print a copy of the cover inside the book.}
+\item They will insert your signature pages into the PDF and start the printing process;
+  The paper you want is archival-quality acid-free 240$\times$\SI{170}{\milli\meter} (aka B5, Programme, or Book Economy).
+\item If you can, get a proof of the print to check that the layout is correct and the quality is good.
+\item If is acceptable, then get them to print out the required number of copies.
+\item Finally bring the copies to head of graduate studies(\TIheadofgrad{}), who should forward them as appropriate.
+
+\end{enumerate}
+
+
+%\bibliographystyle{IEEEtran}
+%\bibliography{references}
+
+\newpage
+\appendix
+\section{BSc Programs}
+\begin{itemize}
+\item Bioinformatics, Biomedical Engineering
+\item Civil Engineering with specialization in Concrete Technology
+\item Civil Engineering with specialization in Construction Management
+\item Civil Engineering with specialization in Structural Design
+\item Civil Engineering with specialization in Transport and Urban Planning
+\item Construction Management
+\item Electrical Engineering
+\item Mechatronics
+\item Engineering Management
+\item Exercise Science and Coaching
+\item Financial Engineering
+\item Mechanical Engineering
+\item Sustainable Energy Engineering --- REYST
+\item Sustainable Science --- REYST
+\item Urban Planning and Transport              
+\end{itemize}
+
+\section{MSc Additional Material}
+%% TODO:  Attach the material from the old PDF to the end
+\begin{itemize}
+\item Cover pages, front and back (standard, provided by SSE)
+\item Example of a front page (text to appear in window on front cover page)
+\item Example of a title page
+\item Example of a signature page
+\item List of MSc degrees awarded
+\end{itemize}
+
+\subsection{List of Degrees Awarded}
+
+\begin{tabular}{ll}
+  Master of Science in Biomedical Engineering &Meistarapróf (MSc) í heilbrigðisverkfræði\\
+  Master of Science in Civil Engineering &Meistarapróf (MSc) í byggingarverkfræði\\
+  Master of Science in Electrical Engineering &Meistarapróf (MSc) í rafmagnsverkfræði\\
+  Master of Science in Engineering Management &Meistarapróf (MSc) í rekstrarverkfræði\\
+  Master of Science in Exercise Science and Coaching &Meistarapróf (MSc) í íþróttavísindum og þjálfun\\
+  Master of Science in Financial Engineering &Meistarapróf (MSc) í fjármálaverkfræði\\
+  Master of Science in Mechanical Engineering &Meistarapróf (MSc) í vélaverkfræði\\
+  Master of Science in Sustainable Energy Engineering --- ISE &Meistarapróf (MSc) í orkuverkfræði --- ISE\\
+  Master of Science in Sustainable Energy --- ISE &Meistarapróf (MSc) í orkuvísindum --- ISE\\
+  \end{tabular}
+
+\section{Computer Science Programs}
+\begin{itemize}
+\item Computer Science
+\item Software Engineering
+\item Language Technology               
+\end{itemize}
+
+
+\subsection{LaTeX Generated file extensions}\label{appendix:latex-gen}
+These are the files that \LaTeX{} generates when you run it.
+If you are using SVN or another version control system, you want to tell that system to ignore these files:
+  \begin{verbatim}
+*-blx.bib
+*.acr
+*.acn
+*.alg
+*.aux
+*.bak
+*.bbl
+*.bcf
+*.blg
+*.bst
+*.dvi
+*.glo
+*.gl*
+*.idx
+*.ind
+*.ilg
+*.ist
+*.lo?
+*.mw
+*.nlo
+*.ntn
+*.out
+*.pdf
+*.ps
+*.rel
+*.run.xml
+*.sbl
+*.slg
+*.snm
+*.sym
+*.synctex.gz
+*.tcp
+*.thm
+*.tdo
+*.to?
+*.tmp
+*.tmproj
+*.xwm
+._*
+._.DS_Store
+.~lock*
+auto
+Thumbs.db
+\end{verbatim}
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%% TeXStudio Magic Comments %%%%%%%%%%%%%%%%%%%%%
+%% These comments that start with "!TeX" modify the way TeXStudio works
+%% For details see http://texstudio.sourceforge.net/manual/current/usermanual_en.html   Section 4.10
+%%
+%% What encoding is the file in?
+% !TeX encoding = UTF-8
+%% What language should it be spellchecked?
+% !TeX spellcheck = en_US
+%% What program should I compile this document with?
+% !TeX program = pdflatex
+%% Which program should be used for generating the bibliography?
+% !TeX TXS-program:bibliography = txs:///bibtex
+%% This also sets the bibliography program for TeXShop and TeXWorks
+% !BIB program = bibtex
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
