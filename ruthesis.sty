@@ -24,6 +24,10 @@
 % http://texdoc.net/texmf-dist/doc/latex/etoolbox/etoolbox.pdf
 \RequirePackage{etoolbox}
 
+% xparse:  LateX3 Advanced Argument and macro definition
+% http://ctan.uib.no/macros/latex/contrib/l3packages/xparse.pdf
+\RequirePackage{xparse}
+
 %% ---------------- Boolean switches -----------------------------
 %% Booleans make it easy to enable and disable parts of the template
 \newbool{debug}
@@ -277,7 +281,7 @@
     \begin{vplace}[1.0] % ratio of space above and below
       \centering
       \OnehalfSpacing%
-      Copyright\\
+      \iflanguage{icelandic}{Höfundarréttur}{Copyright}\\
       \theauthor\\
       \thedate\\
     \end{vplace}
@@ -496,9 +500,15 @@
 {\begin{compactitem}[\hspace{10mm}]}
 {\end{compactitem}}
 
-
-\newcommand{\thetitleIS}{**Title in Icelandic**}
-\newcommand{\titleIS}[1]{\renewcommand{\thetitleIS}{#1}}
+\NewDocumentCommand\thesistitle{O{#2} m}
+% ARGS: [optional use #2], {mandatory} 
+{
+  \NewDocumentCommand\theenglishtitle{}{#2}%babel naming convetion?
+  \NewDocumentCommand\theicelandictitle{}{#1}
+  \iflanguage{icelandic}
+  {\title{\theicelandictitle}}
+  {\title{\theenglishtitle}}
+}
 
 %% Clean up some formatting for the text
 \renewcommand{\thepage}{\roman{page}}
@@ -697,7 +707,7 @@
 
 \renewenvironment{abstract}
 {\begin{otherlanguage}{english}\begin{coverleft}{\centering%
-    {\titletitlefont\thetitle\\}%%
+    {\titletitlefont\theenglishtitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
@@ -710,7 +720,7 @@
 
 \newenvironment{abstractIS}
 {\begin{otherlanguage}{icelandic}\begin{coverleft}{\centering%
-    {\titletitlefont\thetitleIS\\}%%
+    {\titletitlefont\theicelandictitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
