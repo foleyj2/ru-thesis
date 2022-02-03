@@ -1,10 +1,19 @@
-%%%% WARNING:  This is the general template for most users
-%%%% if you are writing a PhD or SciD dissertation
-%%%% please use the dissertation.tex file instead
+%%%% This is the general thesis/project report template for most users
 \documentclass[12pt,a4paper,titlepage]{memoir}
 \usepackage[]{ruthesis}
 %% Options in []:
 %% IS Icelandic is main language
+
+%%%%%% Packages and Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{custom}
+%% Commonly used packages and macros are in custom.sty
+%% Feel free to edit it as you see fit
+%% Put any additional packages after this line
+
+\usepackage{lipsum}%provides us with text for testing
+%% usage: \lipsum[STARTNUM-ENDNUM]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \title{Thesis and Project Report Template for \theInstitution{}.}
 \titleIS{Thesis and Project Report Template for \theInstitution{} in Icelandic}
 \author{Joseph T. Foley}%Use \and as an author separator
@@ -23,20 +32,7 @@
   \personinfo{Tough E. Questions}{Examiner}{Associate Professor}{Massachusetts Institute of Technology}{USA}
 }
 
-%%%%%% Useful Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage{lipsum}%provides us with text for testing
-%% usage: \lipsum[STARTNUM-ENDNUM]
-
-\usepackage[final]{listings}
-%%% Formatting code inclusion and snippets
-%% "final" option to force it to display code
-
-\usepackage{siunitx}
-%% \SI{9.82}{\meter\per\second\square}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{document}
-
 \maketitle{}
 \copyrightpage{}
 \signaturepage{}
@@ -71,8 +67,8 @@ This work was funded by \the\year~RANNIS grant ``Survey of man-eating Minke whal
 Additional equipment was generously donated by the Icelandic Tourism Board.
 
 {\em Acknowledgements are optional; comment this chapter out if they are absent
-  Note that it is important to acknowledge any funding that helped in the work}
-
+  Note that it is important to acknowledge any funding that helped in the work\/}
+%\/ is italic correction at the end of \em and italics
 \clearpage{}
 \tableofcontents{}\clearpage
 \listoffigures{}\clearpage
@@ -104,10 +100,14 @@ $c$ &Speed of Light &\SI{2.99E8}{\meter\per\second\square}\\
 %% \include{chapterfile}
 %% WARNING: Make sure that all of these files (and any new ones)
 %% are UTF-8 otherwise you will get weird encoding errors.
-\part{The First Part} % Parts optional but useful in longer documents
-\chapter*{Is this the right template}
+\part{Getting Started} % Parts optional but useful in longer documents
+\chapter{Instructions}
+\textbf{Is this the right template for you?}
 If you are not a Reykjavik University student, this is probably not for you.
 If you are writing a Ph.D. or Sci.D. dissertation, then you want the file \path{dissertation.tex}.
+For everyone else, continue to the instructions.
+\include{instructions}
+\part{Demonstration}
 \chapter{The First Chapter}
 \include{introduction}%Chapter in introduction.tex
 \section{Another Section}

@@ -1,47 +1,38 @@
-\documentclass[12pt,a4paper,titlepage,draft]{memoir}
-\usepackage[]{ruthesis}
+% Uncomment the lines with a single % if you wish to process the document separately
+% \documentclass[12pt,a4paper,titlepage,draft]{memoir}
+% \usepackage[]{ruthesis}
+% \usepackage{custom}
 
-\newcommand{\formatemail}[1]{$<$\texttt{#1}$>$}
+% %% declare the paths(s) where you graphics files can be found
+% \graphicspath{{graphics/}{Graphics/}{./}}
 
-%% declare the paths(s) where you graphics files can be found
-\graphicspath{{graphics/}{Graphics/}{./}}
-
-\author{Joseph~T.~Foley\formatemail{foley}}  % My name, for the titlepage
-\title{Project Report and Thesis Preparation Instructions}  % The title, for the titlepage
-\titleIS{Project Report and Thesis Preparation Instructions in Icelandic}
-\renewcommand{\maketitlehookc}{}% Skip the degree details
-\renewcommand{\maketitlehookd}{}% Skip the supervisor details
+% \author{Joseph~T.~Foley\formatemail{foley}}  % My name, for the titlepage
+% \title{Project Report and Thesis Preparation Instructions}  % The title, for the titlepage
+% \titleIS{Project Report and Thesis Preparation Instructions in Icelandic}
+% \renewcommand{\maketitlehookc}{}% Skip the degree details
+% \renewcommand{\maketitlehookd}{}% Skip the supervisor details
 
 
-\usepackage[flushleft]{threeparttable}  % allows us to make tables with footnotes
-\usepackage{siunitx}
 
-% FIXME system for making notes to each other for what needs to 
-% be completed in a group document.
-\usepackage[layout=inline]{fixme}
-% internal layouts: inline, margin, footnote, index, marginclue
-% % Warning! The pdf external layouts do not play well with hyperref
-% % and must be loaded by doing \fxuselayouts{}
-
-\usepackage[hidelinks]{hyperref} % must be last package loaded!
-% it makes hyper-references (citations, URLs, etc) clickable
+% \usepackage[hidelinks]{hyperref} % must be last package loaded!
+%% it makes hyper-references (citations, URLs, etc) clickable
 
 
 %% Macros for filling in commonly changed items
 \newcommand{\TIheadofgrad}{Benedikt Helgason~\formatemail{benhel AT ru.is} or TVD Person}
 \newcommand{\TItvdadmin}{Hjördís Lára Hreinsdóttir~\formatemail{hjordislh AT ru.is}}
 
-\begin{document} % this tells the compiler that it is time to make
-                 % text to print instead of just getting ready.
-\maketitle{}  % make a title page from the Title, Date, and Author
-\newpage
+% \begin{document} % this tells the compiler that it is time to make
+%                  % text to print instead of just getting ready.
+% \maketitle{}  % make a title page from the Title, Date, and Author
+% \newpage
 %% TODO:  Figure out why newpage needed
-\listoffixmes{}
-\tableofcontents{}
-%\section*{Errata} %%section* avoids putting a number 
-\enableindents{}% turn on/off paragraph indents
+% \listoffixmes{}
+% \tableofcontents{}
+% %\section*{Errata} %%section* avoids putting a number 
+% \enableindents{}% turn on/off paragraph indents
 
-\mainmatter{}
+% \mainmatter{}
 \section{Introduction} % sections break up the document into pieces
 These instructions detail how to prepare a final project report, master's thesis, or PhD dissertation for Reykjavík University.
 These instructions (unless otherwise stated) assume you are in the School of Science and Engineering or the School of Computer Science.
@@ -581,7 +572,7 @@ auto
 Thumbs.db
 \end{verbatim}
 
-\end{document}
+%\end{document}
 %%%%%%%%%%%%%%%%%%%% TeXStudio Magic Comments %%%%%%%%%%%%%%%%%%%%%
 %% These comments that start with "!TeX" modify the way TeXStudio works
 %% For details see http://texstudio.sourceforge.net/manual/current/usermanual_en.html   Section 4.10
@@ -599,5 +590,5 @@ Thumbs.db
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: t
+%%% TeX-master: "main.tex"
 %%% End:
