@@ -1,11 +1,14 @@
 \documentclass{memoir}
 \usepackage[online,IS]{ruthesis}
 \usepackage[useregional]{datetime2}
+\usepackage{xparse}%Latex3 argument parsing
+
+
 %\usepackage{graphicx}
 \title{Minimal Document for Testing}
 \author{Joseph T. Foley \and Someone Else}
 % \author:  Use \and as a separator and \thanks{details} for additional info
-\date{\DTMdisplaydate{2020}{2}{2}{-1}}
+\date{2020}{2}{2}
 %% TODO:  use datetime2 to be smarter about dates
 
 % \usepackage[icelandic,english]{babel}
@@ -15,6 +18,8 @@
 \begin{document}
 % \frontrequiredpages{}
 %\ects{30}
+
+
 
 
 %% Titlepage the Memoir way
@@ -36,6 +41,22 @@
 
 \newpage
 \chapter{Test Chapter}
+\newcommand{\varEN}{***English***}
+\newcommand{\varIS}{***Icelandic***}
+\NewDocumentCommand{\setVar}{O{#2} m}
+% ARGS: [optional use #2], {mandatory} 
+{ 
+  \renewcommand{\varIS}{#1}
+  \renewcommand{\varEN}{#2}
+}
+\setVar{Universal Title}
+  
+  \begin{itemize}
+  \item English: \varEN{}
+  \item Icelandic: \varIS{}
+  \end{itemize}
+
+
 blah blah blah
 %\copyrightpage{}%%RUM: Not mentioned
 %\signaturepage{}%%RUM: "Signature page (standard format)    
