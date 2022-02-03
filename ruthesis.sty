@@ -210,12 +210,16 @@
 %%  Note that you can leave off elements and it will use the last value set (or default??)
 % \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
 %  \fontsize{SIZE}{BASELINESKIP}
-
 \def\titletitlefont{\fontseries{b}\fontsize{17pt}{20pt}\selectfont}
 \def\titletextfont{\fontsize{14pt}{16pt}\selectfont}
 \def\titleinfofont{\fontsize{12}{14}\selectfont}
 \def\sigtextfont{\fontsize{12pt}{14pt}\selectfont}
 \def\warningfont{\fontseries{b}\fontsize{24pt}{28pt}\selectfont}
+
+%% Outside PhD cover we hardcode for consistency
+\def\covertitlefont{\fontfamily{phv}\fontseries{b}\fontshape{n}\fontsize{20.74}{24}\selectfont}
+\def\covertextfont{\fontfamily{phv}\fontseries{m}\fontshape{n}\fontsize{14.4}{16}\selectfont}
+
 
 %%%%%%%%%%%%%%%%% Colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 %% Setting colors in text
@@ -406,7 +410,6 @@
 %\newcommand{\draftnote}[1]{\ifdraft{{\color{gray}#1}}}
 
 %%%%%%%%%%%%%%%%%%%% Addional Font Adjustments%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% ruthesis sets up some reasonable fonts, but we may need further adjustments
 %%  Note that you can leave off elements and it will use the last value set (or default??)
 % \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
 % \fontsize{SIZE}{BASELINESKIP}
@@ -415,9 +418,6 @@
 \RequirePackage{newtxtext}
 \RequirePackage{newtxmath}
 
-%% This is the special font used on the PhD cover
-\def\phdcovertitlefont{\fontfamily{phv}\fontseries{b}\fontshape{n}\fontsize{20.74}{24}\selectfont}
-\def\phdcovertitletext{\fontfamily{phv}\fontseries{m}\fontshape{n}\fontsize{14.4}{16}\selectfont}
 
 %% We need the paralist and dashrule package in order to format the signature pages
 \RequirePackage{paralist}
@@ -524,47 +524,68 @@
   pagecentery:\printlength{\pagecentery}\\
 }
 
-%% ----- PRINTED FRONT COVER ----------------------------------------------------------
+%% ----- PRINTED FRONT COVER (PHD) ----------------------------------------------------------
 %% This cover will be on the outside (not with window)
-% \newcommand{\printedcover}{
-%   \begin{covernonum}
-%     \setlength{\TPMargin}{0mm} %% margins inside the textblock*
-%     \sffamily    
-%     \begin{textblock*}{\textwidth}[0.5,0.5](\pagecenterx,68mm)%
-%       {\centering\includegraphics[width=55mm]{\frontlogo@ruthesis}\\}%
-%     %
-%     \setSingleSpace{1.8}\SingleSpacing%
-%     \begin{textblock*}{\textwidth}[0,0](\covernowinmarginl,120mm)%
-%       \textcolor{rugray}{\frontcovertitlefont\titleCover@ruthesis}\par%
-%       %% Originally title was forced uppercase, but no-one seems to have
-%       %%   noticed, so I'm removing it.
-%     \end{textblock*}%
-%     %
-%     \setSingleSpace{1.5}\SingleSpacing%    
-%     \begin{textblock*}{\textwidth}[0,0](\covernowinmarginl,222mm)%
-%       \begin{minipage}{\textwidth}
-%         \textcolor{rugray}{ 
-%           \frontcovertitletext{}
-%           \textbf{\theauthor}\\% 
-%           \DegreeLong@ruthesis\\% 
-%           \whensigned@ruthesis\\%
-%           \theSchool\\%
-%           \theInstitution%        
-%         }\par
-%         \vspace*{5mm}
-%         \textcolor{rured}{
-%           \frontcovertitlefont{}
-%           \documenttype@ruthesis
-%         }\par
-%         \vspace*{3mm}
-%         {\scriptsize\color{rugray}\Bookidnumber}%                 
-%       \end{minipage}
-%     \end{textblock*}        
-%   \setSingleSpace{1.0}
-%   \end{covernonum}
-%   \newpage\quad%% I am not sure why we must put this to ensure that the covers don't overlap
-%   \newpage  % without this, page numbers show up.  Weird.
-% }
+%% Needs textpos package!
+\RequirePackage{calc}%arithmetic on lengths
+
+\RequirePackage{printlen}% display lengths in arbitrary units
+\ifbool{debug}{\PassOptionsToPackage{showboxes}{textpos}}
+\RequirePackage[absolute, verbose]{textpos}%
+
+%% These commands set the units in \begin{textblock} when not 
+%%  directly specified
+%% We set them to the page sizes so we can align from them
+\setlength{\TPHorizModule}{\paperwidth}
+\setlength{\TPVertModule}{\paperheight}
+\setlength{\TPMargin}{2mm}%% margins inside the textblock*
+\textblockorigin{0mm}{0mm}% start everything near the top-left corner
+\newlength{\pagecenterx}%
+\setlength{\pagecenterx}{0.5\stockwidth}
+\newlength{\pagecentery}
+\setlength{\pagecentery}{0.5\stockheight}
+
+
+\newcommand{\printedcover}[2]{
+  \thispagestyle{empty}
+  \setlength{\TPMargin}{0mm} %% margins inside the textblock*
+  \sffamily    
+  \begin{textblock*}{\textwidth}[0.5,0.5](\pagecenterx,68mm)%
+    {\centering\includegraphics[width=55mm]{\frontlogo@ruthesis}\\}%
+  \end{textblock*}
+  \setSingleSpace{1.8}\SingleSpacing%
+  \begin{textblock*}{\textwidth}[0,0](30mm,120mm)%
+    \textcolor{rugray}{\covertitlefont#1}\par%
+    %% Originally title was forced uppercase, but no-one seems to have
+    %% noticed, so I'm removing it.
+  \end{textblock*}%
+  % 
+    \setSingleSpace{1.5}\SingleSpacing%    
+    \begin{textblock*}{\textwidth}[0,0](30mm,222mm)%
+      \begin{minipage}{\textwidth}
+        \textcolor{rugray}{ 
+          \covertextfont{}\noident
+          \textbf{\theauthor}\\% 
+          \theDegreeLong\\%
+          \thedate\\%
+          \theSchool\\%
+          \theInstitution%        
+        }\par
+        \vspace*{5mm}
+        \textcolor{rured}{
+          \covertitlefont{}\noindent
+          \theDocumentType
+        }\par
+        \vspace*{3mm}
+        {\scriptsize\color{rugray}#2}%                 
+      \end{minipage}
+    \end{textblock*}        
+  \setSingleSpace{1.0}
+%  \end{covernonum}
+  \newpage\quad%% I am not sure why we must put this to ensure that the covers don't overlap
+  \newpage  % without this, page numbers show up.  Weird.
+  %% TODO: isolate font and spacing changes from the rest of the document
+}
   
 %% ----- INTERNAL TITLE PAGE WITH COMMITTEE ---------------------------------------------------
 %% TODO: make counter for supervisors in the very rare case that there
@@ -590,7 +611,6 @@
 
 
 %% ----- SIGNATURE PAGE, ONLY THESIS -----------------------------------------------------
-
 \newlength{\signaturey}
 \setlength{\signaturey}{8mm}
 \newlength{\signaturex}
@@ -631,7 +651,6 @@
 
 
 %% ----- ARCHIVAL SIGNATURE, ONLY THESIS ----------------------------------------------------
-%% TODO:  Icelandic translation?
 \newcommand{\archivesigpage}{
   \begin{cover}
     \enableindents{}
@@ -688,7 +707,6 @@
   \par\vspace*{2\baselineskip}%
   \textbf{Útdráttur}\par\vspace{1ex}}
 {\par\end{coverleft}\end{otherlanguage}\newpage}
-
 
 
 %% ----- END OF FRONT MATERIALS ---------------------------------------------------------------
