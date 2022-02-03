@@ -8,26 +8,24 @@
 
 %%%%%% Packages and Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{custom}
-%% Commonly used packages and macros are in custom.sty
-%% Feel free to edit it as you see fit
+%% Commonly-used packages and macros are in custom.sty
 %% Put any additional packages after this line
 
 \usepackage{lipsum}%provides us with text for testing
 %% usage: \lipsum[STARTNUM-ENDNUM]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Thesis and Project Report Template for \theInstitution{} in English}
-\titleIS{Thesis and Project Report Template for \theInstitution{} in Icelandic}
+\title{Thesis and Project Report Template for \theInstitution{} (English Title)}
+\titleIS{Thesis and Project Report Template for \theInstitution{} (Icelandic Title)}
 \author{Joseph T. Foley}%Use \and as an author separator
 \date{2022}{2}{2}%{Year}{Month}{Day}%use numbers
 
-%\DocumentInfo{TYPE}{ABBREVIATION}{DEGREE}{PROGRAM}{ECTS}{Department}
+%\DocumentInfo{TYPE}{ABBREVIATION}{DEGREE}{PROGRAM}{ECTS}{School/Department}
 \DocumentInfo{Thesis}{M.Sc.}{Master of Science}{Mechatronics}{30}{Department of Engineering}
 \DocumentDescription{\theDocumentType{} of \theECTS{} ECTS credits
          submitted to the \theSchool{} at \theInstitution{} in partial fulfillment
          of the requirements for the degree of \theDegreeLong}
-% Change this if you need a custom title     
-
+% Change this if you need a custom title or if it needs to be in Icelandic
 
 %% PhD only have Thesis Committee with roles.  Examiner is part of committee.
 \SupervisorHeading{Thesis Committee}
@@ -40,8 +38,8 @@
 \begin{document}
 \maketitle{}
 \copyrightpage{}
-\signaturepage{}
-\archivesigpage{}
+%\signaturepage{} %For Print copies
+%\archivesigpage{} %For Print copies
 
 \begin{abstract}
   The abstract goes here translated into English.
@@ -55,9 +53,9 @@
   It should be a fairly short summary of the entire document.
 \end{abstractIS}
 
-\begin{dedications}% Optional
-  I dedicate this to my spouse/child/pet/power animal.
-\end{dedications}
+%\begin{dedications}% Optional
+%  I dedicate this to my spouse/child/pet/power animal.
+%\end{dedications}
 
 \enableindents{}% turn on/off paragraph indents
 % RUM: "Acknowledgements (optional)"%start numbering
