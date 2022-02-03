@@ -1,8 +1,10 @@
 %%%% This is the general thesis/project report template for most users
-\documentclass[12pt,a4paper,titlepage,online]{memoir}
-\usepackage[]{ruthesis}
-%% Options in []:
+\documentclass[12pt,a4paper,titlepage]{memoir}
+\usepackage[online]{ruthesis}
+%% Options for ruthesis in []:
+%%   online : for electronic submission rather than printing on paper (less blank pages)
 %% IS Icelandic is main language
+%% 
 
 %%%%%% Packages and Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{custom}
@@ -14,7 +16,7 @@
 %% usage: \lipsum[STARTNUM-ENDNUM]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Thesis and Project Report Template for \theInstitution{}.}
+\title{Thesis and Project Report Template for \theInstitution{} in English}
 \titleIS{Thesis and Project Report Template for \theInstitution{} in Icelandic}
 \author{Joseph T. Foley}%Use \and as an author separator
 \date{2022}{2}{2}%{Year}{Month}{Day}%use numbers
@@ -23,7 +25,7 @@
 \DocumentInfo{Thesis}{M.Sc.}{Master of Science}{Mechatronics}{30}{Department of Engineering}
 \DocumentDescription{\theDocumentType{} of \theECTS{} ECTS credits
          submitted to the \theSchool{} at \theInstitution{} in partial fulfillment
-         of the requirements for the degree of \textbf{\theDegreeLong}}
+         of the requirements for the degree of \theDegreeLong}
 % Change this if you need a custom title     
 
 
@@ -53,7 +55,7 @@
   It should be a fairly short summary of the entire document.
 \end{abstractIS}
 
-\begin{dedications}
+\begin{dedications}% Optional
   I dedicate this to my spouse/child/pet/power animal.
 \end{dedications}
 
