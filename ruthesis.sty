@@ -504,15 +504,16 @@
 %% WARNING: memoir class has its own margin macros
 %%    Do not use the geometry package!!!!
 
-% \setlength{\TPMargin}{0mm} %% margins inside the textblock*
+%% The MS word template uses even 25.4mm margins which works poorly as a bound book
+%% We will only do this for the online version
 
-\semiisopage
-%   % The MS word template uses even 25.4mm margins, this is not as good if is bound
-\setlrmarginsandblock{30mm}{25.4mm}{*}
-%   % {left}{right}{ratio}, * for calculate
-%%% if you need it to be even (for online), use this
-\ifbool{online}{\setulmarginsandblock{25.4mm}{25.4mm}{*}}
-%   % {upper}{lower}{ratio} * for calculate
+\semiisopage{}
+%Print version:  iso geometry on an a4 looks best when bound  
+\ifbool{online}
+{%Online version: symmetric margins
+  \setlrmarginsandblock{25.4mm}{25.4mm}{*}% {left}{right}{ratio} * for calculate
+  \setulmarginsandblock{25.4mm}{25.4mm}{*}% {upper}{lower}{ratio} * for calculate
+}{}
 \checkandfixthelayout% implement the margins
 
 %% Some debugging code to check length calculation.
@@ -522,7 +523,6 @@
   pagecenterx:\printlength{\pagecenterx}\\
   pagecentery:\printlength{\pagecentery}\\
 }
-
 
 %% ----- PRINTED FRONT COVER ----------------------------------------------------------
 %% This cover will be on the outside (not with window)
