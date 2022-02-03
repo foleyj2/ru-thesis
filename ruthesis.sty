@@ -458,23 +458,24 @@
 \newcommand{\theInstitutionPhone}{+354 599 6200}
 \newcommand{\theInstitutionURL}{www.ru.is}%
 
-\newcommand{\DegreeAndDepartment@ruthesis}{\DegreeLong@ruthesis{} (\DegreeAbbrv@ruthesis)  in \Program@ruthesis{}}
-
-\newcommand{\DocumentType@ruthesis}{Dissertation}
-\newcommand{\DegreeAbbrv@ruthesis}{Ph.D.}
-\newcommand{\DegreeLong@ruthesis}{Doctorate}
-\newcommand{\Program@ruthesis}{\LaTeX{} Magic}
-\newcommand{\DocumentInfo}[4]{
-  \renewcommand{\DocumentType@ruthesis}{#1}
-  \renewcommand{\DegreeAbbrv@ruthesis}{#2}
-  \renewcommand{\DegreeLong@ruthesis}{#3}
-  \renewcommand{\Program@ruthesis}{#4}
+\newcommand{\theDocumentType}{Dissertation}
+\newcommand{\theDegreeAbbrv}{Ph.D.}
+\newcommand{\theDegreeLong}{Doctorate}
+\newcommand{\theProgram}{\LaTeX{} Magic}
+\newcommand{\theECTS}{30}
+\newcommand{\theSchool}{School of Awesomeness}
+\newcommand{\DocumentInfo}[6]{
+  \renewcommand{\theDocumentType}{#1}
+  \renewcommand{\theDegreeAbbrv}{#2}
+  \renewcommand{\theDegreeLong}{#3}
+  \renewcommand{\theProgram}{#4}
+  \renewcommand{\theECTS}{#5}
+  % ECTS Only applicable on BSc. and MSc.
+  % Leave blank
+  \renewcommand{\theSchool}{#6}
 }
+\newcommand{\theDegreeAndDepartment}{\theDegreeLong (\theDegreeAbbrv)  in \theProgram{}}
 
-%ECTS Only applicable on BSc. and MSc.
-\newcommand{\ects}[1]{\newcommand{\ects@ruthesis}{#1}}
-\newcommand{\School@ruthesis}{School of Awesomeness}
-\newcommand{\School}[1]{\renewcommand{\School@ruthesis}{#1}}
 
 
 \newcommand{\supervisors@ruthesis}{\item No Advisor}
@@ -576,7 +577,7 @@
 %           \textbf{\theauthor}\\% 
 %           \DegreeLong@ruthesis\\% 
 %           \whensigned@ruthesis\\%
-%           \School@ruthesis\\%
+%           \theSchool\\%
 %           \theInstitution%        
 %         }\par
 %         \vspace*{5mm}
@@ -604,13 +605,7 @@
 %% ----- INTERNAL TITLE PAGE WITH COMMITTEE ---------------------------------------------------
 %% TODO: make counter for supervisors in the very rare case that there
 %% is only one supervisor
-
-\renewcommand{\maketitlehookc}{\begin{center}\DegreeAbbrv@ruthesis{} \DocumentType@ruthesis{} %
-         \ifdef\ects@ruthesis{of \ects@ruthesis{} ECTS credits}%
-         submitted to the \School@ruthesis\ \\%
-         at \theInstitution{} in partial fulfillment\\% 
-         of the requirements for the degree of \\%
-         \textbf{\DegreeLong@ruthesis}\par\end{center}}
+\newcommand{\DocumentDescription}[1]{\renewcommand{\maketitlehookc}{\begin{center}#1\par\end{center}}}
 
 %% maketitlehookd is after the date
 \renewcommand{\maketitlehookd}{{\titletextfont%
@@ -644,10 +639,10 @@
 \newcommand{\signaturepage}{
   \begin{cover}
     The undersigned hereby certify that they recommend to the
-    \School@ruthesis{} at \theInstitution{} for acceptance this
-    \DocumentType@ruthesis{} entitled \textbf{\thetitle}
+    \theSchool{} at \theInstitution{} for acceptance this
+    \theDocumentType{} entitled \textbf{\thetitle}
     submitted by \textbf{\theauthor} in partial fulfillment
-    of the requirements for the degree of \textbf{\DegreeAndDepartment@ruthesis}%
+    of the requirements for the degree of \textbf{\theDegreeAndDepartment}%
     \vspace*{2\baselineskip}
     
     \newcommand{\signline}[2]{\item \hdashrule{##2}{1pt}{1pt}\\##1}
@@ -682,15 +677,15 @@
     \enableindents{}
     The undersigned hereby grants permission to
     the \theInstitution{} Library to reproduce single
-    copies of this \DocumentType@ruthesis{} entitled \textbf{\thetitle}
+    copies of this \theDocumentType{} entitled \textbf{\thetitle}
     and to lend or sell such copies for private, scholarly or
     scientific research purposes only.
     
     The author reserves all other publication and
     other rights in association with the copyright in the
-    \DocumentType@ruthesis{}, and
+    \theDocumentType{}, and
     except as herein before provided, neither the
-    \DocumentType@ruthesis{} nor
+    \theDocumentType{} nor
     any substantial portion thereof may be printed or otherwise
     reproduced in any material form whatsoever without the
     author's prior written permission.
@@ -702,7 +697,7 @@
     \setlength{\plitemsep}{0.5\baselineskip} % space between lines
     \begin{compactitem}[]
       \signline{Date}{50mm}
-      \signline{\theauthor\\\DegreeLong@ruthesis}{0.75\textwidth}
+      \signline{\theauthor\\\theDegreeLong}{0.75\textwidth}
     \end{compactitem}        
   \end{cover}
 }
@@ -710,7 +705,7 @@
 
 \renewenvironment{abstract}
 {\begin{otherlanguage}{english}\begin{coverleft}{\centering%
-    {\titletitlefont\theenglishtitle\\}%%
+    {\titletitlefont\thetitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
@@ -723,7 +718,7 @@
 
 \newenvironment{abstractIS}
 {\begin{otherlanguage}{icelandic}\begin{coverleft}{\centering%
-    {\titletitlefont\theicelandictitle\\}%%
+    {\titletitlefont\thetitleIS\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
