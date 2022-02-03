@@ -405,35 +405,6 @@
 \vfuzz=5pt%% avoid overfilled vboxes
 %\newcommand{\draftnote}[1]{\ifdraft{{\color{gray}#1}}}
 
-\AtEndDocument{
-\typeout{*******************************************************************}
-\typeout{Make sure you print this at 100\% scaling on A4 paper.}
-\typeout{This is not the default on many computers, so watch out!}
-\typeout{Any adjustment to the size will mess up margins and text alignment.}
-\typeout{*******************************************************************}
-\typeout{}
-}
-
-
-%%%%%%%%%%%%%%%%%%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%% TextPos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% These macros allow you to arbitrarily position things on the page
-%% This is needed for any cover pages/graphics
-
-%\RequirePackage{printlen}% display lengths in arbitrary units
-%\ifbool{debug}{\PassOptionsToPackage{showboxes}{textpos}}
-%\RequirePackage[absolute, verbose]{textpos}%
-
-%% These commands set the units in \begin{textblock} when not 
-%%  directly specified
-%% We set them to the page sizes so we can align from them
-%\setlength{\TPHorizModule}{\paperwidth}
-%\setlength{\TPVertModule}{\paperheight}
-%%\setlength{\TPMargin}{2mm} %% margins inside the textblock*
-%\textblockorigin{0mm}{0mm} % start everything near the top-left corner
-
-
 %%%%%%%%%%%%%%%%%%%% Addional Font Adjustments%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% ruthesis sets up some reasonable fonts, but we may need further adjustments
 %%  Note that you can leave off elements and it will use the last value set (or default??)

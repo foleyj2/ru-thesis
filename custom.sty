@@ -2,6 +2,23 @@
 %% Macros and packages to add functionality beyond the basic template
 %% This is the location to put your own customizations
 
+%%%%%%%%%%%%%%%%%% TextPos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% These macros allow you to arbitrarily position things on the page
+%% This is needed for any cover pages/graphics
+
+%\RequirePackage{printlen}% display lengths in arbitrary units
+%\ifbool{debug}{\PassOptionsToPackage{showboxes}{textpos}}
+%\RequirePackage[absolute, verbose]{textpos}%
+
+%% These commands set the units in \begin{textblock} when not 
+%%  directly specified
+%% We set them to the page sizes so we can align from them
+%\setlength{\TPHorizModule}{\paperwidth}
+%\setlength{\TPVertModule}{\paperheight}
+%%\setlength{\TPMargin}{2mm} %% margins inside the textblock*
+%\textblockorigin{0mm}{0mm} % start everything near the top-left corner
+
+
 \newcommand{\formatemail}[1]{$<$\texttt{#1}$>$}
 
 \usepackage[flushleft]{threeparttable}  % allows us to make tables with footnotes
