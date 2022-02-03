@@ -1,0 +1,22 @@
+%%%%% CUSTOM.STY %%%%%%%%%
+%% Macros and packages to add functionality beyond the basic template
+%% This is the location to put your own customizations
+
+\newcommand{\formatemail}[1]{$<$\texttt{#1}$>$}
+
+\usepackage[flushleft]{threeparttable}  % allows us to make tables with footnotes
+
+\usepackage[final]{listings}
+%%% Formatting code inclusion and snippets
+%% "final" option to force it to display code
+
+\usepackage{siunitx}
+%% \SI{9.82}{\meter\per\second\square}
+
+
+%% FIXME system for making notes to each other for what needs to 
+%% be completed in a group document.
+\usepackage[layout=inline]{fixme}
+%% internal layouts: inline, margin, footnote, index, marginclue
+%% % Warning! The pdf external layouts do not play well with hyperref
+%% % and must be loaded by doing \fxuselayouts{}
