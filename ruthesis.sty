@@ -506,6 +506,19 @@
 %\renewcommand{\title}[2]{\renewcommand{\thetitle}{#1}\renewcommand{\thetitleIS}{#2}}
 \newcommand{\titleIS}[1]{\renewcommand{\thetitleIS}{#1}}
 
+%% LaTeX3 attempt at smarter titles
+%% Still a work in progress --foley 2022-2-3
+%\% NewDocumentCommand\thesistitle{O{#2} m}
+% % ARGS: [optional use #2], {mandatory} 
+% {
+%   \NewDocumentCommand\theenglishtitle{}{#2}%babel naming convetion?
+%   \NewDocumentCommand\theicelandictitle{}{#1}
+%   \iflanguage{icelandic}
+%   {\title{\theicelandictitle}}
+%   {\title{\theenglishtitle}}
+% }
+
+
 %% Clean up some formatting for the text
 \renewcommand{\thepage}{\roman{page}}
 
@@ -703,7 +716,7 @@
 
 \renewenvironment{abstract}
 {\begin{otherlanguage}{english}\begin{coverleft}{\centering%
-    {\titletitlefont\thetitle\\}%%
+    {\titletitlefont\theenglishtitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
@@ -716,7 +729,7 @@
 
 \newenvironment{abstractIS}
 {\begin{otherlanguage}{icelandic}\begin{coverleft}{\centering%
-    {\titletitlefont\thetitleIS\\}%%
+    {\titletitlefont\theicelandictitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
