@@ -6,4 +6,6 @@ The old SVN repository is found at https://repository.cs.ru.is/svn/thesis-templa
 
 Please send pull requests and Issues for improvements/changes.
 
-Locations to update when this changes:  https://en.ru.is/st/dcs/student-information/thesis/thesis-template/
+Locations to update when this changes:  
+* https://en.ru.is/st/dcs/student-information/thesis/thesis-template/
+* https://en.ru.is/st/de/phd/
