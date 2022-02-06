@@ -5,3 +5,5 @@ The old Overleaf verison is at https://www.overleaf.com/latex/templates/reykjavi
 The old SVN repository is found at https://repository.cs.ru.is/svn/thesis-template/trunk/ruthesis/
 
 Please send pull requests and Issues for improvements/changes.
+
+Locations to update when this changes:  https://en.ru.is/st/dcs/student-information/thesis/thesis-template/
