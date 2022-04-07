@@ -53,7 +53,7 @@
 %\end{dedications}
 
 \enableindents{}% turn on/off paragraph indents
-% RUM: "Acknowledgements (optional)"%start numbering
+% RUM: "Acknowledgements (optional)"
 
 \chapter*{Acknowledgements} 
 \begin{quotation}
@@ -85,8 +85,8 @@ $m$ &Mass &\si{\gram}\\ %New function:  \unit{} in Livetex 2021
 $c$ &Speed of Light &\SI{2.99E9}{\meter\per\square\second}\\ %New function:  \qty{} in Livetex 2021
 \end{tabular}
 
-
-\mainmatter{}
+%%%%%%%%%%%%% MAIN BODY OF TEXT STARTS %%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter{} % start numbering chapters, sections, pages
 \aliaspagestyle{chapter}{empty}
 % Don't put page numbers on the chapter changes
 
@@ -118,7 +118,7 @@ For everyone else, continue to the instructions.
 %% We prefer that all elements be numbered
 
 %%%%%%%%%%%%% SHOW INDEX %%%%%%%%%%%%%%%%%%
-%% Index, optional.  A good idea on longer documents
+%% Index, optional.  Helpful on longer documents
 \clearforchapter{}
 \printindex{}%%RUM: Not mentioned
 
