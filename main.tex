@@ -17,7 +17,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Thesis and Project Report Template for \theInstitution{} (English Title)}
-\titleIS{Thesis and Project Report Template for \theInstitution{} (Icelandic Title)}
 \author{Joseph T. Foley}%Use \and as an author separator
 \date{2022}{2}{2}%{Year}{Month}{Day}%use numbers
 
@@ -44,18 +43,6 @@
 %\signaturepage{} %Generally only for Print copies
 %\archivesigpage{} %Generally only for Print copies
 
-\begin{abstract}
-  The abstract goes here translated into English.
-  If the thesis is in English, it should come first.
-  It should be a fairly short summary of the entire document.
-\end{abstract}
-
-\begin{abstractIS}
-  The abstract goes here translated into Icelandic.
-  If the thesis is in Icelandic, it should come first.
-  It should be a fairly short summary of the entire document.
-\end{abstractIS}
-
 %\begin{dedications}% Optional
 %  I dedicate this to my spouse/child/pet/power animal.
 %\end{dedications}
@@ -63,7 +50,34 @@
 \enableindents{}% turn on/off paragraph indents
 % RUM: "Acknowledgements (optional)"%start numbering
 
-\chapter*{Acknowledgements} 
+\clearpage{}
+\tableofcontents{}\clearpage
+\listoffigures{}\clearpage
+\listoftables{}\clearpage
+
+%% A list of abbreviations is an example of a special list
+%% Other lists may be added, such as lists of algorithms, symbols, theorems, etc.
+%% IN CS PhD, this is sometimes centered.
+\chapter*{List of Symbols}%%RUM: Not mentioned
+%% This list demonstrates the "siunitx" package capabilities
+\begin{tabular}{lll}
+Symbol &Description &Value/Units\\
+$E$ &Energy &\si{\joule}\\ %New function:  \unit{} in Livetex 2021
+$m$ &Mass &\si{\gram}\\ %New function:  \unit{} in Livetex 2021
+$c$ &Speed of Light &\SI{2.99E9}{\meter\per\square\second}\\ %New function:  \qty{} in Livetex 2021
+\end{tabular}
+
+\begin{abstract}
+  The abstract goes here in English or Icelandic.
+  It should be a fairly short summary of the entire document.
+  If you switch to Icelandic mode (IS option to ruthesis) then abstract will become \'{U}tdr\'{a}ttur
+
+  Keywords / Efnisord:  Keywords, separated, by, commas
+\end{abstract}
+
+
+% RUM: "Acknowledgements (optional)"
+\chapter*{Acknowledgments} 
 \begin{quotation}
 So long, and thanks for all the fish.
 \end{quotation}\sourceatright{Douglas Adams\cite{adams84fish}}
@@ -76,27 +90,6 @@ Additional equipment was generously donated by the Icelandic Tourism Board.
   Note that it is important to acknowledge any funding that helped in the work\/}
 %\/ is italic correction at the end of \em and italics
 \clearpage{}
-\tableofcontents{}\clearpage
-\listoffigures{}\clearpage
-\listoftables{}\clearpage
-
-%% The list of abbreviations is an example of a special list
-%% Other lists may be added, such as lists of algorithms, symbols, theorems, etc.
-%% IN CS PhD, this is sometimes centered.
-\chapter*{List of Abbreviations}%%RUM: Not mentioned
-\begin{tabular}{ll}
-M.Sc. &Masters of Science\\
-Ph.D. &Doctor of Philosophy\\
-\end{tabular}
-
-\chapter*{List of Symbols}%%RUM: Not mentioned
-\begin{tabular}{lll}
-Symbol &Description &Value/Units\\
-$E$ &Energy &\unit{\joule}\\
-$m$ &Mass &\unit{gram}\\
-$c$ &Speed of Light &\qty{2.99E9}{\meter\per\second\squared}\\
-\end{tabular}
-
 
 \mainmatter{}
 \aliaspagestyle{chapter}{empty}
