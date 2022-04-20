@@ -273,7 +273,7 @@
     \begin{vplace}[1.0] % ratio of space above and below
       \centering
       \OnehalfSpacing%
-      \iflanguage{icelandic}{Höfundarréttur}{Copyright}\\
+      \iflanguage{icelandic}{Höfundarréttur}{Copyright}\\%may need to put other \iflanguage eventually
       \theauthor\\
       \thedate\\
     \end{vplace}
@@ -458,24 +458,6 @@
 \newenvironment{rolelist}
 {\begin{compactitem}[\hspace{10mm}]}
 {\end{compactitem}}
-
-%% Setup Bilingual titles
-%\newcommand{\thetitle}{**Title in English**}
-\newcommand{\thetitleIS}{**Title in Icelandic**}
-%\renewcommand{\title}[2]{\renewcommand{\thetitle}{#1}\renewcommand{\thetitleIS}{#2}}
-\newcommand{\titleIS}[1]{\renewcommand{\thetitleIS}{#1}}
-
-%% LaTeX3 attempt at smarter titles
-%% Still a work in progress --foley 2022-2-3
-%\% NewDocumentCommand\thesistitle{O{#2} m}
-% % ARGS: [optional use #2], {mandatory} 
-% {
-%   \NewDocumentCommand\theenglishtitle{}{#2}%babel naming convetion?
-%   \NewDocumentCommand\theicelandictitle{}{#1}
-%   \iflanguage{icelandic}
-%   {\title{\theicelandictitle}}
-%   {\title{\theenglishtitle}}
-% }
 
 
 %% Clean up some formatting for the text
@@ -666,7 +648,7 @@
 
 
 \renewenvironment{abstract}
-{\begin{otherlanguage}{english}\begin{coverleft}{\centering%
+{\begin{coverleft}{\centering%
     {\titletitlefont\thetitle\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
@@ -676,21 +658,7 @@
   \setlength{\parskip}{\baselineskip}%
   \par\vspace*{2\baselineskip}%
   \textbf{Abstract}\par\vspace{1ex}}
-{\par\end{coverleft}\end{otherlanguage}\newpage}
-
-\newenvironment{abstractIS}
-{\begin{otherlanguage}{icelandic}\begin{coverleft}{\centering%
-    {\titletitlefont\thetitleIS\\}%%
-    \vspace{\baselineskip}
-    \theauthor\\%
-    \vspace{\baselineskip}
-    \thedate\\%
-  }%
-  \setlength{\parskip}{\baselineskip}%
-  \par\vspace*{2\baselineskip}%
-  \textbf{Útdráttur}\par\vspace{1ex}}
-{\par\end{coverleft}\end{otherlanguage}\newpage}
-
+{\par\end{coverleft}\newpage}
 
 %% ----- END OF FRONT MATERIALS ---------------------------------------------------------------
 %\RequirePackage{stackengine}%% not sure why this is here
