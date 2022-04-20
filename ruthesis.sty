@@ -32,7 +32,6 @@
 %% Booleans make it easy to enable and disable parts of the template
 \newbool{debug}
 \newbool{draftbool}
-\newbool{online}
 \newbool{IS}
 \newbool{proof}
 
@@ -56,11 +55,6 @@
 
 \DeclareOption{IS}{\booltrue{IS}}
 
-\DeclareOption{online}{
-  \setbool{online}{true}
-  \typeout{ruthesis option: online}
-}
-
 \DeclareOption{forcegraphics}{%
   \PassOptionsToPackage{final}{graphicx}
   \PassOptionsToPackage{final}{pdfpages}
@@ -83,15 +77,10 @@
 %% carefully before modifying any of the execution and previous section.
 %% ---------------- Package Loading -----------------------------
 
-\ifbool{online}
-{\ExecuteOptions{openany}}%% Online format does not have right-vs-left
-{\ExecuteOptions{openright}}%% All of our printed formats are going to be opening to the right
-
 %% Now to print the status of all the booleans if debug boolean is set
 %% Any boolean testing must be after the \LoadClass otherwise the Option execution
 %% has not completed.
 \ifbool{debug}{%
-  \ifbool{online}{\typeout{ruthesis bool: online}}{}
   \ifbool{forcegraphics}{\typeout{ruthesis bool: forcegraphics}}{}
   \ifbool{proof}{\typeout{ruthesis bool: proof}}{}
   \ifbool{debug}{\typeout{ruthesis bool: debug}}{}
@@ -309,7 +298,6 @@
 }
 
 %% Disable clearforchapter on formats that do not need blank pages
-\ifbool{online}{\renewcommand{\clearforchapter}{\newpage}}{}
 \ifbool{draftbool}{\renewcommand{\clearforchapter}{\newpage}}
   % waste less blank pages in draft mode
   % see p123 http://ctan.uib.no/macros/latex/contrib/memoir/memman.pdf
@@ -317,7 +305,7 @@
 \newenvironment{cover}% commonalities for the cover material
 {\thispagestyle{cover}%
   \pagestyle{cover}%
-  \clearforchapter% clear to chapter setting if note online
+  \clearforchapter%
   \disableindents%
   \titletextfont\SingleSpacing}%
 {%\setlength{\TPMargin}{0mm} %% margins inside the textblock
@@ -504,16 +492,11 @@
 %% WARNING: memoir class has its own margin macros
 %%    Do not use the geometry package!!!!
 
-%% The MS word template uses even 25.4mm margins which works poorly as a bound book
-%% We will only do this for the online version
+%% Note: The old MS word template uses even 25.4mm margins which works poorly as a bound book
 
-\semiisopage{}
-%Print version:  iso geometry on an a4 looks best when bound  
-\ifbool{online}
-{%Online version: symmetric margins
-  \setlrmarginsandblock{25.4mm}{25.4mm}{*}% {left}{right}{ratio} * for calculate
-  \setulmarginsandblock{25.4mm}{25.4mm}{*}% {upper}{lower}{ratio} * for calculate
-}{}
+%\semiisopage{}
+\setlrmarginsandblock{25mm}{*}{1.5}% {left}{right}{ratio} * for calculate
+\setulmarginsandblock{25mm}{25mm}{*}% {upper}{lower}{ratio} * for calculate
 \checkandfixthelayout% implement the margins
 
 %% Some debugging code to check length calculation.
