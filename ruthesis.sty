@@ -24,10 +24,6 @@
 % http://texdoc.net/texmf-dist/doc/latex/etoolbox/etoolbox.pdf
 \RequirePackage{etoolbox}
 
-% xparse:  LateX3 Advanced Argument and macro definition
-% http://ctan.uib.no/macros/latex/contrib/l3packages/xparse.pdf
-\RequirePackage{xparse}
-
 %% ---------------- Boolean switches -----------------------------
 %% Booleans make it easy to enable and disable parts of the template
 \newbool{debug}
@@ -87,8 +83,15 @@
 
 %% ---------------- Internationalization -----------------------------
 %% Unicode setup
-\RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
+
+% Font setup
+% Standardized STIX2 fonts that print well, display on
+% e-readers/screens clearly, and have compatible licensing
+% requirements
+\RequirePackage{stix2}
+\RequirePackage[T1]{fontenc}
+
 % allows UTF encoding, needed for Icelandic and other accented characters
 
 \ifbool{IS}
@@ -110,6 +113,31 @@
 %% Babel allows various automatic text to be in selected languages
 %% But to use the options, you have to always load it, even for english
 %% The languages must be specified in order.
+
+%%%%%%%%%%%%%%%% MARGINS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% WARNING: memoir class has its own margin macros
+%%    Do not use the geometry package!!!!
+
+%% Note: The old MS word template uses even 25.4mm margins which works poorly as a bound book
+\setxlvchars{}
+\setlxvchars{}
+\trimLmarks{}% trim marks get cut off
+\stockaiv{}% paper stock a4
+\pagebv{}% cut to b5
+%\settrims{0pt}{0pt}
+\setpagebl{\paperheight}{\paperwidth}{*}%page area on bottom left for cutting
+%\checkandfixthelayout% implement the margins
+
+\RequirePackage{canoniclayout}
+
+%% Some debugging code to check length calculation.
+\newcommand{\showlengths@ruthesis}{
+  \uselengthunit{mm} % showlen package
+  Lengths: (with round off error from floats)\\
+  pagecenterx:\printlength{\pagecenterx}\\
+  pagecentery:\printlength{\pagecentery}\\
+}
+
 
 %% ---------------- Graphics ------------------------------
 \RequirePackage{graphicx}
@@ -152,6 +180,9 @@
 %% \toprule,\midrule,\bottomrule
 
 %% ---------------- Fonts -----------------------------
+%% Important:  The template has switched to STIX2 fonts and memoir defaults
+%% to massively simplify font selection.  You should not need to mess with fonts.
+
 %%%  For help, read http://latex-project.org/guides/fntguide.pdf
 %%
 %  save the current font size
@@ -198,13 +229,10 @@
 %%  Note that you can leave off elements and it will use the last value set (or default??)
 % \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
 %  \fontsize{SIZE}{BASELINESKIP}
-\def\titletitlefont{\fontseries{b}\fontsize{17pt}{20pt}\selectfont}
-\def\titletextfont{\fontsize{14pt}{16pt}\selectfont}
-\def\titleinfofont{\fontsize{12}{14}\selectfont}
-\def\sigtextfont{\fontsize{12pt}{14pt}\selectfont}
-\def\warningfont{\fontseries{b}\fontsize{24pt}{28pt}\selectfont}
 
-%% Outside PhD cover we hardcode for consistency
+%%  Outside PhD cover we hardcode for consistency, but has been replaced by cover
+%%  from RU communications department.
+%% TODO:  Generate equivalent cover so that users can avoid having to do extra work
 \def\covertitlefont{\fontfamily{phv}\fontseries{b}\fontshape{n}\fontsize{20.74}{24}\selectfont}
 \def\covertextfont{\fontfamily{phv}\fontseries{m}\fontshape{n}\fontsize{14.4}{16}\selectfont}
 
@@ -252,14 +280,17 @@
 \newcommand{\frontlogo@ruthesis}{ru-logo}
 \newcommand{\frontlogo}[1]{\renewcommand{\frontlogo@ruthesis}{#1}}
 
-\renewcommand{\maketitlehooka}{\begin{centering}\includegraphics[width=4cm]{\frontlogo@ruthesis}\par\end{centering}\vspace{2mm}}%
-\renewcommand{\pretitle}{\begin{center}\titletitlefont}%
+
+%% This hook puts a RU logo over the title
+%\renewcommand{\maketitlehooka}{\begin{centering}\includegraphics[width=4cm]{\frontlogo@ruthesis}\par\end{centering}\vspace{2mm}}%
+
+\renewcommand{\pretitle}{\begin{center}}%
 \renewcommand{\posttitle}{\par\end{center}}
 
 % \renewcommand{\maketitlehookb}{\begin{center}\titletextfont{}by\end{center}\vspace{1mm}}
 % 1mm adjustment to center the "by".   I've disabled it because I think the "by" looks unprofessional.
 
-\renewcommand{\preauthor}{\titletextfont\begin{center}\large\par}
+\renewcommand{\preauthor}{\begin{center}\large\par}
 \renewcommand{\postauthor}{\par\end{center}}
 \newcommand{\titledetails}[1]{\renewcommand{\maketitlehookc}{#1}}
 \renewcommand{\predate}{\begin{center}\large}
@@ -306,7 +337,7 @@
   \pagestyle{cover}%
   \clearforchapter%
   \disableindents%
-  \titletextfont\SingleSpacing}%
+  \SingleSpacing}%
 {%\setlength{\TPMargin}{0mm} %% margins inside the textblock
   \enableindents{}\newpage}%
 
@@ -318,7 +349,7 @@
   \cleartoverso%
   %\clearforchapter% clear to chapter setting  
   \disableindents%
-  \titletextfont\SingleSpacing}%
+  \SingleSpacing}%
 {%\setlength{\TPMargin}{0mm} %% margins inside the textblock
   %% I don't remember why we need to mess with \TPmargin --foley
   \enableindents{}\newpage}%
@@ -396,16 +427,6 @@
 \vfuzz=5pt%% avoid overfilled vboxes
 %\newcommand{\draftnote}[1]{\ifdraft{{\color{gray}#1}}}
 
-%%%%%%%%%%%%%%%%%%%% Addional Font Adjustments%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%  Note that you can leave off elements and it will use the last value set (or default??)
-% \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
-% \fontsize{SIZE}{BASELINESKIP}
-
-%% Default font is halfway between Times and Latin Modern
-\RequirePackage{newtxtext}
-\RequirePackage{newtxmath}
-
-
 %% We need the paralist and dashrule package in order to format the signature pages
 \RequirePackage{paralist}
 \RequirePackage{dashrule}
@@ -468,25 +489,6 @@
 
 \renewcommand{\bibname}{Bibliography} %Renaming the bibliography section (if omitted it will be named "references")
 
-%%%%%%%%%%%%%%%% MARGINS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% WARNING: memoir class has its own margin macros
-%%    Do not use the geometry package!!!!
-
-%% Note: The old MS word template uses even 25.4mm margins which works poorly as a bound book
-
-%\semiisopage{}
-\setlrmarginsandblock{25mm}{*}{1.5}% {left}{right}{ratio} * for calculate
-\setulmarginsandblock{25mm}{25mm}{*}% {upper}{lower}{ratio} * for calculate
-\checkandfixthelayout% implement the margins
-
-%% Some debugging code to check length calculation.
-\newcommand{\showlengths@ruthesis}{
-  \uselengthunit{mm} % showlen package
-  Lengths: (with round off error from floats)\\
-  pagecenterx:\printlength{\pagecenterx}\\
-  pagecentery:\printlength{\pagecentery}\\
-}
 
 %% ----- PRINTED FRONT COVER (PHD) ----------------------------------------------------------
 %% This cover will be on the outside (not with window)
@@ -513,10 +515,11 @@
 \newcommand{\printedcover}[2]{
   \thispagestyle{empty}
   \setlength{\TPMargin}{0mm} %% margins inside the textblock*
-  \sffamily    
-  \begin{textblock*}{\textwidth}[0.5,0.5](\pagecenterx,68mm)%
-    {\centering\includegraphics[width=55mm]{\frontlogo@ruthesis}\\}%
-  \end{textblock*}
+  \sffamily
+  % Don't need the logo
+%  \begin{textblock*}{\textwidth}[0.5,0.5](\pagecenterx,68mm)%
+%    {\centering\includegraphics[width=55mm]{\frontlogo@ruthesis}\\}%
+%  \end{textblock*}
   \setSingleSpace{1.8}\SingleSpacing%
   \begin{textblock*}{\textwidth}[0,0](30mm,120mm)%
     \textcolor{rugray}{\covertitlefont#1}\par%
@@ -554,10 +557,10 @@
 %% ----- INTERNAL TITLE PAGE WITH COMMITTEE ---------------------------------------------------
 %% TODO: make counter for supervisors in the very rare case that there
 %% is only one supervisor
-\newcommand{\DocumentDescription}[1]{\renewcommand{\maketitlehookc}{{\titletextfont\begin{center}#1\par\end{center}}}}
+\newcommand{\DocumentDescription}[1]{\renewcommand{\maketitlehookc}{{\begin{center}#1\par\end{center}}}}
 
 %% maketitlehookd is after the date
-\renewcommand{\maketitlehookd}{{\titletextfont%
+\renewcommand{\maketitlehookd}{{%
   \vspace{2\baselineskip}
   % change \personinfo to make the entries needed
   % Because this is inside a command, we escape the #1 as ##1      
@@ -594,7 +597,7 @@
     \setlength{\pltopsep}{2\baselineskip}  % first/top space
     \setlength{\plparsep}{2\baselineskip} % space between entries
     \setlength{\plitemsep}{0.5\baselineskip} % space between lines
-    {\sigtextfont% 
+    {%\sigtextfont% 
       % change \personinfo to make the entries needed
       % Because this is inside a command, we escape the #1 as ##1
       \renewcommand{\personinfo}[5]{&\hdashrule{\signaturex}{1pt}{1pt}\\&##1\\\vspace{\signaturey}\\}
@@ -648,7 +651,7 @@
 
 \renewenvironment{abstract}
 {\begin{coverleft}{\centering%
-    {\titletitlefont\thetitle\\}%%
+    {{\Large \thetitle}\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
     \vspace{\baselineskip}
@@ -668,7 +671,7 @@
   \pagestyle{empty}%
   \cleartoevenpage{}% clear to chapter setting  
   \disableindents%
-  \titletextfont\SingleSpacing%
+  \SingleSpacing%
   \vplace[0.8]{
     {\centering 
       \belowbaseline[-\normaltextsize]{
@@ -676,7 +679,7 @@
       }
       \quad
       \begin{minipage}[t]{10cm}%
-        {\titletextfont\textcolor{rugray}{%
+        {\textcolor{rugray}{%
             \School\\            
             \Institution\\
             \InstitutionAddress\\
