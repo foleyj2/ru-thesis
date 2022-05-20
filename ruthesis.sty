@@ -297,15 +297,31 @@
 \renewcommand{\postdate}{\par\end{center}}
 \aliaspagestyle{title}{empty}
 %% ----- COPYRIGHT PAGE -----------------------------------------------------------------------
-\newcommand{\copyrightpage}{
+\RequirePackage{ccicons}
+\newcommand{\copyrightpage}[1]{
   % actually in books, this is often on the left side
   \begin{coverleft}
     \begin{vplace}[1.0] % ratio of space above and below
-      \centering
-      \OnehalfSpacing%
-      \iflanguage{icelandic}{Höfundarréttur}{Copyright}\\%may need to put other \iflanguage eventually
-      \theauthor\\
-      \thedate\\
+      \begin{flushleft}
+        #1
+        \url{http://hdl.handle.net/1946/xxxx}\\
+        Copyright \textcopyright{} \the\year{} \theauthor{} \ccbyncnd
+      \end{flushleft}
+      This work is licensed under the Creative Commons
+      Attribution-NonCom\-mercial-NoDerivatives 4.0 International License
+      (\url{http://creativecommons.org/licenses/by-nc-nd/4.0/}). You may
+      copy and redistribute the material in any medium or format, provide
+      appropriate credit, link to the license and indicate what changes you made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. You may not use the material for commercial purposes. If you remix, transform or build upon the material, you may not distribute the modified material.
+      The images or other third party material in this thesis are included in
+      the book’s Creative Commons license, unless indicated otherwise in a
+      credit line to the material. If material is not included in the book’s
+      Creative Commons license and your intended use is not permitted by
+      statutory regulation or exceeds the permitted use, you will need to
+      obtain permission directly from the copyright holder. The use of
+      general descriptive names, registered names, trademarks, service
+      marks, etc. in this publication does not imply, even in the absence of
+      a specific statement that such names are exempt from the relevant
+      protective laws and regulations and therefore free for general use.
     \end{vplace}
   \end{coverleft}
 }
