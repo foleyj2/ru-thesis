@@ -528,47 +528,49 @@
 \setlength{\pagecentery}{0.5\stockheight}
 
 
-\newcommand{\printedcover}[2]{
-  \thispagestyle{empty}
-  \setlength{\TPMargin}{0mm} %% margins inside the textblock*
-  \sffamily
-  % Don't need the logo
-%  \begin{textblock*}{\textwidth}[0.5,0.5](\pagecenterx,68mm)%
-%    {\centering\includegraphics[width=55mm]{\frontlogo@ruthesis}\\}%
-%  \end{textblock*}
-  \setSingleSpace{1.8}\SingleSpacing%
-  \begin{textblock*}{\textwidth}[0,0](30mm,120mm)%
-    \textcolor{rugray}{\covertitlefont#1}\par%
-    %% Originally title was forced uppercase, but no-one seems to have
-    %% noticed, so I'm removing it.
-  \end{textblock*}%
-  % 
-    \setSingleSpace{1.5}\SingleSpacing%    
-    \begin{textblock*}{\textwidth}[0,0](30mm,222mm)%
-      \begin{minipage}{\textwidth}
-        \textcolor{rugray}{ 
-          \covertextfont{}\noident
-          \textbf{\theauthor}\\% 
-          \theDegreeLong\\%
-          \thedate\\%
-          \theSchool\\%
-          \theInstitution%        
-        }\par
-        \vspace*{5mm}
-        \textcolor{rured}{
-          \covertitlefont{}\noindent
-          \theDocumentType
-        }\par
-        \vspace*{3mm}
-        {\scriptsize\color{rugray}#2}%                 
-      \end{minipage}
-    \end{textblock*}        
-  \setSingleSpace{1.0}
-%  \end{covernonum}
-  \newpage\quad%% I am not sure why we must put this to ensure that the covers don't overlap
-  \newpage  % without this, page numbers show up.  Weird.
-  %% TODO: isolate font and spacing changes from the rest of the document
-}
+%% Covers are provided by Agusta in Communications
+%% This is no longer to be used --foley 20220521
+% \newcommand{\printedcover}[2]{
+%   \thispagestyle{empty}
+%   \setlength{\TPMargin}{0mm} %% margins inside the textblock*
+%   \sffamily
+%   % Don't need the logo
+% %  \begin{textblock*}{\textwidth}[0.5,0.5](\pagecenterx,68mm)%
+% %    {\centering\includegraphics[width=55mm]{\frontlogo@ruthesis}\\}%
+% %  \end{textblock*}
+%   \setSingleSpace{1.8}\SingleSpacing%
+%   \begin{textblock*}{\textwidth}[0,0](30mm,120mm)%
+%     \textcolor{rugray}{\covertitlefont#1}\par%
+%     %% Originally title was forced uppercase, but no-one seems to have
+%     %% noticed, so I'm removing it.
+%   \end{textblock*}%
+%   % 
+%     \setSingleSpace{1.5}\SingleSpacing%    
+%     \begin{textblock*}{\textwidth}[0,0](30mm,222mm)%
+%       \begin{minipage}{\textwidth}
+%         \textcolor{rugray}{ 
+%           \covertextfont{}\noident
+%           \textbf{\theauthor}\\% 
+%           \theDegreeLong\\%
+%           \thedate\\%
+%           \theSchool\\%
+%           \theInstitution%        
+%         }\par
+%         \vspace*{5mm}
+%         \textcolor{rured}{
+%           \covertitlefont{}\noindent
+%           \theDocumentType
+%         }\par
+%         \vspace*{3mm}
+%         {\scriptsize\color{rugray}#2}%                 
+%       \end{minipage}
+%     \end{textblock*}        
+%   \setSingleSpace{1.0}
+% %  \end{covernonum}
+%   \newpage\quad%% I am not sure why we must put this to ensure that the covers don't overlap
+%   \newpage  % without this, page numbers show up.  Weird.
+%   %% TODO: isolate font and spacing changes from the rest of the document
+% }
   
 %% ----- INTERNAL TITLE PAGE WITH COMMITTEE ---------------------------------------------------
 %% TODO: make counter for supervisors in the very rare case that there
