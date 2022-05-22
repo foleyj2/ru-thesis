@@ -659,49 +659,12 @@
     \vspace{\baselineskip}
     \thedate\\%
   }%
-  \setlength{\parskip}{\baselineskip}%
-  \par\vspace*{2\baselineskip}%
+  \allowindents{}
   \textbf{Abstract}\par\vspace{1ex}}
 {\par\end{coverleft}\newpage}
-
-%% ----- END OF FRONT MATERIALS ---------------------------------------------------------------
-%\RequirePackage{stackengine}%% not sure why this is here
-%% ---------------------------------------------------------------------------------------------
-%% This command makes the back-cover materials
-\newcommand{\backcover}{%
-  \thispagestyle{empty}%
-  \pagestyle{empty}%
-  \cleartoevenpage{}% clear to chapter setting  
-  \disableindents%
-  \SingleSpacing%
-  \vplace[0.8]{
-    {\centering 
-      \belowbaseline[-\normaltextsize]{
-        \includegraphics[width=4cm]{\frontlogo@ruthesis} 
-      }
-      \quad
-      \begin{minipage}[t]{10cm}%
-        {\textcolor{rugray}{%
-            \School\\            
-            \Institution\\
-            \InstitutionAddress\\
-            \InstitutionPhone\\
-            \InstitutionURL\\  %% NO \\, it is in the ID macro
-            \Bookidnumber%
-          }
-        }            
-      \end{minipage}\\% 
-    }
-  }
-  \setlength{\TPMargin}{0mm}%% margins inside the textblock
-  \enableindents{}%
-}
-
-%% ----- END OF BACK MATERIALS ---------------------------------------------------------------
 
 
 %%% from the old cs template, if so desired
 %\makepagestyle{oldstyle}
 %\makeoddhead{oldstyle}{\footnotesize{\authorHeader@ruthesis}}{}{\footnotesize{\thepage}}
 %\makeevenhead{oldstyle}{\footnotesize{\thepage}}{}{\footnotesize{\thetitle}}
-
