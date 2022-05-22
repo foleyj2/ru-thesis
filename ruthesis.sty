@@ -12,10 +12,10 @@
 \typeout{Thesis package for Reykjavik University V3.0 <2022/05/2>, by Joseph Timothy Foley, foley at RU.IS}
 
 %% ---------------- Critical packages -----------------------------
-% Toolbox of many many macros that make a lot of latex code smarter and more robust
-% Incl:  \newbool, \ifbool, etc.
-% http://texdoc.net/texmf-dist/doc/latex/etoolbox/etoolbox.pdf
-\RequirePackage{etoolbox}
+\RequirePackage{etoolbox}% \newbool, \ifbool, etc.
+%% Toolbox of many many macros that make a lot of latex code smarter and more robust
+%% http://texdoc.net/texmf-dist/doc/latex/etoolbox/etoolbox.pdf
+\RequirePackage{ifluatex} %% \ifluatex
 
 %% ---------------- Boolean switches -----------------------------
 %% Booleans make it easy to enable and disable parts of the template
