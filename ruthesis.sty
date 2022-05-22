@@ -138,18 +138,10 @@
 %% ---------------- URLs and Paths -----------------------------
 \PassOptionsToPackage{obeyspaces,spaces,hyphens,allowmove}{url}
 \RequirePackage{url}
-%% The url package typesets url's and unix file paths nicely when they
-%% become long.  \url{}
-%% Also defines \path{}  which works with filepaths including windows paths.
+%% The url package typesets \url{} and unix file \path{} nicely.
 %% Watch out that you leave a space after a last \ e.g. \path{C:\ }
-%% You need another verbatim environment to make those typeset properly.
-%% Also defines the \path{} command for paths
-%% Option: obeyspace to deal with spaces in a path/url
-%% Option: spaces to do linebreaks at the spaces.
-%% Option: hyphens to do linebreaks at hyphens.
-%% Option: allowmove makes URLs not-fragile, so they can go in things that move
-%%         WARNING: If this breaks you will get very very weird errors
-
+%% Warning:  allowmove makes URLs not-fragile, so they can go in things that move
+%%           If this breaks you will get very very weird errors
 %% ---------------- Miscellaneous Packages ----------------------
 %% ---------------- Fonts -----------------------------
 %% Important:  The template has switched to STIX2 fonts and memoir defaults
