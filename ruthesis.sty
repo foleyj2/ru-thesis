@@ -1,5 +1,5 @@
 %% ---------------------------------------------------------------------------------------------
-%% LaTeX Base Class Reykjavík University Theses/Dissertations/Books,
+%% LaTeX Base Package Reykjavík University Theses/Dissertations/Books,
 %% ---------------------------------------------------------------------------------------------
 %% Original Author: Bjórn Þór Jónsson (bjorn AT ru.is)
 %% Refactored/Simplified on 2020-02-03: Joseph Timothy Foley <foley AT ru.is>
@@ -113,29 +113,6 @@
 %% But to use the options, you have to always load it, even for english
 %% The languages must be specified in order.
 
-%%%%%%%%%%%%%%%% MARGINS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% WARNING: memoir class has its own margin macros
-%%    Do not use the geometry package!!!!
-
-%% Note: The old MS word template uses even 25.4mm margins which works poorly as a bound book
-\setxlvchars{}
-\setlxvchars{}
-\trimLmarks{}% trim marks get cut off
-\stockaiv{}% paper stock a4
-\pagebv{}% cut to b5
-%\settrims{0pt}{0pt}
-\setpagebl{\paperheight}{\paperwidth}{*}%page area on bottom left for cutting
-%\checkandfixthelayout% implement the margins
-
-\RequirePackage{canoniclayout}
-
-%% Some debugging code to check length calculation.
-\newcommand{\showlengths@ruthesis}{
-  \uselengthunit{mm} % showlen package
-  Lengths: (with round off error from floats)\\
-  pagecenterx:\printlength{\pagecenterx}\\
-  pagecentery:\printlength{\pagecentery}\\
-}
 
 
 %% ---------------- Graphics ------------------------------
