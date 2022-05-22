@@ -437,10 +437,12 @@
 %% Disabling for now.
 
 %% Penalties for various text placement issues
-\clubpenalty=10000%% orphan lines
-\widowpenalty=10000%% widow lines
-\hfuzz=1pt%% avoid overfilled hboxes
-\vfuzz=5pt%% avoid overfilled vboxes
+%% They can cause strange paragraph spacing on some pages
+%% Disabling for now --foley
+%\clubpenalty=10000%% orphan lines
+%\widowpenalty=10000%% widow lines
+%\hfuzz=1pt%% avoid overfilled hboxes
+%\vfuzz=5pt%% avoid overfilled vboxes
 %\newcommand{\draftnote}[1]{\ifdraft{{\color{gray}#1}}}
 
 %% We need the paralist and dashrule package in order to format the signature pages
