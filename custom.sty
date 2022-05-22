@@ -37,3 +37,11 @@
 %% internal layouts: inline, margin, footnote, index, marginclue
 %% % Warning! The pdf external layouts do not play well with hyperref
 %% % and must be loaded by doing \fxuselayouts{}
+
+% \RequirePackage[autostyle,strict]{csquotes}
+%% http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/csquotes/csquotes.pdf
+%% You invoke with \enquote{} and \blockquote{}
+%% csquotes must be loaded before babel for AUCTeX
+%% autostyle: update style as language changes in document
+%% strict: any warnings become errors
+%% Don't forget to load Babel!
