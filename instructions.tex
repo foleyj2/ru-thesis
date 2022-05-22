@@ -147,21 +147,20 @@ Some information is at the top of \path{main.tex} file, this file is for a gener
 
    Alternatively, if nothing you are doing is particularly private or proprietary, you can do development online using Overleaf.
    In this case, you won't need to setup the rest of the tools mentioned below except perhaps the Reference Manager mentioned in step~\ref{list:refmanager}.
-   A version of the template can be found at \url{https://www.overleaf.com/latex/templates/reykjavik-university-thesis-template/fwdnpmdvwqcj#.V_TjteiLRph}
    
 
    \begin{enumerate}
    \item RedHat: sudo yum -y install
      texlive-collection-fontsrecommended
      texlive-biblatex-{apa,apa-doc,ieee,ieee-doc}
-     texlive-{xargs,lipsum,lastpage,pseudocode,url,examplep,listings,xspace,pgf,tikz,amsfonts,amsmath,amssymb,siunitx,svn-multi,subfig,fixme,textpos,biblatex,makeglos,nomencl,xwatermark,ltxkeys,framed,boondox,printlen}
+     texlive-{xargs,lipsum,lastpage,luatex,pseudocode,url,examplep,listings,xspace,pgf,tikz,amsfonts,amsmath,amssymb,siunitx,svn-multi,subfig,fixme,textpos,biblatex,makeglos,nomencl,xwatermark,ltxkeys,framed,boondox,printlen}
      Getting biber installed on older RedHat systems is a bit tricky
      for unclear reasons.  The metapackage you need is at
      https://copr.fedoraproject.org/coprs/cbm/Biber/ 
    \item Debian/Ubuntu:
      sudo apt-get -y install texlive-full pgf latex-xcolor
      If you don't want to install everything, this list of packages is known
-     to work: sudo apt-get -y install texlive texlive-latex-extra
+     to work: sudo apt-get -y install texlive texlive-luatex texlive-latex-extra
      texlive-science texlive-generic-extra texlive-lang-european
      texlive-lang-german latex-xcolor texlive-pictures pgf
      texlive-bibtex-extra texlive-publishers chktex evince
@@ -189,22 +188,24 @@ Some information is at the top of \path{main.tex} file, this file is for a gener
    \url{http://strawberryperl.com/}
    (it is already installed on the other platforms.)
    
- \item Try building the \path{instructions.tex} file.  If you get errors, there
+ \item Try building the \path{main.tex} file.  If you get errors, there
    is something wrong with your LaTeX installation.  Fix those first.
 
    
- \item Rename the \path{main.tex} file with your information.
+ \item Rename the \path{main.tex} file with your information (optional).
    DEGREE-NAME-YEAR is the recommended scheme 
    e.g. \path{msc-foley-2015.tex}.
    This is referred to as the "Main" file.
-
+ \item Set your UI to use \path{lualatex} as the processor.
+   If you are typing commands in manually, this is by typing in \path{lualatex main.tex}
+   
  \item Open and read the options at the top of the previous file and set
-   it up for your document.  You will need to fill in the title and
-   author at least.
+   it up for your document.
+   You will need to fill in the title and author at least.
 
  \item Start editing all of the \path{.tex} files with your content.
 
- \item Compile the document by running pdflatex on the Main file, run the bibliography tool, then view the result.
+ \item Compile the document by running lualatex on the Main file, run the bibliography tool, then view the result.
 
  \item When you print, make sure that the scale is 100\%.
    If you allow it to resize when printing, the margins won't be right.
@@ -216,16 +217,16 @@ Some information is at the top of \path{main.tex} file, this file is for a gener
 \subsection{Important Details}
 
 \begin{itemize}
-\item Make absolutely sure that your \path{references.bib} is in UTF8.  If it is another format (CP1251,etc) you may get weird problems with any accented characters.
+\item Make absolutely sure that your \path{references.bib} is in UTF-8.  If it is another format (CP1251,etc) you may get weird problems with any accented characters.
   {\em Students have run into encoding issues in the past and it has taken a surprisingly long time to debug.}
 
 \item Make sure the rest of the files, particularly the \path{.tex} file are in UTF8 or are at least in the same encoding.
   If the files are in different encoding, you will discover errors with accented characters when you try to include them together.
   Watch out for line endings. Linux, Windows, and OSX all use different line endings in text files.
 
-\item Use biber/biblatex instead of bibtex.
+\item You may wish biber/biblatex instead of bibtex.
 (The template may already do this.)
-Otherwise Icelandic characters will not work properly in your \path{references.bib} file.
+Otherwise Icelandic characters may not work properly in your \path{references.bib} file.
 TexMaker and TeXStudio require a configuration change to do this.
 %Refer to the ``...Projects'' guide above.
 
