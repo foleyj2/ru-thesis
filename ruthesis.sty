@@ -76,57 +76,31 @@
 
 %% ---------------- Internationalization -----------------------------
 %% Unicode setup
-\RequirePackage[utf8]{inputenc}
-
+\ifpdf\RequirePackage[utf8]{inputenc}\RequirePackage[T1]{fontenc}
+\else\relax\fi
 % Font setup
 % Standardized STIX2 fonts that print well, display on
 % e-readers/screens clearly, and have compatible licensing
 % requirements
 \RequirePackage{stix2}
-\RequirePackage[T1]{fontenc}
-
 % allows UTF encoding, needed for Icelandic and other accented characters
 
 \ifbool{IS}
 {\RequirePackage[english,icelandic]{babel}}%%Icelandic main language
 {\RequirePackage[icelandic,english]{babel}}%%English main language
-
-\usepackage[useregional]{datetime2}
-%% Smart manipulation of dates
-\renewcommand{\date}[3]{\newcommand{\thedate}{\DTMdisplaydate{#1}{#2}{#3}{-1}}}
-
-% \RequirePackage[autostyle,strict]{csquotes}
-%% http://mirrors.concertpass.com/tex-archive/macros/latex/contrib/csquotes/csquotes.pdf
-%% You invoke with \enquote{} and \blockquote{}
-%% csquotes must be loaded before babel for AUCTeX
-%% autostyle: update style as language changes in document
-%% strict: any warnings become errors
-%% Don't forget to load Babel!
-    
 %% Babel allows various automatic text to be in selected languages
 %% But to use the options, you have to always load it, even for english
 %% The languages must be specified in order.
 
 
+\usepackage[useregional]{datetime2}
+%% Smart manipulation of dates
+\renewcommand{\date}[3]{\newcommand{\thedate}{\DTMdisplaydate{#1}{#2}{#3}{-1}}}
 
 %% ---------------- Graphics ------------------------------
 \RequirePackage{graphicx}
 %% GraphicsX converts and includes graphics intelligently
 
-\graphicspath{{graphics/}{Graphics/}{./}}
-%% This is a list of folders to search for graphics files to include
-%% Each path should be in a {}.  
-%% Make sure that the upper/lowercase of the letters matches the folder or
-%% you may have weird problems with partners using OSX or Linux.
-%% Note that you don't have to put the folder where the .tex file is, it is
-%% included automatically, though it is bad practice to put your 
-%% graphics there
-%% LaTeX will search from left to right in the list, so you can put "cropped" versions
-%% in the first directory and it will grab them first. e.g.
-%\graphicspath{{graphics-cropped/}{graphics/}{Graphics/}{./}}
-%% 
-%% If you put a // at the end of the path, it will recursively search for graphics
-%% files on unix-based (OSX, Linux, etc.) platforms.
 
 
 %% ---------------- URLs and Paths -----------------------------

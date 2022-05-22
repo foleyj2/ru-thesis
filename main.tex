@@ -15,6 +15,14 @@
 
 \usepackage{lipsum}%provides us with text for testing
 %% usage: \lipsum[STARTNUM-ENDNUM]
+
+\graphicspath{{graphics/}{Graphics/}{./}}
+%% This is a list of folders to search for graphics files to include
+%% for the graphicx package (already loaded).  This may be case-sensitive.
+%% LaTeX will search from left to right in the list, so you can put "cropped" versions
+%% in the first directory and it will grab them first. e.g.
+%\graphicspath{{graphics-cropped/}{graphics/}{Graphics/}{./}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Thesis and Project Report Template for \theInstitution{}}
