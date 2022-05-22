@@ -155,65 +155,11 @@
 %% Important:  The template has switched to STIX2 fonts and memoir defaults
 %% to massively simplify font selection.  You should not need to mess with fonts.
 
-%%%  For help, read http://latex-project.org/guides/fntguide.pdf
-%%
-%  save the current font size
+% save the current font size
 \newlength{\normaltextsize}
 \setlength{\normaltextsize}{\f@size pt}
 
-%% Font guide at
-%% http://latex-project.org/guides/fntguide.pdf
-
-% set the font defaults (if they need to be further adjusted)
-%\renewcommand{\encodingdefault}{t1}
-
-%\renewcommand{\rmdefault}{ptm}  % adobe times
-%\renewcommand{\sfdefault}{phv}  % adobe helvetica
-%\renewcommand{\ttdefault}{pcr}  % adobe courier
-%% cmr  : computer modern roman
-%% cmss : computer modern sans oblique
-%% cmm  : computer modern math
-%% ptm  : (postscript) Adobe Times
-%% phv  : (postscript) Adobe Helvetica
-%% pcr  : (postscript) Adobe Courier
-
-%\renewcommand{\familydefault}{\sfdefault} % switch to \sfdefault if you want to force sanserif
-%% \familydefault should be one of the short letter codes such as "lm" or "ptm"
-%\renewcommand{\familydefault}{\rmdefault}
-
-%\renewcommand{\seriesdefault}{m}
-%% m  : medium
-%% b  : bold
-%% bx : bold extended
-%% sb : semi bold
-%% c  : condensed
-
-%\renewcommand{\shapedefault}{n}
-%% n  : upshape (normal)
-%% it : italics
-%% sl : slanted
-%% sc : small caps
-
-%%\fontsize{12pt}{14pt}  % args: fontsize, baselineskip (font+space)
-%% normal sequence of increasing sizes:  5,7,8,9,10,12,14.4,17.28,20.74,24.88
-
-%%  Specific fonts
-%%  Note that you can leave off elements and it will use the last value set (or default??)
-% \def\myfont{\fontencoding{T1}\fontfamily{lm}\fontseries{m}\fontshape{n}\fontsize{14pt}{16pt}\selectfont}
-%  \fontsize{SIZE}{BASELINESKIP}
-
-%%  Outside PhD cover we hardcode for consistency, but has been replaced by cover
-%%  from RU communications department.
-%% TODO:  Generate equivalent cover so that users can avoid having to do extra work
-\def\covertitlefont{\fontfamily{phv}\fontseries{b}\fontshape{n}\fontsize{20.74}{24}\selectfont}
-\def\covertextfont{\fontfamily{phv}\fontseries{m}\fontshape{n}\fontsize{14.4}{16}\selectfont}
-
-
 %%%%%%%%%%%%%%%%% Colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%% Setting colors in text
-%% Usage:
-%% \textcolor{rured}{Some text.}
-%% {\color{rured}Some text.}
 \RequirePackage{xcolor}
 \definecolor{rugray}{rgb}{0.2,0.2,0.2}
 \definecolor{rured}{rgb}{0.84,0.10,0.13}
@@ -227,13 +173,6 @@
 %%       \CheckCommand{cmd}[num][default]{definition}
 
 
-%% Spacing modes from the memoir class
-%\SingleSpacing{} % single spacing
-%\OnehalfSpacing{} % one and a half
-%\DoubleSpacing{} % Double spacing, very ugly.
-
-%% The official guidelines say to put the page in the middle bottom, but
-%% that was clearly written for the MS Word users.  We follow proper book setup.
 
 %% Comprehensive list of styles for memoir is in 7.2 (page 106)
 %% If you need to adjust the style on the chapters, modify chapter
