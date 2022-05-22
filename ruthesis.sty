@@ -419,6 +419,12 @@
 %\widowpenalty=10000%% widow lines
 %\hfuzz=1pt%% avoid overfilled hboxes
 %\vfuzz=5pt%% avoid overfilled vboxes
+\raggedbottom{}
+%% Vertical justification is the default.
+%% This causes problems on some pages with figures or chapter headings
+%% Allowing ragged bottoms keeps the spacing consistent between paragraphs
+%% Alternatively:  \setlength{\parskip}{0pt}
+
 %\newcommand{\draftnote}[1]{\ifdraft{{\color{gray}#1}}}
 
 %% We need the paralist and dashrule package in order to format the signature pages
