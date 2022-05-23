@@ -1,5 +1,6 @@
 %%%% This is the general thesis/project report template for most users
-\documentclass[12pt,a4paper]{memoir}
+\documentclass[12pt,b5paper]{memoir}
+%% B5 paper size is chosen because A4 stock cuts down nicely to a B5 book that fits on a shelf nicely.
 \usepackage[online]{ruthesis}
 %% Options for ruthesis in []:
 %%   online : for electronic submission rather than printing on paper (less blank pages)
@@ -17,7 +18,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Thesis and Project Report Template for \theInstitution{} (English Title)}
-\titleIS{Thesis and Project Report Template for \theInstitution{} (Icelandic Title)}
 \author{Joseph T. Foley}%Use \and as an author separator
 \date{2022}{2}{2}%{Year}{Month}{Day}%use numbers
 
@@ -44,25 +44,41 @@
 %\signaturepage{} %Generally only for Print copies
 %\archivesigpage{} %Generally only for Print copies
 
-\begin{abstract}
-  The abstract goes here translated into English.
-  If the thesis is in English, it should come first.
-  It should be a fairly short summary of the entire document.
-\end{abstract}
-
-\begin{abstractIS}
-  The abstract goes here translated into Icelandic.
-  If the thesis is in Icelandic, it should come first.
-  It should be a fairly short summary of the entire document.
-\end{abstractIS}
 
 %\begin{dedications}% Optional
 %  I dedicate this to my spouse/child/pet/power animal.
 %\end{dedications}
 
 \enableindents{}% turn on/off paragraph indents
-% RUM: "Acknowledgements (optional)"%start numbering
 
+\clearpage{}
+\tableofcontents{}\clearpage
+\listoffigures{}\clearpage
+\listoftables{}\clearpage
+
+%% A list of abbreviations is an example of a special list
+%% Other lists may be added, such as lists of algorithms, symbols, theorems, etc.
+%% IN CS PhD, this is sometimes centered.
+
+\chapter*{List of Symbols}%%RUM: Not mentioned
+%% This list demonstrates the "siunitx" package capabilities
+\begin{tabular}{lll}
+Symbol &Description &Value/Units\\
+$E$ &Energy &\si{\joule}\\ %New function:  \unit{} in Livetex 2021
+$m$ &Mass &\si{\gram}\\ %New function:  \unit{} in Livetex 2021
+$c$ &Speed of Light &\SI{2.99E9}{\meter\per\square\second}\\ %New function:  \qty{} in Livetex 2021
+\end{tabular}
+
+\begin{abstract}
+  The abstract goes here in English or Icelandic.
+  It should be a fairly short summary of the entire document.
+  If you switch to Icelandic mode (IS option to ruthesis) then abstract will become \'{U}tdr\'{a}ttur
+
+  Keywords / Efnisord:  Keywords, separated, by, commas
+\end{abstract}
+
+
+% RUM: "Acknowledgements (optional)"
 \chapter*{Acknowledgements} 
 \begin{quotation}
 So long, and thanks for all the fish.
@@ -75,30 +91,10 @@ Additional equipment was generously donated by the Icelandic Tourism Board.
 {\em Acknowledgements are optional; comment this chapter out if they are absent
   Note that it is important to acknowledge any funding that helped in the work\/}
 %\/ is italic correction at the end of \em and italics
-\clearpage{}
-\tableofcontents{}\clearpage
-\listoffigures{}\clearpage
-\listoftables{}\clearpage
-
-%% The list of abbreviations is an example of a special list
-%% Other lists may be added, such as lists of algorithms, symbols, theorems, etc.
-%% IN CS PhD, this is sometimes centered.
-\chapter*{List of Abbreviations}%%RUM: Not mentioned
-\begin{tabular}{ll}
-M.Sc. &Masters of Science\\
-Ph.D. &Doctor of Philosophy\\
-\end{tabular}
-
-\chapter*{List of Symbols}%%RUM: Not mentioned
-\begin{tabular}{lll}
-Symbol &Description &Value/Units\\
-$E$ &Energy &\unit{\joule}\\
-$m$ &Mass &\unit{gram}\\
-$c$ &Speed of Light &\qty{2.99E9}{\meter\per\second\squared}\\
-\end{tabular}
 
 
-\mainmatter{}
+%%%%%%%%%%%%% MAIN BODY OF TEXT STARTS %%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter{} % start numbering chapters, sections, pages
 \aliaspagestyle{chapter}{empty}
 % Don't put page numbers on the chapter changes
 
@@ -110,7 +106,6 @@ $c$ &Speed of Light &\qty{2.99E9}{\meter\per\second\squared}\\
 \chapter{Instructions}
 \textbf{Is this the right template for you?}
 If you are not a Reykjavik University student, this is probably not for you.
-If you are writing a Ph.D. or Sci.D. dissertation, then you want the file \path{dissertation.tex}.
 For everyone else, continue to the instructions.
 \include{instructions}
 \part{Demonstration}
@@ -119,19 +114,21 @@ For everyone else, continue to the instructions.
 \section{Another Section}
 \part{The Second Part} % Parts optional but useful in longer documents
 
+%% If appendices are needed, uncomment the following line
+%% and include the appendices in separate files if you so wish
+\appendix{}%%RUM: "Appendicies (as appropriate)
+\input{code} % as an example, perhaps some of your code
+
+%% Chicago Manual of Style says that the references go last
 \bibliographystyle{IEEEtran/bibtex/ieeetran}
 \bibliography{references}
 
-%% If appendices are needed, uncomment the following line
-%% and include the appendices in separate files
-\appendix{}%%RUM: "Appendicies (as appropriate)
-\input{code} % as an example, perhaps some of your code
 
 %\backmatter{} % Sections after this don't get numbers
 %% We prefer that all elements be numbered
 
 %%%%%%%%%%%%% SHOW INDEX %%%%%%%%%%%%%%%%%%
-%% Index, optional.  A good idea on longer documents
+%% Index, optional.  Helpful on longer documents
 \clearforchapter{}
 \printindex{}%%RUM: Not mentioned
 
