@@ -76,8 +76,7 @@
 
 %% ---------------- Internationalization -----------------------------
 %% Unicode setup
-\ifpdf\RequirePackage[utf8]{inputenc}\RequirePackage[T1]{fontenc}
-\else\relax\fi
+\ifluatex\relax\else\RequirePackage[utf8]{inputenc}\RequirePackage[T1]{fontenc}\fi
 % Font setup
 % Standardized STIX2 fonts that print well, display on
 % e-readers/screens clearly, and have compatible licensing
