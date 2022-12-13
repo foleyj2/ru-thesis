@@ -1,13 +1,21 @@
-# ru-thesis
+# ru-thesis: Reykjavik University Thesis and Project Report Template
 Thesis (B.Sc., M.Sc., Ph.D.) Template for Reykjavík University in Iceland
-This is a refactoring attempt to massively simplify the Thesis and Project Report template used by our university.
-A regularly synchronized template version for ready use can be found at https://www.overleaf.com/latex/templates/reykjavik-university-project-report-and-thesis-template/fcwvcgnstrjs
-
-The old Overleaf verison is at https://www.overleaf.com/latex/templates/reykjavik-university-project-report-and-thesis-template/fwdnpmdvwqcj
-The old SVN repository is found at https://repository.cs.ru.is/svn/thesis-template/trunk/ruthesis/
-
+This is an attempt to massively simplify the Thesis, Dissertation, and Project Report template used by our university.
+*Important note:  this template does not create the outside cover used for binding!  The RU Communications Department provides this element.*
 Please send pull requests and Issues for improvements/changes.
 
-Locations to update when this changes:  
+## Overleaf
+A regularly synchronized Overleaf template is found at https://www.overleaf.com/latex/templates/reykjavik-university-project-report-and-thesis-template/fcwvcgnstrjs
+Be aware that unless you are a paying customer to Overleaf, your content can be seen by anyone who knows the URL.  This may be a problem if you are writing a document with sensitive information.
+
+## Zotero
+Zotero can be used to manage your references as well:  https://www.overleaf.com/blog/174-import-your-bibs-reference-management-tools-now-linked-to-overleaf-number-backtoschool#.WKLwrjuLRpg
+
+## Template back references
+Locations to update when this template location changes:  
 * https://en.ru.is/st/dcs/student-information/thesis/thesis-template/
 * https://en.ru.is/st/de/phd/
+
+# Template Archive
+The old Overleaf version is at https://www.overleaf.com/latex/templates/reykjavik-university-project-report-and-thesis-template/fwdnpmdvwqcj
+The old SVN repository is found at https://repository.cs.ru.is/svn/thesis-template/trunk/ruthesis/
