@@ -7,6 +7,7 @@ The official Reykjavík University Overleaf page is at https://www.overleaf.com/
 ## Overleaf
 A regularly synchronized Overleaf template is found at https://www.overleaf.com/latex/templates/reykjavik-university-project-report-and-thesis-template/fcwvcgnstrjs
 Be aware that unless you are a paying customer to Overleaf, your content can be seen by anyone who knows the URL.  This may be a problem if you are writing a document with sensitive information.
+If you have requests or need a bug fixed, please open up a ticket in the "Issues" tab.
 
 ## References
 One of LaTeX/Overleaf's big strengths is making sure citations and hyperreferences work.
