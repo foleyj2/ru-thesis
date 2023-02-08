@@ -11,11 +11,9 @@ Be aware that unless you are a paying customer to Overleaf, your content can be 
 ## References
 One of LaTeX/Overleaf's big strengths is making sure citations and hyperreferences work.
 ### JabRef
-The template author uses JabRef(https://www.jabref.org/) to manage his overleaf references.  
-The easiest way to keep this up to date is to use a git client to synchronize your reference (.bib) files locally to your computer, JabRef to update them with your new information, then use the git client to send those changes to Overleaf.
+The template author uses JabRef(https://www.jabref.org/) to manage his overleaf references.  The easiest way to keep this up to date is to use a git client to synchronize your reference (.bib) files locally to your computer, JabRef to update them with your new information, then use the git client to send those changes to Overleaf.
 
-Overleaf's git feature is only available to paying accounts, so you will need to register a Reykjavík University email to your account in order to gain the benefits without paying for it yourself.  
-This can be done by adding a second email to your account and confirming it.
+Overleaf's git feature is only available to paying accounts, so you will need to register a Reykjavík University email to your account in order to gain the benefits without paying for it yourself.  This can be done by adding a second email to your account and confirming it.
 
 ### Zotero
 Zotero can be used to manage your references as well:  https://www.overleaf.com/blog/174-import-your-bibs-reference-management-tools-now-linked-to-overleaf-number-backtoschool#.WKLwrjuLRpg
