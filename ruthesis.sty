@@ -485,3 +485,14 @@
 %\makepagestyle{oldstyle}
 %\makeoddhead{oldstyle}{\footnotesize{\authorHeader@ruthesis}}{}{\footnotesize{\thepage}}
 %\makeevenhead{oldstyle}{\footnotesize{\thepage}}{}{\footnotesize{\thetitle}}
+
+%%%%%%%%%% Metadata for pdf file %%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{hyperref}
+\AtBeginDocument{
+  \hypersetup{
+    pdfauthor   = {\theauthor{}},
+    pdftitle    = {\thetitle},
+    %pdfsubject  = {Templates},
+    %pdfkeywords = {\theInstitution{}, Template, Thesis}
+  }
+}
