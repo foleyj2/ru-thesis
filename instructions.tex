@@ -39,12 +39,20 @@ These instructions (unless otherwise stated) assume you are in the School of Sci
 If you are in another department, you should make sure that the template meets your specific requirements.
 
 \begin{itemize}
-\item Current maintainer: Joseph Timothy Foley.
+\item Current maintainers: Joseph Timothy Foley and Marcel Kyas.
   Questions, comments, complaints:  \formatemail{foley AT ru.is}
 % or cs-grad AT ru.is  %% not sure why we had this address
 
 %\item To receive updates regarding the templates, subscribe at
 %  \url{https://list.ru.is/mailman/listinfo/latex-announcements}
+\end{itemize}
+
+\subsection{Frequently Asked Questions}
+\begin{itemize}
+\item {\em How do I use APA citations?}
+  The template is setup to use IEEE citations by default.
+  For those who want to use APA, you will need to use the \texttt{apacite} package.
+  In the \path{main.tex}, uncomment the package line near the top: \verb|\usepackage{apacite}|, then go to the bottom of the file and comment out the: \verb|\bibliographystyle{IEEEtran/bibtex/ieeetran}|
 \end{itemize}
 
 \subsection{Department of Engineering Links}
