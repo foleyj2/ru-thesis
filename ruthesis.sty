@@ -168,13 +168,15 @@
 \aliaspagestyle{title}{empty}
 %% ----- COPYRIGHT PAGE -----------------------------------------------------------------------
 \RequirePackage{ccicons}
-\newcommand{\copyrightpage}[1]{
+\RequirePackage{orcidlink}
+\newcommand{\copyrightpage}[2]{
   % actually in books, this is often on the left side
   \begin{coverleft}
     \begin{vplace}[1.0] % ratio of space above and below
       \begin{flushleft}
-        #1
-        Copyright \textcopyright{} \the\year{} \theauthor{} \ccbyncnd
+	\thetitle \\[\baselineskip]
+	      \theauthor\orcidlink{#2} (ORCID iD #2)\\[\baselineskip]
+	Copyright \textcopyright{} \the\year{} \ccbyncnd \\
       \end{flushleft}
       This work is licensed under the Creative Commons
       Attribution-NonCom\-mercial-NoDerivatives 4.0 International License
