@@ -166,32 +166,49 @@
 \renewcommand{\predate}{\begin{center}\large}
 \renewcommand{\postdate}{\par\end{center}}
 \aliaspagestyle{title}{empty}
+
 %% ----- COPYRIGHT PAGE -----------------------------------------------------------------------
 \RequirePackage{ccicons}
-\newcommand{\copyrightpage}[1]{
+\RequirePackage{orcidlink}
+\PassOptionsToPackage{hidelinks, bookmarks=true, breaklinks=true}{hyperref}
+
+\newcommand{\copyrightpage}[6]{
   % actually in books, this is often on the left side
   \begin{coverleft}
     \begin{vplace}[1.0] % ratio of space above and below
       \begin{flushleft}
-        #1
-        Copyright \textcopyright{} \the\year{} \theauthor{} \ccbyncnd
+        \thetitle \\[\baselineskip]
+        Short title: #1\\
+	          \theauthor\ \orcidlink{#2} (ORCID iD #2)\\[\baselineskip]
+	      Copyright \textcopyright{} \the\year{} \ccbyncnd \\
       \end{flushleft}
-      This work is licensed under the Creative Commons
-      Attribution-NonCom\-mercial-NoDerivatives 4.0 International License
-      (\url{http://creativecommons.org/licenses/by-nc-nd/4.0/}). You may
-      copy and redistribute the material in any medium or format, provide
-      appropriate credit, link to the license and indicate what changes you made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. You may not use the material for commercial purposes. If you remix, transform or build upon the material, you may not distribute the modified material.
-      The images or other third party material in this thesis are included in
-      the book’s Creative Commons license, unless indicated otherwise in a
-      credit line to the material. If material is not included in the book’s
-      Creative Commons license and your intended use is not permitted by
-      statutory regulation or exceeds the permitted use, you will need to
-      obtain permission directly from the copyright holder. The use of
-      general descriptive names, registered names, trademarks, service
-      marks, etc. in this publication does not imply, even in the absence of
-      a specific statement that such names are exempt from the relevant
-      protective laws and regulations and therefore free for general use.
+      This work is licensed under the \href{http://creativecommons.org/licenses/by-nc-nd/4.0/}{Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License}.
+      You may copy and redistribute the material in any medium or format, provide appropriate credit, link to the license and indicate what changes you made. 
+      You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+      You may not use the material for commercial purposes.
+      If you remix, transform or build upon the material, you may not distribute the modified material.
+      The images or other third party material in this thesis are included in the book's Creative Commons license, unless indicated otherwise in a credit line to the material.
+      If material is not included in the book's Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use,
+       you will need to obtain permission directly from the copyright holder.
+      The use of general descriptive names, registered names, trademarks, service marks, etc. in this publication does not imply,
+       even in the absence of a specific statement that such names are exempt from the relevant protective laws and regulations and therefore free for general use.
     \end{vplace}
+    \begin{flushleft}
+      
+    
+    Bibliographic information:
+    \theauthor{}, \the\year{}, \textit{\thetitle{}}, \theDegreeAbbrv{} \theDocumentType{}, \theSchool{}, \theInstitution{}, #3 pp.\\
+    \vspace*{1\baselineskip}
+    #4 \\
+    \vspace*{1\baselineskip}
+    % \begin{figure}[h!]
+    %   \includegraphics[scale=0.5]{graphics/Printer_Logo.svg}
+    % \end{figure}
+    #5\\
+    #6\\
+  \end{flushleft}
+    \vfill
+    \vspace*{2\baselineskip}
   \end{coverleft}
 }
 
