@@ -7,12 +7,9 @@
 %% Options for ruthesis in []:
 %%   IS Icelandic is main language, otherwise default to English
 
-%\usepackage{apacite}
-%% Uncomment the apacite package for APA style citations
-%% You will also need to disable the IEEE style (around line 134):
-%% % \bibliographystyle{IEEEtran/bibtex/ieeetran}
-%% and enable the apacite style:
-%% \bibliographystyle{apacite}
+%%%   Setup citations
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{references.bib}
 
 %%%%%% Packages and Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{custom}
@@ -23,13 +20,10 @@
 \usepackage{lipsum}%provides us with text for testing
 %% usage: \lipsum[STARTNUM-ENDNUM]
 
-\graphicspath{{graphics/}{Graphics/}{./}}
+\graphicspath{{graphics-cropped/}{graphics/}{./}}
 %% This is a list of folders to search for graphics files to include
 %% for the graphicx package (already loaded).  This may be case-sensitive.
 %% LaTeX will search from left to right in the list, so you can put "cropped" versions
-%% in the first directory and it will grab them first. e.g.
-%\graphicspath{{graphics-cropped/}{graphics/}{Graphics/}{./}}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{Thesis and Project Report Template for \theInstitution{}}
@@ -41,7 +35,7 @@
 \DocumentDescription{\theDocumentType{} of \theECTS{} ECTS credits
          submitted to the \theSchool{} at \theInstitution{} in partial fulfillment
          of the requirements for the degree of \theDegreeLong}
-% Change this if you need a custom title or if it needs to be in Icelandic
+% Change \DocumentDescription if you need a custom title or if it needs to be in Icelandic
 
 %% PhD only have Thesis Committee with roles.  Examiner is part of committee.
 \SupervisorHeading{Thesis Committee}
