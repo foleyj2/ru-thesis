@@ -144,16 +144,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Memoir titlepage definition and info at p.64
-
-
-%% Some may need a different front logo
-\newcommand{\frontlogo@ruthesis}{ru-logo}
-\newcommand{\frontlogo}[1]{\renewcommand{\frontlogo@ruthesis}{#1}}
-
-
-%% This hook puts a RU logo over the title
-%\renewcommand{\maketitlehooka}{\begin{centering}\includegraphics[width=4cm]{\frontlogo@ruthesis}\par\end{centering}\vspace{2mm}}%
-
 \renewcommand{\pretitle}{\begin{center}}%
 \renewcommand{\posttitle}{\par\end{center}}
 
@@ -166,6 +156,7 @@
 \renewcommand{\predate}{\begin{center}\large}
 \renewcommand{\postdate}{\par\end{center}}
 \aliaspagestyle{title}{empty}
+\aliaspagestyle{titlinpage}{empty}  
 %% ----- COPYRIGHT PAGE -----------------------------------------------------------------------
 \RequirePackage{ccicons}
 \hyphenation{Non-Com-mercial}
@@ -199,8 +190,7 @@
 %% ---------- Page Styles --------------------------------------------------------------
 %% ---------------------------------------------------------------------------------------------
 %%  Setup the formatting at the beginning of the document (Front material)
-%% TODO: use the memoir \frontmatter \mainmatter \backmatter
-%%  See documentation, page 73
+%%  See Memoir documentation, page 73
 
 %%%%%%%%% PARAGRAPH ADJUSTMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newlength{\savedparindent}
@@ -260,8 +250,6 @@
 \aliaspagestyle{chapter}{plain}%At the beginning we want page numbers on chapters
 \aliaspagestyle{cleared}{simple}
 \aliaspagestyle{part}{empty}
-\aliaspagestyle{title}{simple}
-\aliaspagestyle{titlinpage}{empty}  
 
 % \ifboolexpr{bool {draftbool} or bool {proof}}{
 %   \makeoddfoot{cover}{}{\thepage}{\draftmark}
