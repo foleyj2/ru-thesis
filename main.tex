@@ -54,8 +54,9 @@
 \begin{document}
 %% TODO: get the official cover graphic and have the system fill in the fields for you
 \maketitle{}
+\disableindents{}%frontmatter material mostly doesn't need indents
 \copyrightpage{}
-\clearpage{}
+
 % If this is a PhD, register for an ISSN and ISBN, then:
 % \copyrightpage{ISSN xxxx-yyyy\\ISBN 978-xxxxxxxxxx\\\url{http://hdl.handle.net/1946/xxxx}\\}
 %\signaturepage{} %Generally only for Print copies
@@ -64,24 +65,24 @@
 %  I dedicate this to my spouse/child/pet/power animal.
 %\end{dedications}
 
-\enableindents{}% turn on/off paragraph indents
 % RUM: "Acknowledgements (optional)"%start numbering
 \tableofcontents{}
 \listoffigures{}
 \listoftables{}
-
 %% A list of abbreviations is an example of a special list
 %% Other lists may be added, such as lists of algorithms, symbols, theorems, etc.
 %% IN CS PhD, this is sometimes centered.
-\chapter*{List of Symbols}%%RUM: Not mentioned
+\frontmatterhead{List of Symbols}%%RUM: Not mentioned
 %% This list demonstrates the "siunitx" package capabilities
-\begin{tabular}{lll}
-Symbol &Description &Value/Units\\
-$E$ &Energy &\si{\joule}\\ %New function:  \unit{} in Livetex 2021
-$m$ &Mass &\si{\gram}\\ %New function:  \unit{} in Livetex 2021
-$c$ &Speed of Light &\SI{2.99E9}{\meter\per\square\second}\\ %New function:  \qty{} in Livetex 2021
+\begin{tabular}{lll}\toprule
+  Symbol &Description &Value/Units\\\midrule
+  $E$ &Energy &\si{\joule}\\ %New function:  \unit{} in Livetex 2021
+  $m$ &Mass &\si{\gram}\\ %New function:  \unit{} in Livetex 2021
+  $c$ &Speed of Light &\SI{2.99E9}{\meter\per\square\second}\\\bottomrule
+  % New function:  \qty{} in Livetex 2021
 \end{tabular}
 
+\enableindents{}% turn on/off paragraph indents
 \newpage
 \begin{abstract}
   The goal of this template is to produce electronic output to be uploaded to Skemman that can be later printed out and bound into a professional looking textbook that fits on standard library shelves.

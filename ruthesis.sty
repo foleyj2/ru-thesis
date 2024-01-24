@@ -185,6 +185,7 @@
       protective laws and regulations and therefore free for general use.
     \end{vplace}
   \end{coverleft}
+  \clearpage
 }
 
 %% ---------- Page Styles --------------------------------------------------------------
@@ -268,8 +269,16 @@
 \makeoddfoot{cover}{}{}{}
 \makeevenfoot{cover}{}{}{}
 
-\newcommand{\coverchapter}[1]{\clearforchapter\pagestyle{cover}\chapter{#1}\thispagestyle{cover}}
-
+\newcommand{\frontmatterhead}[1]{{%based upon \chapterhead from memman.pdf p.84
+    % \clearpage% move to correct page
+    \disableindents%
+    \thispagestyle{chapter} % set the page style
+    \insertchapterspace% space between previous and the title
+    \chapterheadstart%\beforchapskip space before heading
+    \printchaptertitle{#1}% title
+    \addcontentsline{toc}{chapter}{#1}
+    \afterchaptertitle% \afterchapskip space after title
+}}
 
 %%% Section numbering and the Table of Contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
