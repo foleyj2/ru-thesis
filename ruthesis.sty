@@ -219,32 +219,26 @@
   % see p123 http://ctan.uib.no/macros/latex/contrib/memoir/memman.pdf
 
 \newenvironment{cover}% commonalities for the cover material
-{\thispagestyle{cover}%
-  \pagestyle{cover}%
-  \clearforchapter%
+{  \clearforchapter%
+  \thispagestyle{cover}%
   \disableindents%
-  \SingleSpacing\clearpage}%
+  \SingleSpacing}%
 {%\setlength{\TPMargin}{0mm} %% margins inside the textblock
   %% I don't remember why we need to mess with \TPmargin
   %% Might be OK to remove --foley
   \enableindents{}}%
 \newenvironment{coverleft}% material that must be on the even (back) side
-{\thispagestyle{cover}%
-  \pagestyle{cover}%
-  \cleartoverso%
-  \disableindents%
-  \SingleSpacing\clearpage}%
-{%\setlength{\TPMargin}{0mm} %% margins inside the textblock
-  %% I don't remember why we need to mess with \TPmargin
-  %% Might be OK to remove --foley
-  \enableindents{}}%
-\newenvironment{coveranyside}%This is material that can start on even or odd
-{\thispagestyle{cover}%
-  \pagestyle{cover}%
-  \clearpage%
+{  \cleartoverso%
+  \thispagestyle{cover}%
   \disableindents%
   \SingleSpacing}%
-{\enableindents{}\clearpage}%
+{\enableindents{}}%
+\newenvironment{coveranyside}%This is material that can start on even or odd
+{  \clearpage%
+  \thispagestyle{cover}%
+  \disableindents%
+  \SingleSpacing}%
+{\enableindents{}}%
 
 
 
