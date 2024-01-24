@@ -55,6 +55,7 @@
 %% TODO: get the official cover graphic and have the system fill in the fields for you
 \maketitle{}
 \copyrightpage{}
+\clearpage{}
 % If this is a PhD, register for an ISSN and ISBN, then:
 % \copyrightpage{ISSN xxxx-yyyy\\ISBN 978-xxxxxxxxxx\\\url{http://hdl.handle.net/1946/xxxx}\\}
 %\signaturepage{} %Generally only for Print copies
@@ -65,11 +66,9 @@
 
 \enableindents{}% turn on/off paragraph indents
 % RUM: "Acknowledgements (optional)"%start numbering
-
-\clearpage{}
-\tableofcontents{}\clearpage
-\listoffigures{}\clearpage
-\listoftables{}\clearpage
+\tableofcontents{}
+\listoffigures{}
+\listoftables{}
 
 %% A list of abbreviations is an example of a special list
 %% Other lists may be added, such as lists of algorithms, symbols, theorems, etc.
@@ -83,6 +82,7 @@ $m$ &Mass &\si{\gram}\\ %New function:  \unit{} in Livetex 2021
 $c$ &Speed of Light &\SI{2.99E9}{\meter\per\square\second}\\ %New function:  \qty{} in Livetex 2021
 \end{tabular}
 
+\newpage
 \begin{abstract}
   The goal of this template is to produce electronic output to be uploaded to Skemman that can be later printed out and bound into a professional looking textbook that fits on standard library shelves.
   It is important to note that A4 paper when bound requires taller shelf spacing, so the B5 paper format was chosen instead.

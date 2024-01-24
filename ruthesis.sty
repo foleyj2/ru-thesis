@@ -223,22 +223,28 @@
   \pagestyle{cover}%
   \clearforchapter%
   \disableindents%
-  \SingleSpacing}%
+  \SingleSpacing\clearpage}%
 {%\setlength{\TPMargin}{0mm} %% margins inside the textblock
-  \enableindents{}\newpage}%
-
-
-\newenvironment{coverleft}%This is material that is OK being on the
-                          %backside
+  %% I don't remember why we need to mess with \TPmargin
+  %% Might be OK to remove --foley
+  \enableindents{}}%
+\newenvironment{coverleft}% material that must be on the even (back) side
 {\thispagestyle{cover}%
   \pagestyle{cover}%
   \cleartoverso%
-  %\clearforchapter% clear to chapter setting  
+  \disableindents%
+  \SingleSpacing\clearpage}%
+{%\setlength{\TPMargin}{0mm} %% margins inside the textblock
+  %% I don't remember why we need to mess with \TPmargin
+  %% Might be OK to remove --foley
+  \enableindents{}}%
+\newenvironment{coveranyside}%This is material that can start on even or odd
+{\thispagestyle{cover}%
+  \pagestyle{cover}%
+  \clearpage%
   \disableindents%
   \SingleSpacing}%
-{%\setlength{\TPMargin}{0mm} %% margins inside the textblock
-  %% I don't remember why we need to mess with \TPmargin --foley
-  \enableindents{}\newpage}%
+{\enableindents{}\clearpage}%
 
 
 
@@ -470,7 +476,7 @@
 
 
 \renewenvironment{abstract}
-{\begin{coverleft}{\centering%
+{\begin{cover}{\centering%
     {{\Large \thetitle}\\}%%
     \vspace{\baselineskip}
     \theauthor\\%
@@ -479,7 +485,7 @@
   }%
   \enableindents{}
   \textbf{Abstract}\par\vspace{1ex}}
-{\par\end{coverleft}\newpage}
+{\par\end{cover}\newpage}
 
 
 %%% from the old cs template, if so desired
