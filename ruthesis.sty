@@ -21,7 +21,6 @@
 %% Booleans make it easy to enable and disable parts of the template
 \newbool{debug}
 \newbool{draftbool}
-\newbool{IS}
 \newbool{proof}
 
 
@@ -83,14 +82,6 @@
 % requirements
 \RequirePackage{stix2}
 % allows UTF encoding, needed for Icelandic and other accented characters
-
-\ifbool{IS}
-{\RequirePackage[english,icelandic]{babel}}%%Icelandic main language
-{\RequirePackage[icelandic,english]{babel}}%%English main language
-%% Babel allows various automatic text to be in selected languages
-%% But to use the options, you have to always load it, even for english
-%% The languages must be specified in order.
-
 
 \usepackage[useregional]{datetime2}
 %% Smart manipulation of dates

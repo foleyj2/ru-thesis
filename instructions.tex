@@ -19,7 +19,7 @@
 
 
 %% Macros for filling in commonly changed items
-\newcommand{\TIheadofgrad}{Eyjólfur Ingi Ásgeirsson~\formatemail{eyjolfur AT ru.is} or TD Person}
+\newcommand{\TIheadofgrad}{Slawomir Koziel~\formatemail{slawomir AT ru.is} or TD Person}
 \newcommand{\TItvdadmin}{Sigrún Þorgeirsdóttir~\formatemail{sigrunth AT ru.is}}
 
 % \begin{document} % this tells the compiler that it is time to make
@@ -37,6 +37,10 @@
 These instructions detail how to prepare a final project report, master's thesis, or PhD dissertation for Reykjavík University.
 These instructions (unless otherwise stated) assume you are in the School of Science and Engineering or the School of Computer Science.
 If you are in another department, you should make sure that the template meets your specific requirements.
+
+Critical information:  The current version of the template uses lua\LaTeX{} for enhanced font, code, and language support.
+It is not guaranteed to work on PDF\LaTeX{} nor classic \LaTeX.
+On debian based systems, you will need to install the \verb|texlive-luatex| package.
 
 \begin{itemize}
 \item Current maintainers: Joseph Timothy Foley and Marcel Kyas.
@@ -587,5 +591,6 @@ Thumbs.db
 
 %%% Local Variables:
 %%% mode: latex
-%%% TeX-master: "main.tex"
+%%% TeX-master: "main"
+%%% TeX-engine: luatex
 %%% End:

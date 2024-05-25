@@ -1,11 +1,15 @@
 %%%% This is the general thesis/project report template for most users
+%%%% Make sure you have lualatex installed!!! (package texlive-luaatex)
 \documentclass[showtrims, b5paper]{rubook}
 %% RU Book options (subclass of memoir)
 %% a4paper or b5paper:  paper stock size.
 %%     If A4, show cut lines.  If b5, no cut lines.
 \usepackage[]{ruthesis}
-%% Options for ruthesis in []:
-%%   IS Icelandic is main language, otherwise default to English
+%% RU Thesis format setup
+
+%% What language is the document in?
+\usepackage{polyglossia}
+\setdefaultlanguage{english}% change to icelandic if needed
 
 %%%   Setup citations
 \usepackage[backend=biber,style=ieee]{biblatex}
