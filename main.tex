@@ -5,14 +5,15 @@
 %% a4paper or b5paper:  paper stock size.
 %%     If A4, show cut lines.  If b5, no cut lines.
 
+
+%% RU Thesis format setup
+\usepackage[]{ruthesis}
+
 %%  What language is the document in?
 %%  English must always be available for biblatex/biber to work properly
 \usepackage{polyglossia}
 \setdefaultlanguage{english}
 \setotherlanguage{icelandic}
-
-%% RU Thesis format setup
-\usepackage[]{ruthesis}
 
 %%%   Setup citations
 \usepackage[backend=biber,style=ieee]{biblatex}
@@ -32,6 +33,8 @@
 %% for the graphicx package (already loaded).  This may be case-sensitive.
 %% LaTeX will search from left to right in the list, so you can put "cropped" versions
 
+\PassOptionsToPackage{hidelinks}{hyperref}%disable boxes around links
+\usepackage{hyperref}%This must be the last package loaded
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
