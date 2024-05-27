@@ -9,7 +9,7 @@
 %% Details at LICENSE.md
 %% --------------- Identification ----------------------------
 \NeedsTeXFormat{LaTeX2e}
-\typeout{Thesis package for Reykjavik University V3.0 <2022/05/2>, by Joseph Timothy Foley, foley at RU.IS}
+\typeout{Thesis package for Reykjavik University V3.1 <2024/05/27> by Joseph Timothy Foley, foley at RU.IS}
 
 %% ---------------- Critical packages -----------------------------
 \RequirePackage{etoolbox}% \newbool, \ifbool, etc.
@@ -35,7 +35,7 @@
 \DeclareOption{debug}{%
   \booltrue{debug}
   \typeout{ruthesis option: debug}%
-  \typeout{DEBUG MODE ENABLED!  PREPARE FOR VERBOSITY!}}
+  \typeout{DEBUG MODE ENABLED:  PREPARE FOR VERBOSITY!}}
 
 \DeclareOption{draft}{\booltrue{draftbool}}
 
@@ -76,7 +76,14 @@
 % Standardized STIX2 fonts that print well, display on
 % e-readers/screens clearly, and have compatible licensing
 % requirements
+\RequirePackage{fontspec}
 \RequirePackage{stix2}
+
+%% https://www.overleaf.com/learn/latex/Multilingual_typesetting_on_Overleaf_using_polyglossia_and_fontspec
+%% Getting a font substitution error that doesn't happen with:
+%\setmainfont{FreeSerif}
+%\setsansfont{FreeSans}
+%\setmonofont{FreeMono}
 % allows UTF encoding, needed for Icelandic and other accented characters
 
 \usepackage[useregional]{datetime2}
@@ -87,15 +94,12 @@
 \RequirePackage{graphicx}
 %% GraphicsX converts and includes graphics intelligently
 
-
-
 %% ---------------- URLs and Paths -----------------------------
-\PassOptionsToPackage{obeyspaces,spaces,hyphens,allowmove}{url}
 \RequirePackage{xurl}
 %% The xurl package typesets \url{} and unix file \path{} nicely.
 %% Watch out that you leave a space after a last \ e.g. \path{C:\ }
-%% Warning:  allowmove makes URLs not-fragile, so they can go in things that move
-%%           If this breaks you will get very very weird errors
+% \PassOptionsToPackage{obeyspaces,spaces,hyphens,allowmove}{url}
+%% Old url package options above for reference
 %% ---------------- Miscellaneous Packages ----------------------
 %% ---------------- Fonts -----------------------------
 %% Important:  The template has switched to STIX2 fonts and memoir defaults
