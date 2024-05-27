@@ -76,8 +76,17 @@
 % Standardized STIX2 fonts that print well, display on
 % e-readers/screens clearly, and have compatible licensing
 % requirements
-\RequirePackage{stix2}
+%\RequirePackage{stix2}
 % allows UTF encoding, needed for Icelandic and other accented characters
+\RequirePackage{fontspec}
+\RequirePackage{unicode-math}
+\setmathfont{STIX Two Math}
+\setmainfont{STIX Two Text}[
+Extension={.otf},
+UprightFont={*-Regular},
+BoldFont={*-Bold},
+ItalicFont={*-Italic},
+BoldItalicFont={*-BoldItalic}]
 
 \usepackage[useregional]{datetime2}
 %% Smart manipulation of dates
