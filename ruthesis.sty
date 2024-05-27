@@ -15,14 +15,12 @@
 \RequirePackage{etoolbox}% \newbool, \ifbool, etc.
 %% Toolbox of many many macros that make a lot of latex code smarter and more robust
 %% http://texdoc.net/texmf-dist/doc/latex/etoolbox/etoolbox.pdf
-\RequirePackage{ifluatex} %% \ifluatex
 
 %% ---------------- Boolean switches -----------------------------
 %% Booleans make it easy to enable and disable parts of the template
 \newbool{debug}
 \newbool{draftbool}
 \newbool{proof}
-
 
 %% ---------------- Declaration of Package Options--------------------
 %% Remember that we have \AtEndOfPackage{}
@@ -74,8 +72,6 @@
 }{}
 
 %% ---------------- Internationalization -----------------------------
-%% Unicode setup
-\ifluatex\relax\else\RequirePackage[utf8]{inputenc}\RequirePackage[T1]{fontenc}\fi
 % Font setup
 % Standardized STIX2 fonts that print well, display on
 % e-readers/screens clearly, and have compatible licensing
@@ -165,8 +161,8 @@
       copy and redistribute the material in any medium or format, provide
       appropriate credit, link to the license and indicate what changes you made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use. You may not use the material for commercial purposes. If you remix, transform or build upon the material, you may not distribute the modified material.
       The images or other third party material in this thesis are included in
-      the book’s Creative Commons license, unless indicated otherwise in a
-      credit line to the material. If material is not included in the book’s
+      the book's Creative Commons license, unless indicated otherwise in a
+      credit line to the material. If material is not included in the book's
       Creative Commons license and your intended use is not permitted by
       statutory regulation or exceeds the permitted use, you will need to
       obtain permission directly from the copyright holder. The use of
@@ -474,3 +470,9 @@
 %\makepagestyle{oldstyle}
 %\makeoddhead{oldstyle}{\footnotesize{\authorHeader@ruthesis}}{}{\footnotesize{\thepage}}
 %\makeevenhead{oldstyle}{\footnotesize{\thepage}}{}{\footnotesize{\thetitle}}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% TeX-engine: luatex
+%%% End:

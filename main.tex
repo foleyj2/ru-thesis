@@ -4,12 +4,15 @@
 %% RU Book options (subclass of memoir)
 %% a4paper or b5paper:  paper stock size.
 %%     If A4, show cut lines.  If b5, no cut lines.
-\usepackage[]{ruthesis}
-%% RU Thesis format setup
 
-%% What language is the document in?
+%%  What language is the document in?
+%%  English must always be available for biblatex/biber to work properly
 \usepackage{polyglossia}
-\setdefaultlanguage{english}% change to icelandic if needed
+\setdefaultlanguage{english}
+\setotherlanguage{icelandic}
+
+%% RU Thesis format setup
+\usepackage[]{ruthesis}
 
 %%%   Setup citations
 \usepackage[backend=biber,style=ieee]{biblatex}
@@ -28,7 +31,9 @@
 %% This is a list of folders to search for graphics files to include
 %% for the graphicx package (already loaded).  This may be case-sensitive.
 %% LaTeX will search from left to right in the list, so you can put "cropped" versions
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 
 \title{Thesis and Project Report Template for \theInstitution{}}
 \author{Joseph~T.~Foley and Marcel~Kyas}

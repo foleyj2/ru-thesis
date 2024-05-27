@@ -86,3 +86,9 @@
   pagecenterx:\printlength{\pagecenterx}\\
   pagecentery:\printlength{\pagecentery}\\
 }
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% TeX-engine: luatex
+%%% End:
