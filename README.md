@@ -18,12 +18,3 @@ Overleaf's git feature is only available to paying accounts, so you will need to
 
 ### Zotero
 Zotero can be used to manage your references as well:  https://www.overleaf.com/blog/174-import-your-bibs-reference-management-tools-now-linked-to-overleaf-number-backtoschool#.WKLwrjuLRpg
-
-## Template back references
-Locations to update when this template location changes:  
-* https://en.ru.is/st/dcs/student-information/thesis/thesis-template/
-* https://en.ru.is/st/de/phd/
-
-# Template Archive
-The old Overleaf version is at https://www.overleaf.com/latex/templates/reykjavik-university-project-report-and-thesis-template/fwdnpmdvwqcj
-The old SVN repository is found at https://repository.cs.ru.is/svn/thesis-template/trunk/ruthesis/
