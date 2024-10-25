@@ -46,6 +46,19 @@ On debian based systems, you will need to install the \verb|texlive-luatex| pack
   In the \path{main.tex}, uncomment the package line near the top: \path{\usepackage{apacite}}, then go to the bottom of the file and comment out the: \path{\bibliographystyle{IEEEtran/bibtex/ieeetran}}
 \end{itemize}
 
+\section{Coverpage}
+
+Reykjavik University's communications department insists on a common outer appearance of all our theses.
+This class supports their desire through the \texttt{rucover} package.
+To generate a conforming cover page, follow the instructions at
+\url{https://en.ru.is/media/skjol-td/Instructions_2020.pdf}, enter the relevant information into \url{https://en.ru.is/media/skjol-td/TD_E-cover_2019.pdf} and save the file as \texttt{cover.pdf}.
+Place \texttt{cover.pdf} into the same directory that you have your thesis' main file.
+
+\LaTeX{} includes the file automatically if you add \texttt{\textbackslash usepackage\{rucover\}} to your preamble.
+You can control the filename with \texttt{\textbackslash usepackage[filename=name.pdf]\{rucover\}}.
+
+
+
 \section{Files and Directories/Folders}
 \begin{itemize}
 %\item \path{cls/}: contains the \path{rureport.cls} template used to format these instructions.

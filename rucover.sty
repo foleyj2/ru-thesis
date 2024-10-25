@@ -1,0 +1,23 @@
+% Marcel Kyas <marcel at ru.is>
+%
+% Simple hack to place the cover page in front of the thesis
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rucover}[2024/10/24]
+
+\providecommand\rucover{cover.pdf}
+\RequirePackage{xkeyval}
+\DeclareOptionX{filename}{\def\rucover{#1}}
+\ProcessOptionsX
+
+\IfFileExists{\rucover}{%
+	\RequirePackage{pdfpages}
+	\AtBeginDocument{%
+		\pagestyle{empty}%
+		\includepdf{cover.pdf}%
+		\pagestyle{empty}%
+		\clearforchapter%
+	}%
+}{%
+	\typeout{Cover page file \rucover not found}
+}
