@@ -12,15 +12,7 @@
 \typeout{Thesis package for Reykjavik University V3.0 <2022/05/2>, by Joseph Timothy Foley, foley at RU.IS}
 
 %% ---------------- Critical packages -----------------------------
-\RequirePackage{etoolbox}% \newbool, \ifbool, etc.
-%% Toolbox of many many macros that make a lot of latex code smarter and more robust
-%% http://texdoc.net/texmf-dist/doc/latex/etoolbox/etoolbox.pdf
 
-%% ---------------- Boolean switches -----------------------------
-%% Booleans make it easy to enable and disable parts of the template
-\newbool{debug}
-\newbool{draftbool}
-\newbool{proof}
 
 %% ---------------- Declaration of Package Options--------------------
 %% Remember that we have \AtEndOfPackage{}
@@ -31,15 +23,6 @@
 %% For error reporting
 %%     \PackageError{class-name}{error-text}{help-text}
 
-% Generalized settings
-\DeclareOption{debug}{%
-  \booltrue{debug}
-  \typeout{ruthesis option: debug}%
-  \typeout{DEBUG MODE ENABLED!  PREPARE FOR VERBOSITY!}}
-
-\DeclareOption{draft}{\booltrue{draftbool}}
-
-\DeclareOption{IS}{\booltrue{IS}}
 
 \DeclareOption{forcegraphics}{%
   \PassOptionsToPackage{final}{graphicx}
@@ -47,7 +30,7 @@
   \PassOptionsToPackage{final}{hyperref}
   %% add any other elements that should be included in draft
   \finalifforcegraphics{graphicx}%We have to catch graphicx early
-  \setbool{forcegraphics}{true}\typeout{ruthesis option: forcegraphics}%
+  \typeout{ruthesis option: forcegraphics}%
 }%
 
 %%% Memoir test: Memoir Manual 21.2 p.367
@@ -62,14 +45,6 @@
 %% carefully before modifying any of the execution and previous section.
 %% ---------------- Package Loading -----------------------------
 
-%% Now to print the status of all the booleans if debug boolean is set
-%% Any boolean testing must be after the \LoadClass otherwise the Option execution
-%% has not completed.
-\ifbool{debug}{%
-  \ifbool{forcegraphics}{\typeout{ruthesis bool: forcegraphics}}{}
-  \ifbool{proof}{\typeout{ruthesis bool: proof}}{}
-  \ifbool{debug}{\typeout{ruthesis bool: debug}}{}
-}{}
 
 %% ---------------- Internationalization -----------------------------
 % Font setup
@@ -94,8 +69,6 @@ BoldItalicFont={*-BoldItalic}]
 %% ---------------- Graphics ------------------------------
 \RequirePackage{graphicx}
 %% GraphicsX converts and includes graphics intelligently
-
-
 
 %% ---------------- URLs and Paths -----------------------------
 \PassOptionsToPackage{obeyspaces,spaces,hyphens,allowmove}{url}
@@ -200,9 +173,9 @@ BoldItalicFont={*-BoldItalic}]
 }
 
 %% Disable clearforchapter on formats that do not need blank pages
-\ifbool{draftbool}{\renewcommand{\clearforchapter}{\newpage}}
-  % waste less blank pages in draft mode
-  % see p123 http://ctan.uib.no/macros/latex/contrib/memoir/memman.pdf
+%\renewcommand{\clearforchapter}{\newpage}
+% waste less blank pages in draft mode
+% see p123 http://ctan.uib.no/macros/latex/contrib/memoir/memman.pdf
 
 \newenvironment{cover}% commonalities for the cover material
 {  \clearforchapter%
@@ -237,24 +210,11 @@ BoldItalicFont={*-BoldItalic}]
 \newcommand{\draftmark}{}
 \newcommand{\draftbigmark}{}
 
-\ifbool{proof}{\renewcommand{\draftmark}{{\color{blue}\textsc{Proof}}}%
-  \renewcommand{\draftbigmark}{{\color{blue}\warningfont{}*** \draftmark{} *** \\PLEASE DO NOT DISTRIBUTE\\}}}{}
-\ifbool{draftbool}{\renewcommand{\draftmark}{{\color{red}\textsc{Draft}}}%
-  \renewcommand{\draftbigmark}{{\color{red}\warningfont{}*** \draftmark{} *** \\PLEASE DO NOT DISTRIBUTE\\}}}{}%
 %%% Page styles Memoir Manual ch7.2 p109 
 \aliaspagestyle{book}{simple}
 \aliaspagestyle{chapter}{plain}%At the beginning we want page numbers on chapters
 \aliaspagestyle{cleared}{simple}
 \aliaspagestyle{part}{empty}
-
-% \ifboolexpr{bool {draftbool} or bool {proof}}{
-%   \makeoddfoot{cover}{}{\thepage}{\draftmark}
-%   \makeevenfoot{cover}{\draftmark}{\thepage}{}
-%   %\makeoddfoot{plain}{}{\thepage}{\draftmark}
-%   %\makeevenfoot{plain}{\draftmark}{\thepage}{}
-%   \makeoddfoot{simple}{}{}{\draftmark}
-%   \makeevenfoot{simple}{\draftmark}{}{}
-% }{}
 
 \makepagestyle{plain}% Just page numbers in corners
 \makeevenhead{plain}{\thepage}{}{}
@@ -382,7 +342,7 @@ BoldItalicFont={*-BoldItalic}]
 \RequirePackage{calc}%arithmetic on lengths
 
 \RequirePackage{printlen}% display lengths in arbitrary units
-\ifbool{debug}{\PassOptionsToPackage{showboxes}{textpos}}
+%%\PassOptionsToPackage{showboxes}{textpos}}
 \RequirePackage[absolute, verbose]{textpos}%
 
 %% These commands set the units in \begin{textblock} when not 
