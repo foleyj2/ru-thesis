@@ -120,7 +120,7 @@ BoldItalicFont={*-BoldItalic}]
 \aliaspagestyle{title}{empty}
 \aliaspagestyle{titlinpage}{empty}  
 %% ----- COPYRIGHT PAGE -----------------------------------------------------------------------
-\RequirePackage{ccicons}
+\RequirePackage{ccicons}% need for copyright \textcopyright{}
 \hyphenation{Non-Com-mercial}
 \newcommand{\copyrightpage}[1]{
   % actually in books, this is often on the left side
@@ -267,7 +267,8 @@ BoldItalicFont={*-BoldItalic}]
 
 %\newcommand{\draftnote}[1]{\ifdraft{{\color{gray}#1}}}
 
-%% We need the paralist and dashrule package in order to format the signature pages
+%%  We need the paralist and dashrule package in order to format the %%  title and signature pages.
+%% These could be refactored to remove the dependency
 \RequirePackage{paralist}
 \RequirePackage{dashrule}
 
