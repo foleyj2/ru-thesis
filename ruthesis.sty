@@ -329,28 +329,6 @@ BoldItalicFont={*-BoldItalic}]
 %\renewcommand{\thefootnote}{\scriptsize\arabic{footnote}} %to fix large footnote text errors in some documents
 
 \renewcommand{\bibname}{Bibliography} %Renaming the bibliography section (if omitted it will be named "references")
-
-
-%% ----- PRINTED FRONT COVER (PHD) ----------------------------------------------------------
-%% This cover will be on the outside (not with window)
-%% Needs textpos package!
-\RequirePackage{calc}%arithmetic on lengths
-
-\RequirePackage{printlen}% display lengths in arbitrary units
-%%\PassOptionsToPackage{showboxes}{textpos}}
-\RequirePackage[absolute, verbose]{textpos}%
-
-%% These commands set the units in \begin{textblock} when not 
-%%  directly specified
-%% We set them to the page sizes so we can align from them
-\setlength{\TPHorizModule}{\paperwidth}
-\setlength{\TPVertModule}{\paperheight}
-\setlength{\TPMargin}{2mm}%% margins inside the textblock*
-\textblockorigin{0mm}{0mm}% start everything near the top-left corner
-\newlength{\pagecenterx}%
-\setlength{\pagecenterx}{0.5\stockwidth}
-\newlength{\pagecentery}
-\setlength{\pagecentery}{0.5\stockheight}
   
 %% ----- INTERNAL TITLE PAGE WITH COMMITTEE ---------------------------------------------------
 %% TODO: make counter for supervisors in the very rare case that there
