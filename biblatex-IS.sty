@@ -1,0 +1,29 @@
+%% ---------------------------------------------------------------------------------------------
+%% Icelandic citation fixes
+%% ---------------------------------------------------------------------------------------------
+%% Original Author: Joseph Timothy Foley < foley AT ru dot is >
+%% Translators: Almar Aðalsteinsson
+%% Created on 2024-11-07
+%% This code is distributed under the MIT license
+%% Details at LICENSE.md
+%% --------------- Identification ----------------------------
+\ProvidesPackage{biblatex-IS}
+\typeout{biblatex-IS V1.0 <2024/11/7>, by Joseph Timothy Foley, foley at RU.IS}
+
+%% IEEE Guidance from https://bokasafn.ru.is/ieee/heim
+
+%% Biblatex Strings (particularly for IEEE)
+%% For safety, always leave a blank space between the argument and the "," at the end
+%% This must be loaded after packages: polyglossia and biblatex
+\DefineBibliographyStrings{icelandic}{
+  andothers   = o\adddot fl\adddot  ,
+  chapter     = kafli\adddot  ,
+  editor      = ritstj\adddot ,
+  editors     = ritstj\adddot ,
+  mathesis    = Meistaritgerð\addspace  ,
+  phdthesis   = Doktorsritgerð\addspace  ,
+  presentedat = í\addspace ,
+  techreport  = Tech\adddot\addspace Rep\adddot ,
+  url         = [Rafrænt]\adddot\addspace Aðgengilegt\addspace á\addcolon\addspace ,
+  urlseen     = Sótt\addcolon
+}

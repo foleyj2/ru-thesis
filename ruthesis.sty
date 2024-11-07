@@ -9,21 +9,8 @@
 %% Details at LICENSE.md
 %% --------------- Identification ----------------------------
 \NeedsTeXFormat{LaTeX2e}
-\typeout{Thesis package for Reykjavik University V3.0 <2022/05/2>, by Joseph Timothy Foley, foley at RU.IS}
-
-%% ---------------- Critical packages -----------------------------
-
-
-%% ---------------- Declaration of Package Options--------------------
-%% Remember that we have \AtEndOfPackage{}
-%%     \AtBeginDocument{}, \AtEndDocument{}
-%% If you want execution conditional on file existence
-%%     \IfFileExists{filename}{true}{false}
-%%     \InputIfFileExists{filename}{true}{false}
-%% For error reporting
-%%     \PackageError{class-name}{error-text}{help-text}
-
-
+\ProvidesPackage{ruthesis}[2024/11/07 RU Thesis Formatting V3.1]
+%% --------------- Option Processing--------------------------
 \DeclareOption{forcegraphics}{%
   \PassOptionsToPackage{final}{graphicx}
   \PassOptionsToPackage{final}{pdfpages}
@@ -92,8 +79,6 @@ BoldItalicFont={*-BoldItalic}]
 %%       \DeclareRobustCommand*{cmd}[num][default]{definition}
 %%  For checking if commands are redefined
 %%       \CheckCommand{cmd}[num][default]{definition}
-
-
 
 %% Comprehensive list of styles for memoir is in 7.2 (page 106)
 %% If you need to adjust the style on the chapters, modify chapter

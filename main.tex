@@ -1,16 +1,13 @@
 %%%% This is the general thesis/project report template for most users
 %%%% Make sure you have lualatex installed!!! (package texlive-luaatex)
 \documentclass[showtrims, b5paper]{rubook}
-%% RU Book options (subclass of memoir)
 %% a4paper or b5paper:  paper stock size.
-%%     If A4, show cut lines.  If b5, no cut lines.
+%%     If A4, show cut lines for the printer.  If b5, no cut lines.
+\usepackage{ruthesis}%% RU Thesis formatting
 
-
-%% RU Thesis format setup
-\usepackage[]{ruthesis}
-
-%%  What language is the document in?
+%% What language is the document in?
 %%  English must always be available for biblatex/biber to work properly
+%%  If you are doing your thesis in Icelandic switch the order
 \usepackage{polyglossia}
 \setdefaultlanguage{english}
 \setotherlanguage{icelandic}
@@ -18,6 +15,7 @@
 %%%   Setup citations
 \usepackage[backend=biber,style=ieee]{biblatex}
 \addbibresource{references.bib}
+\usepackage{biblatex-IS}%%loads Icelandic translations for things polyglossia missed
 
 %%%%%% Packages and Macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{custom}
@@ -32,6 +30,7 @@
 %% This is a list of folders to search for graphics files to include
 %% for the graphicx package (already loaded).  This may be case-sensitive.
 %% LaTeX will search from left to right in the list, so you can put "cropped" versions
+%% in the graphics-cropped folder to speed up processing.
 
 \PassOptionsToPackage{hidelinks}{hyperref}%disable boxes around links
 \usepackage{hyperref}%This must be the last package loaded
@@ -40,7 +39,7 @@
 
 \title{Thesis and Project Report Template for \theInstitution{}}
 \author{Joseph~T.~Foley and Marcel~Kyas}
-\date{2022}{5}{23}%{Year}{Month}{Day}%use numbers
+\date{2024}{11}{07}%{Year}{Month}{Day}%use numbers
 
 %\DocumentInfo{TYPE}{ABBREVIATION}{DEGREE}{PROGRAM}{ECTS}{School/Department}
 \DocumentInfo{Thesis}{M.Sc.}{Master of Science}{Mechatronics}{30}{Department of Engineering}
@@ -100,7 +99,7 @@
   When binding a book, the edges that face outward need to be very smooth to reduce contamination and dust from entering the book when it sits on a shelf; this is why traditionally a larger paper size is cut down to the book size.
   If your print house expects the stock to be A4, then make sure the rubook has the ``a4paper'' option.
   If they prefer to deal with preparation themselves from a B5 pdf, then the default ``b5paper'' option is correct.
-  The template is designed to work with lualatex.
+  The template is designed to work only with lualatex.
   
   The abstract goes here in English or Icelandic.
   It should be a fairly short summary of the entire document.
@@ -131,8 +130,6 @@ Additional equipment was generously donated by the Icelandic Tourism Board.
 
 %% If you would like to separate chapters into different files, use
 %% \include{chapterfile}
-%% WARNING: Make sure that all of these files (and any new ones)
-%% are UTF-8 otherwise you will get weird encoding errors.
 \part{Getting Started} % Parts optional but useful in longer documents
 \chapter{Instructions}
 \textbf{Is this the right template for you?}

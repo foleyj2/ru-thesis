@@ -16,11 +16,9 @@
 %% Details at LICENSE.md
 %% --------------- Identification ----------------------------
 \NeedsTeXFormat{LaTeX2e}
-\newcommand{\fileversion@rubook}{Revision 1.0}
-\newcommand{\filedate@rubook}{2022/05/22}% must be YYYY/MM/DD!
-\newcommand{\fileauthor@rubook}{Joseph Timothy Foley, foley at RU.IS}
-\ProvidesPackage{rubook}[\filedate@rubook by \fileauthor@rubook]
-\typeout{Book Class for Reykjavik University \fileversion@rubook <\filedate@rubook>, by \fileauthor@rubook}
+\newcommand{\fileversion@rubook}{V1.1}
+\ProvidesClass{rubook}[2024/11/07 Reykjavik University Book class\fileversion@rubook]
+\typeout{Book Class for Reykjavik University \fileversion@rubook}
 
 \newcommand{\@rubook@setpapersize@afour}{\stockaiv{}}
 \newcommand{\@rubook@setpapersize@bfive}{\stockbv{}}
