@@ -1,16 +1,15 @@
 %% ---------------------------------------------------------------------------------------------
 %% LaTeX Base Class Reykjavík University Books
 %% ---------------------------------------------------------------------------------------------
-%% Original Author: Lars Engebretsen (KTH)
-%% Source not found on Google, an archived copy [2004/12/14 v2.1 Document Class for KTH Theses] can be found at
-%% https://repository.cs.ru.is/svn/thesis-template/trunk/non-ru/kth.se/kthesis/tex/latex/kthesis/kthesis.cls
-%% Refactored in 2017 by Gabriel Hjort Blindell <ghb AT kth.se>
+%% Page size options original Author: Lars Engebretsen (KTH)
+%% Source not found on Google, an archived copy [2004/12/14 v2.1 Document Class for KTH Theses]
+%% was used in the original version
+%% New version in 2017 by Gabriel Hjort Blindell <ghb AT kth.se>
 %% Source at https://github.com/gablin/ghb-thesis/blob/master/kthesis.cls
 %% This has a Creative Commons Attribution-NoDerivatives 4.0
 %% <http://creativecommons.org/licenses/by-nc-nd/4.0/> for details).
 %% Which means we sadly can't modify it for our use.
-%% Refactored from Lars' version on 2022-05-22: Joseph Timothy Foley <foley AT ru.is>
-%% Questions, comments, complaints: latex@RU.IS
+%% Page size options from Lars' version on 2022-05-22: Joseph Timothy Foley <foley AT ru.is>
 %% Created on 2022-05-22
 %% This code is distributed under the MIT license
 %% Details at LICENSE.md
@@ -22,25 +21,6 @@
 
 \newcommand{\@rubook@setpapersize@afour}{\stockaiv{}}
 \newcommand{\@rubook@setpapersize@bfive}{\stockbv{}}
-%\def\@rubook@setpapersize@afour{%
-%   \setstocksize{297mm}{210mm}
-%   \settrimmedsize{297mm}{210mm}{*}
-%   \settypeblocksize{49pc}{33pc}{*}}
-% \def\@rubook@setpapersize@bfive{%
-%   \setstocksize{297mm}{210mm}
-%   \settrimmedsize{239mm}{169mm}{*}
-%   \setlength{\trimtop}{\stockheight}
-%   \addtolength{\trimtop}{-\paperheight}
-%   \setlength{\trimtop}{0.5\trimtop}
-%   \setlength{\trimedge}{\stockwidth}
-%   \addtolength{\trimedge}{-\paperwidth}
-%   \ifpdf
-%   \AtBeginDocument{%
-%     \setlength{\pdfpagewidth}{\stockwidth}
-%     \setlength{\pdfpageheight}{\stockheight}}
-%   \fi  
-%   \settypeblocksize{43pc}{30pc}{*}}
-
 \DeclareOption{g5paper}{\OptionNotUsed}
 \DeclareOption{a3paper}{\OptionNotUsed}
 \DeclareOption{a4paper}{\def\rubook@papersize{afour}}% paper stock a4
@@ -61,14 +41,11 @@
 \LoadClass[a4paper]{memoir}
 \@nameuse{@rubook@setpapersize@\rubook@papersize}
 
-
 %%%%%%%%%%%%%%%% MARGINS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Note: The old MS word template uses even 25.4mm margins which works poorly as a bound book
 \setxlvchars{}\setlxvchars{}
 %% calculate textblock based upon character size
 \trimLmarks{}% trim marks get cut off
 \pagebv{}% cut to b5
-%\settrims{0pt}{0pt}
 \setpageml{\paperheight}{\paperwidth}{*}%page area on middle left for cutting
 %\checkandfixthelayout% implement the margins if we weren't using canonic
 
