@@ -12,8 +12,16 @@
 \setdefaultlanguage{english}
 \setotherlanguage{icelandic}
 
-%%%   Setup citations
+%%% Setup citations:  pick one format
+%% IEEE Format
 \usepackage[backend=biber,style=ieee]{biblatex}
+%% APA Format
+%\usepackage[style=apa,backend=biber]{biblatex}
+%\DeclareLanguageMapping{english}{english-apa}
+%% Warning:  Icelandic APA has issues because you have to get the grammar right which needs to know if the word is male or female
+%% \parencite{} for parenthesis around the citation
+%% \textcite{} is for when the information is part of a sentence.
+%% \cite{} just puts the name and year
 \addbibresource{references.bib}
 \usepackage{biblatex-IS}%%loads Icelandic translations for things polyglossia missed
 
