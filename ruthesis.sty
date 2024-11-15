@@ -111,6 +111,7 @@ BoldItalicFont={*-BoldItalic}]
   % actually in books, this is often on the left side
   \begin{coverleft}
     \begin{vplace}[1.0] % ratio of space above and below
+      \setlength{\parskip}{\baselineskip}%without indents, we need blank line separators
       \begin{flushleft}
         #1
         Copyright \textcopyright{} \the\year{} \theauthor{} \ccbyncnd{}
