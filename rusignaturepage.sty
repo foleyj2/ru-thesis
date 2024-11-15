@@ -1,0 +1,58 @@
+%% ---------------------------------------------------------------------------------------------
+%% LaTeX Package to setup Signature page
+%% ---------------------------------------------------------------------------------------------
+%% Author Joseph Timothy Foley <foley AT ru.is>
+%% Questions, comments, complaints: latex@RU.IS
+%% Created on 2024-11-15
+%% This code is distributed under the MIT license
+%% Details at LICENSE.md
+%% --------------- Identification ----------------------------
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{rusignaturepage}[2024/11/15 RU Thesis Signature Page]
+
+\RequirePackage{paralist}
+\RequirePackage{dashrule}
+
+%% ----- SIGNATURE PAGE, ONLY THESIS -----------------------------------------------------
+\newlength{\signaturey}
+\setlength{\signaturey}{8mm}
+\newlength{\signaturex}
+\setlength{\signaturex}{100mm}
+
+\newcommand{\signaturepage}{
+  \begin{cover}
+    The undersigned hereby certify that they recommend to the
+    \theSchool{} at \theInstitution{} for acceptance this
+    \theDocumentType{} entitled \textbf{\thetitle}
+    submitted by \textbf{\theauthor} in partial fulfillment
+    of the requirements for the degree of \textbf{\theDegreeLong (\theDegreeAbbrv)  in \theProgram{}}%
+    \vspace*{2\baselineskip}
+    
+    \newcommand{\signline}[2]{\item \hdashrule{##2}{1pt}{1pt}\\##1}
+    \renewcommand{\personinfo}[5]{\item\hdashrule{\signaturex}{1pt}{1pt}\\##1, ##2\\##3, ##4, ##5\\\vspace{\signaturey}\\}
+    \setlength{\pltopsep}{2\baselineskip}  % first/top space
+    \setlength{\plparsep}{2\baselineskip} % space between entries
+    \setlength{\plitemsep}{0.5\baselineskip} % space between lines
+    {%\sigtextfont% 
+      % change \personinfo to make the entries needed
+      % Because this is inside a command, we escape the #1 as ##1
+      \renewcommand{\personinfo}[5]{&\hdashrule{\signaturex}{1pt}{1pt}\\&##1\\\vspace{\signaturey}\\}
+      \begin{compactitem}[]
+         \signline{date}{50mm}
+       \end{compactitem}
+      \begin{tabular}{lll}
+        Student:\\
+        \personinfo{\theauthor}{}{}{}{}\\
+        \supervisorheading@ruthesis:\\
+        \supervisors@ruthesis{}\\
+      \end{tabular}
+    }% end sigtextfont      
+  \end{cover}
+}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% TeX-engine: luatex
+%%% End:

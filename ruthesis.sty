@@ -229,11 +229,6 @@ in this publication does not imply, even in the absence of a specific statement 
 %% Allowing ragged bottoms keeps the spacing consistent between paragraphs
 %% Alternatively:  \setlength{\parskip}{0pt}
 
-%%  We need the paralist and dashrule package in order to format the %%  title and signature pages.
-%% These could be refactored to remove the dependency
-\RequirePackage{paralist}
-\RequirePackage{dashrule}
-
 %% Information about Institution, Author, Degree, and Program
 \newcommand{\theInstitution}{Reykjav\'{\i}k University}%
 \newcommand{\theDocumentType}{Dissertation}
@@ -267,14 +262,6 @@ in this publication does not imply, even in the absence of a specific statement 
 \item[]  #1, #2\\#3, #4, #5 %Stub to be customized later
 }
 
-\newenvironment{peoplelist}
-{\begin{compactitem}[\hspace{10mm}]}
-{\end{compactitem}}
-
-\newenvironment{rolelist}
-{\begin{compactitem}[\hspace{10mm}]}
-{\end{compactitem}}
-
 
 %% Clean up some formatting for the text
 \renewcommand{\thepage}{\roman{page}}
@@ -294,56 +281,16 @@ in this publication does not imply, even in the absence of a specific statement 
   % change \personinfo to make the entries needed
   % Because this is inside a command, we escape the #1 as ##1      
   \renewcommand{\personinfo}[5]{\item[]  ##1, ##2\\##3, ##4, ##5}
-  \setlength{\pltopsep}{0.5\baselineskip}  % first/top space
-  \setlength{\plparsep}{0.5\baselineskip} % space between entries
-  \setlength{\plitemsep}{0.5\baselineskip} % space between lines
-  \begin{rolelist}
+  % \setlength{\pltopsep}{0.5\baselineskip}  % first/top space
+  % \setlength{\plparsep}{0.5\baselineskip} % space between entries
+  % \setlength{\plitemsep}{0.5\baselineskip} % space between lines
+  \begin{itemize}[label={}]
   \item \supervisorheading@ruthesis{}:
-    \begin{peoplelist}
+    \begin{itemize}[label={}]\setlength\itemsep{\baselineskip} 
       \supervisors@ruthesis{}
-    \end{peoplelist}
-  \end{rolelist}
+    \end{itemize}
+  \end{itemize}
 }\vfill}
-
-
-%% ----- SIGNATURE PAGE, ONLY THESIS -----------------------------------------------------
-\newlength{\signaturey}
-\setlength{\signaturey}{8mm}
-\newlength{\signaturex}
-\setlength{\signaturex}{100mm}
-
-\newcommand{\signaturepage}{
-  \begin{cover}
-    The undersigned hereby certify that they recommend to the
-    \theSchool{} at \theInstitution{} for acceptance this
-    \theDocumentType{} entitled \textbf{\thetitle}
-    submitted by \textbf{\theauthor} in partial fulfillment
-    of the requirements for the degree of \textbf{\theDegreeLong (\theDegreeAbbrv)  in \theProgram{}}%
-    \vspace*{2\baselineskip}
-    
-    \newcommand{\signline}[2]{\item \hdashrule{##2}{1pt}{1pt}\\##1}
-    \renewcommand{\personinfo}[5]{\item\hdashrule{\signaturex}{1pt}{1pt}\\##1, ##2\\##3, ##4, ##5\\\vspace{\signaturey}\\}
-    \setlength{\pltopsep}{2\baselineskip}  % first/top space
-    \setlength{\plparsep}{2\baselineskip} % space between entries
-    \setlength{\plitemsep}{0.5\baselineskip} % space between lines
-    {%\sigtextfont% 
-      % change \personinfo to make the entries needed
-      % Because this is inside a command, we escape the #1 as ##1
-      \renewcommand{\personinfo}[5]{&\hdashrule{\signaturex}{1pt}{1pt}\\&##1\\\vspace{\signaturey}\\}
-      \begin{compactitem}[]
-         \signline{date}{50mm}
-       \end{compactitem}
-      \begin{tabular}{lll}
-        Student:\\
-        \personinfo{\theauthor}{}{}{}{}\\
-        \supervisorheading@ruthesis:\\
-        \supervisors@ruthesis{}\\
-      \end{tabular}
-    }% end sigtextfont      
-  \end{cover}
-}
-
-
 
 \renewenvironment{abstract}
 {\begin{cover}{\centering%
