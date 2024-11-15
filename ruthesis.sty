@@ -9,8 +9,9 @@
 %% Details at LICENSE.md
 %% --------------- Identification ----------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{ruthesis}[2024/11/07 RU Thesis Formatting V3.1]
+\ProvidesPackage{ruthesis}[2024/11/15 RU Thesis Formatting V3.2]
 %% --------------- Option Processing--------------------------
+%% The forcegraphics option renders graphics even in draft mode
 \DeclareOption{forcegraphics}{%
   \PassOptionsToPackage{final}{graphicx}
   \PassOptionsToPackage{final}{pdfpages}
@@ -50,7 +51,7 @@ BoldItalicFont={*-BoldItalic}]
 
 %% ---------------- Graphics ------------------------------
 \RequirePackage{graphicx}
-%% GraphicsX converts and includes graphics intelligently
+%% GraphicsX converts and includes graphics intelligently which is needed for jpg, png, etc.
 
 %% ---------------- URLs and Paths -----------------------------
 \PassOptionsToPackage{obeyspaces,spaces,hyphens,allowmove}{url}
@@ -59,14 +60,6 @@ BoldItalicFont={*-BoldItalic}]
 %% Watch out that you leave a space after a last \ e.g. \path{C:\ }
 %% Warning:  allowmove makes URLs not-fragile, so they can go in things that move
 %%           If this breaks you will get very very weird errors
-%% ---------------- Miscellaneous Packages ----------------------
-%% ---------------- Fonts -----------------------------
-%% Important:  The template has switched to STIX2 fonts and memoir defaults
-%% to massively simplify font selection.  You should not need to mess with fonts.
-
-% save the current font size
-\newlength{\normaltextsize}
-\setlength{\normaltextsize}{\f@size pt}
 
 %% ---------------- Main Code -----------------------------
 %%  Remember that we can declare commands (to make fragile things safe)
@@ -167,12 +160,12 @@ in this publication does not imply, even in the absence of a specific statement 
   \disableindents%
   \SingleSpacing}%
 {\enableindents{}}%
-\newenvironment{coveranyside}%This is material that can start on even or odd
-{  \clearpage%
-  \thispagestyle{cover}%
-  \disableindents%
-  \SingleSpacing}%
-{\enableindents{}}%
+% \newenvironment{coveranyside}%This is material that can start on even or odd
+% {  \clearpage%
+%   \thispagestyle{cover}%
+%   \disableindents%
+%   \SingleSpacing}%
+% {\enableindents{}}%
 
 
 
@@ -180,10 +173,6 @@ in this publication does not imply, even in the absence of a specific statement 
 \newenvironment{dedications}{\begin{cover}\begin{vplace}[0.33]% ratio of space above and below
       \begin{center}\em}
       {\end{center}\normalfont\end{vplace}\end{cover}}
-
-%%%%%%%%%%%% DRAFT AND PROOF MARKS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\draftmark}{}
-\newcommand{\draftbigmark}{}
 
 %%% Page styles Memoir Manual ch7.2 p109 
 \aliaspagestyle{book}{simple}
@@ -213,25 +202,19 @@ in this publication does not imply, even in the absence of a specific statement 
 %%% Section numbering and the Table of Contents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 \maxsecnumdepth{subsubsection}  % default by \mainmatter in preamble
-%\setsecnumdepth{subsubsection}  % can be changed later
 \maxtocdepth{subsubsection}  % default by \mainmatter in preamble
-%\settocdepth{subsubsection}  % can be changed later
 
 %%% Code to include files if they exist
 \newcommand{\InputIfExists}[1]{\IfFileExists{#1}{\input{#1}}{}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% TWEAKS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 
 %% Some adjustments to float placement
 \setcounter{topnumber}{5} \def\topfraction{1} \setcounter{bottomnumber}{4}
 \def\bottomfraction{1} \setcounter{totalnumber}{10} \def\textfraction{0}
 \def\floatpagefraction{.5}
-
-%\def\@makefnmark{\rlap{\@textsuperscript{\@thefnmark}}}
-%% Not sure why there was a footnote adjustment on the cover
-%% Disabling for now.
 
 %% Penalties for various text placement issues
 %% They can cause strange paragraph spacing on some pages
@@ -246,8 +229,6 @@ in this publication does not imply, even in the absence of a specific statement 
 %% Allowing ragged bottoms keeps the spacing consistent between paragraphs
 %% Alternatively:  \setlength{\parskip}{0pt}
 
-%\newcommand{\draftnote}[1]{\ifdraft{{\color{gray}#1}}}
-
 %%  We need the paralist and dashrule package in order to format the %%  title and signature pages.
 %% These could be refactored to remove the dependency
 \RequirePackage{paralist}
@@ -255,7 +236,6 @@ in this publication does not imply, even in the absence of a specific statement 
 
 %% Information about Institution, Author, Degree, and Program
 \newcommand{\theInstitution}{Reykjav\'{\i}k University}%
-
 \newcommand{\theDocumentType}{Dissertation}
 \newcommand{\theDegreeAbbrv}{Ph.D.}
 \newcommand{\theDegreeLong}{Doctorate}
@@ -272,9 +252,6 @@ in this publication does not imply, even in the absence of a specific statement 
   % Leave blank
   \renewcommand{\theSchool}{#6}
 }
-\newcommand{\theDegreeAndDepartment}{\theDegreeLong (\theDegreeAbbrv)  in \theProgram{}}
-
-
 
 \newcommand{\supervisors@ruthesis}{\item No Advisor}
 \newcommand{\Supervisors}[1]{\renewcommand{\supervisors@ruthesis}[1]{#1}}
@@ -309,8 +286,6 @@ in this publication does not imply, even in the absence of a specific statement 
 \renewcommand{\bibname}{Bibliography} %Renaming the bibliography section (if omitted it will be named "references")
   
 %% ----- INTERNAL TITLE PAGE WITH COMMITTEE ---------------------------------------------------
-%% TODO: make counter for supervisors in the very rare case that there
-%% is only one supervisor
 \newcommand{\DocumentDescription}[1]{\renewcommand{\maketitlehookc}{{\begin{center}#1\par\end{center}}}}
 
 %% maketitlehookd is after the date
@@ -343,7 +318,7 @@ in this publication does not imply, even in the absence of a specific statement 
     \theSchool{} at \theInstitution{} for acceptance this
     \theDocumentType{} entitled \textbf{\thetitle}
     submitted by \textbf{\theauthor} in partial fulfillment
-    of the requirements for the degree of \textbf{\theDegreeAndDepartment}%
+    of the requirements for the degree of \textbf{\theDegreeLong (\theDegreeAbbrv)  in \theProgram{}}%
     \vspace*{2\baselineskip}
     
     \newcommand{\signline}[2]{\item \hdashrule{##2}{1pt}{1pt}\\##1}
@@ -363,8 +338,6 @@ in this publication does not imply, even in the absence of a specific statement 
         \personinfo{\theauthor}{}{}{}{}\\
         \supervisorheading@ruthesis:\\
         \supervisors@ruthesis{}\\
-        %\examinerheading@ruthesis:\\%% MSc old template
-        %\examiners@ruthesis{}
       \end{tabular}
     }% end sigtextfont      
   \end{cover}
